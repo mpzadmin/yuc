@@ -1,7 +1,0 @@
-.DS_Store
-*.log
-*.backup
-*.exe
-**/*.exe
-./**/*.exe
-

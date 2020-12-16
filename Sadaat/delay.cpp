@@ -11,11 +11,14 @@ int main()
     for (int i = 0; i < text.length(); i++)
     {
         cout << text[i];
-        delay(20000000);
+        delay(20);
     }
 }
 
-void delay(int d)
+void delay(int delayValue)
 {
-    for (int i = 0; i < d; i++);
+    for (int index = 0; index < delayValue; index++)
+    {
+        for (int i = 0; i < 2000000; i++);
+    }
 }

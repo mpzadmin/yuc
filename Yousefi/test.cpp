@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace std; 
 
 void delay(int delayvalue = 40);
 

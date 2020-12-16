@@ -1,10 +1,11 @@
 /*
- *  [PROGRAM NAME]
+ *  TODO: [PROGRAM NAME]
  * 
  *  By: YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */
+
 
 // External Libraries
 #include <iostream>
@@ -22,15 +23,19 @@ void clearConsole();
 string askForString(string titleToPrint = defaultStringRequestTitle);
 int askForInt(string titleToPrint = defaultIntRequestTitle);
 
+
 // Program's Entry Point
 int main()
 {
+    /* TODO: VARIABLES GOE HERE */
+
     clearConsole();
 
-    /* CODE GOES HERE */
+    /* TODO: CODE GOES HERE */
 }
 
-/* PROGRAM FUNCTIONS GO HERE */
+/* TODO: PROGRAM FUNCTIONS GO HERE */
+
 
 // Clear the console (on any OS)
 void clearConsole()

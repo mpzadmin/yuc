@@ -1,4 +1,4 @@
-## :fa-chevron-left: C++  Class Codes Of **YektaDev** :fa-chevron-right:
+## &bull; C++  Class Codes Of **YektaDev**
 
 ## &bull; Supervisor Professor: **MPZ**
 

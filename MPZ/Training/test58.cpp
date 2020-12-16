@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void delay(int);
+void delay(int delayValue = 50);
 
 int main()
 {
@@ -11,7 +11,7 @@ int main()
     for (int index = 0; index < text.length(); index++)
     {
         cout << text[index];
-        delay(30);
+        delay();
     }
 }
 

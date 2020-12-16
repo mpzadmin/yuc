@@ -2,14 +2,11 @@
 #include <string>
 #include <iomanip>
 
-const int delay1 = 35000000;
+const int delayValue = 35000000;
 
 using namespace std;
 
-void delay()
-{
-    for (int index = 1; index <= 35000000; index++);
-}
+void delay(int);
 
 int main()
     
@@ -20,7 +17,11 @@ int main()
     
     for (int index = 0; index < name.length(); index++)
     {
-        delay();
+        delay(delayValue);
         cout << name[index];
     }
+}
+void delay(int delayValue)
+{
+    for (int index = 1; index <= delayValue; index++);
 }

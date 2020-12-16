@@ -1,13 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-int delay()
-     { 
-       for (int index=0 ; index<90000000 ; index++ )
-       {
-           
-       }
-     }
+void delay();
 int main() {
     string name;
     cout << "enter a character" << endl;
@@ -17,6 +11,9 @@ int main() {
         cout << name[i] ;
         delay();
     }
-    
-    return 0;
 }
+   void delay()
+     { 
+       for (int index=0 ; index<= 90000000 ; index++ );
+     }
+    

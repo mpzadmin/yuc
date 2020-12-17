@@ -1,23 +1,25 @@
 #include <iostream>
-#include<string>
+#include <string>
 
 using namespace std;
-void delay();
-
+void delay(int delaynumber = 100000000);
 
 int main()
 {
-    string charector;
-    cout << "Enter your charextor:";
+    string charector ;
+    cout << "Enter your charector :";
     getline(cin, charector);
-    for(int i=0; i<charector.length(); i++)
+    for( int index = 0; index < charector.length(); index++   )
     {
-        void delay();
-        cout <<  charector[i] ;
+        cout << charector[index];
+        delay();
+    }
 
-    }   
-void delay(int delay);
-{
-    for(int index =1; index<=100000; index++);
 }
+void delay(int delaynumber  )
+{
+    for( int counter=1; counter<= delaynumber; counter++ );
+}
+
+
 

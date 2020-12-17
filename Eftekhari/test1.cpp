@@ -2,7 +2,7 @@
 #include <string>
 using namespace std ;
 
-void delay(int delayvalue = 30);
+void delay(int delayvalue = 20);
 int main(int argc, char const *argv[])
 {
     string name = "ALIREZA EFTEKHARI!" ;
@@ -19,7 +19,7 @@ void delay(int delayvalue)
 {
     for (int index = 0; index < delayvalue; index++)
     {
-        for(int counter = 0; counter < 1500000; counter++);
+        for(int counter = 0; counter < 1200000; counter++);
     }
     
 }

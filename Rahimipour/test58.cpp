@@ -17,8 +17,8 @@ int main()
     
     for (int index = 0; index < name.length(); index++)
     {
-        delay(delayValue);
         cout << name[index];
+        delay(delayValue);
     }
 }
 void delay(int delayValue)

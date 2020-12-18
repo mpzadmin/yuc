@@ -15,10 +15,10 @@ int main()
     for (int index = 0; index < name.length(); index++)
     {
         cout << name[index];
-        delay(200000000);
+        delay(20);
     }
 }
 void delay(int delay)
 {
-    for (int index = 0; index < delay; index++);
+    for (int index = 0; index < (9000000 * delay); index++);
 }

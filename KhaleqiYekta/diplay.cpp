@@ -6,7 +6,6 @@
  *  Email: Me@Yekta.Dev
  */
 
-
 // External Libraries
 #include <iostream>
 #include <string>
@@ -24,16 +23,18 @@ int main()
 {
     clearConsole();
 
-    display("Hello World!",true);
-    display("Hello Class!");
+    display("Hello World!", true);
+    display("Hello Class!", false);
     display("Hello Teacher!");
 }
 
+// Display a text to user
 void display(string str)
 {
     cout << str;
 }
 
+// Display a text to user
 void display(string str, bool newLine)
 {
     display(str);
@@ -43,7 +44,6 @@ void display(string str, bool newLine)
         cout << endl;
     }
 }
-
 
 // Clear the console (on any OS)
 void clearConsole()

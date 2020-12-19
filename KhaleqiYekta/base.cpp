@@ -14,10 +14,16 @@
 // Namespaces
 using namespace std;
 
+// Constants
+/* ... */
+
+// Function Declrations
+/* ... */
+
 // Program's Entry Point
 int main()
 {
-    /* TODO: VARIABLES GOE HERE */
+    /* TODO: VARIABLES GO HERE */
 
     clearConsole();
 

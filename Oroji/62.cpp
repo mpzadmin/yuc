@@ -14,7 +14,7 @@ void display(string str)
 }
 void display(string str ,bool newline)
 {
-    void display();
+    display(str);
     if (newline)
     {
         cout <<endl;

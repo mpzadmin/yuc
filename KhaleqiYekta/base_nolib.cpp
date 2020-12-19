@@ -39,9 +39,9 @@ string askForString(string titleToPrint)
 {
     string data;
 
-    print(titleToPrint);
+    cout << titleToPrint;
     getline(cin, data);
-    newLine();
+    cout << endl;
 
     return data;
 }
@@ -51,9 +51,9 @@ int askForInt(string titleToPrint)
 {
     int data;
 
-    print(titleToPrint);
+    cout << titleToPrint;
     cin >> data;
-    newLine();
+    cout << endl;
 
     return data;
 }

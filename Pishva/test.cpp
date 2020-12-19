@@ -21,7 +21,7 @@ void display (string str)
 
 void display (string str, bool newline)
 {
-    void display (string str);
+    display (str);
 
     if (newline)
     cout << endl;

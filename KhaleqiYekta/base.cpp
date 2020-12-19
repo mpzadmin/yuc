@@ -6,7 +6,6 @@
  *  Email: Me@Yekta.Dev
  */
 
-
 // External Libraries
 #include <iostream>
 #include <string>
@@ -23,7 +22,6 @@ void clearConsole();
 string askForString(string titleToPrint = defaultStringRequestTitle);
 int askForInt(string titleToPrint = defaultIntRequestTitle);
 
-
 // Program's Entry Point
 int main()
 {
@@ -35,7 +33,6 @@ int main()
 }
 
 /* TODO: PROGRAM FUNCTIONS GO HERE */
-
 
 // Clear the console (on any OS)
 void clearConsole()

@@ -9,12 +9,12 @@
 // External Libraries
 #include <iostream>
 #include <string>
+#include "console.hpp"
 
 // Namespaces
 using namespace std;
 
 // Function Declrations
-void clearConsole();
 void display(string str);
 void display(string str, bool newLine);
 
@@ -43,14 +43,4 @@ void display(string str, bool newLine)
     {
         cout << endl;
     }
-}
-
-// Clear the console (on any OS)
-void clearConsole()
-{ 
-    #ifdef _WIN32
-    system("cls");
-    #else
-    system("clear");
-    #endif
 }

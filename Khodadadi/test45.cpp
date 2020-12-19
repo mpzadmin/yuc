@@ -10,6 +10,7 @@ int main()
 {
     display("Hello", true);
     display("Welcome");
+    display("Bye",true);  
 }
 
 void display(string str)
@@ -19,7 +20,7 @@ void display(string str)
 
 void display(string str, bool newLine)
 {
-    display(str); // to prevent repeating 
+    display(str);
     if (newLine)
     {
         cout << endl;

@@ -19,7 +19,7 @@ void display(string str)
 
 void display(string str, bool newLine)
 {
-    display(str);
+    display(str); // to prevent repeating 
     if (newLine)
     {
         cout << endl;

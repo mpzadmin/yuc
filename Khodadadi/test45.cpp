@@ -10,7 +10,7 @@ int main()
 {
     display("Hello", true);
     display("Welcome");
-    display("Bye",true);    
+    display("Bye",true);  
 }
 
 void display(string str)

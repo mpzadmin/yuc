@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-
+#include"test3.hpp"
 using namespace std;
 
 void display(string str);
@@ -10,18 +10,5 @@ int main()
 {
     display("hello");
     display("hi" , true);
+    display("hello world" ,100000000);
 }
-void display(string str)
-{
-    cout << str ;
-
-}
-void display(string str , bool test)
-{
-    display(str);
-    if (test==true)
-    {
-        cout << endl;
-    }
-}
-

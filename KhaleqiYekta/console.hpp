@@ -1,23 +1,23 @@
 /*
- *  Console Utilities Library
+ *  @brief Console Utilities Library
  * 
- *  By: YektaDev [Ali Khaleqi Yekta]
+ *  @author YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */
 
-// External Libraries
+/** External Libraries **/
 #include <iostream>
 #include <string>
 
-// Namespaces
+/** Namespaces **/
 using namespace std;
 
-// Constants
+/** Constants **/
 const string defaultStringRequestTitle = "Please enter a text: ";
 const string defaultIntRequestTitle = "Please enter a number: ";
 
-// Function Declrations
+/** Function Declrations **/
 void print(string str);
 void newLine();
 void printLine(string str);

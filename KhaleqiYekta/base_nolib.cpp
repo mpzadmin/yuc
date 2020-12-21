@@ -1,7 +1,7 @@
 /*
  *  TODO: [PROGRAM NAME]
  * 
- *  By: YektaDev [Ali Khaleqi Yekta]
+ *  @author YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */

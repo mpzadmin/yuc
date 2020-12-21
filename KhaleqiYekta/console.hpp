@@ -25,26 +25,26 @@ string askForString(string titleToPrint = defaultStringRequestTitle);
 int askForInt(string titleToPrint = defaultIntRequestTitle);
 void clearConsole();
 
-// Print a text
+// Prints a text
 void print(string str)
 {
     cout << str;
 }
 
-// End the line
+// Ends the line
 void newLine()
 {
     cout << endl;
 }
 
-// Print a text and end the line
+// Prints a text and end the line
 void printLine(string str)
 {
     print(str);
     newLine();
 }
 
-// Return a string which is requested from user, then goes to a new line after the procces is done.
+// Returns a string which is requested from user, then goes to a new line after the procces is done.
 string askForString(string titleToPrint)
 {
     string data;
@@ -56,7 +56,7 @@ string askForString(string titleToPrint)
     return data;
 }
 
-// Return an integer which is requested from user, then goes to a new line after the procces is done.
+// Returns an integer which is requested from user, then goes to a new line after the procces is done.
 int askForInt(string titleToPrint)
 {
     int data;
@@ -68,7 +68,7 @@ int askForInt(string titleToPrint)
     return data;
 }
 
-// Clear the console (on any OS)
+// Clears the console (on any OS)
 void clearConsole()
 { 
     #ifdef _WIN32

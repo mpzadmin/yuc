@@ -36,7 +36,7 @@ int main()
     return 0;
 }
 
-// Block the thread for some time
+// Blocks the thread for some time
 void delay(int delay)
 { 
     for (int i = 0; i < 1000000; i++)
@@ -45,7 +45,7 @@ void delay(int delay)
     }
 }
 
-// Clear the console (on any OS)
+// Clears the console (on any OS)
 void clearConsole()
 { 
     #ifdef _WIN32

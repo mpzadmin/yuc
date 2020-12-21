@@ -31,13 +31,13 @@ int main()
     return 0;
 }
 
-// Display a text to user
+// Displays a text to user
 void display(string str)
 {
     cout << str;
 }
 
-// Display a text to user
+// Displays a text to user
 void display(string str, bool newLine)
 {
     display(str);

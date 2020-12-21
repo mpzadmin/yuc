@@ -28,6 +28,8 @@ int main()
     clearConsole();
 
     /* TODO: CODE GOES HERE */
+
+    return 0;
 }
 
 /* TODO: PROGRAM FUNCTIONS GO HERE */

@@ -1,17 +1,20 @@
 /*
- *  Hello World Program Using User-Defined Libraries
+ *  @brief Hello World Program Using User-Defined Libraries
  * 
- *  By: YektaDev [Ali Khaleqi Yekta]
+ *  @author YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */
 
-// External Libraries
+/** External Libraries **/
 #include "console.hpp"
 
 // Program's Entry Point
 int main()
 {
     clearConsole();
+
     printLine("Hello World!");
+
+    return 0;
 }

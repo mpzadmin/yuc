@@ -1,24 +1,23 @@
 /*
- *  Print Animator Program
+ *  @brief Print Animator Program
  * 
- *  By: YektaDev [Ali Khaleqi Yekta]
+ *  @author YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */
 
-
-// External Libraries
+/** External Libraries **/
 #include <iostream>
 #include <string>
 
-// Namespaces
+/** Namespaces **/
 using namespace std;
 
-// Constants
+/** Constants **/
 const int delayValue = 50;
 const string textToPrint = "Hello C++ Class!";
 
-// Function Declrations
+/** Function Declrations **/
 void clearConsole();
 void delay(int delay = 10);
 
@@ -33,6 +32,8 @@ int main()
 
         cout << textToPrint[i];
     }
+
+    return 0;
 }
 
 // Block the thread for some time
@@ -43,7 +44,6 @@ void delay(int delay)
         for (int j = 0; j < delay; j++);
     }
 }
-
 
 // Clear the console (on any OS)
 void clearConsole()

@@ -1,24 +1,24 @@
 /*
- *  TODO: [PROGRAM NAME]
+ *  @brief TODO: [PROGRAM NAME]
  * 
- *  By: YektaDev [Ali Khaleqi Yekta]
+ *  @author YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */
 
-// External Libraries
+/** External Libraries **/
 #include <iostream>
 #include <string>
 #include "console.hpp"
 
-// Namespaces
+/** Namespaces **/
 using namespace std;
 
-// Constants
-/* ... */
+/** Constants **/
 
-// Function Declrations
-/* ... */
+
+/** Function Declrations **/
+
 
 // Program's Entry Point
 int main()
@@ -28,6 +28,8 @@ int main()
     clearConsole();
 
     /* TODO: CODE GOES HERE */
+
+    return 0;
 }
 
 /* TODO: PROGRAM FUNCTIONS GO HERE */

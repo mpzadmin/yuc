@@ -1,23 +1,23 @@
 /*
- *  TODO: [PROGRAM NAME]
+ *  @brief TODO: [PROGRAM NAME]
  * 
  *  @author YektaDev [Ali Khaleqi Yekta]
  *  Website: Yekta.Dev
  *  Email: Me@Yekta.Dev
  */
 
-// External Libraries
+/** External Libraries **/
 #include <iostream>
 #include <string>
 
-// Namespaces
+/** Namespaces **/
 using namespace std;
 
-// Constants
+/** Constants **/
 const string defaultStringRequestTitle = "Please enter a text: ";
 const string defaultIntRequestTitle = "Please enter a number: ";
 
-// Function Declrations
+/** Function Declrations **/
 string askForString(string titleToPrint = defaultStringRequestTitle);
 int askForInt(string titleToPrint = defaultIntRequestTitle);
 void clearConsole();

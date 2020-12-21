@@ -7,7 +7,6 @@
  */
 
 /** External Libraries **/
-#include <iostream>
 #include <string>
 #include "console.hpp"
 
@@ -15,7 +14,7 @@
 using namespace std;
 
 /** Constants **/
-const string errorNoArg = "No Arguments Found!";
+const string errorNoArg = "No Arguments Are Found!";
 
 // Program's Entry Point
 int main(int argc, char const *argv[])
@@ -24,9 +23,11 @@ int main(int argc, char const *argv[])
 
     if (argc <= 1)
     {
-        cout << errorNoArg << endl;
+        printLine(errorNoArg);
         return 0;
     }
+
+    printLine(to_string(argc - 1) + " Arguments Are Found!");
 
     for (int i = 1; i < argc; i++)
     {

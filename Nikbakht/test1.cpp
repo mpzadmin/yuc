@@ -14,6 +14,7 @@ int main()
     {
         cout << str[index3];
         delay(20000000);
+        cout <<endl;
     }
 
 }

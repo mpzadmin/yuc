@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
     display(ptr, 5);
 }
 
-void display (string *str, int size)
+void display (string* str, int size)
 {
     for(int i = 0; i < size; i++)
     {

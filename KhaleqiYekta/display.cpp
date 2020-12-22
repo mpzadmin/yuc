@@ -15,7 +15,7 @@
 /** Namespaces **/
 using namespace std;
 
-/** Function Declrations **/
+/** Function Declarations **/
 void display(string str);
 void display(string str, bool newLine);
 

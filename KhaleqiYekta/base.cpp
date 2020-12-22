@@ -18,7 +18,7 @@ using namespace std;
 /** Constants **/
 
 
-/** Function Declrations **/
+/** Function Declarations **/
 
 
 // Program's Entry Point

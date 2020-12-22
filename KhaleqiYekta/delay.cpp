@@ -18,7 +18,7 @@ using namespace std;
 const int delayValue = 50;
 const string textToPrint = "Hello C++ Class!";
 
-/** Function Declrations **/
+/** Function Declarations **/
 void clearConsole();
 void delay(int delay = 10);
 

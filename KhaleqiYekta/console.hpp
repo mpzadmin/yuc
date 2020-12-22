@@ -18,7 +18,7 @@ using namespace std;
 const string defaultStringRequestTitle = "Please enter a text: ";
 const string defaultIntRequestTitle = "Please enter a number: ";
 
-/** Function Declrations **/
+/** Function Declarations **/
 void print(string str);
 void newLine();
 void printLine(string str);
@@ -45,7 +45,7 @@ void printLine(string str)
     newLine();
 }
 
-// Returns a string which is requested from user, then goes to a new line after the procces is done.
+// Returns a string which is requested from user, then goes to a new line after the process is done.
 string askForString(string titleToPrint)
 {
     string data;
@@ -57,7 +57,7 @@ string askForString(string titleToPrint)
     return data;
 }
 
-// Returns an integer which is requested from user, then goes to a new line after the procces is done.
+// Returns an integer which is requested from user, then goes to a new line after the process is done.
 int askForInt(string titleToPrint)
 {
     int data;

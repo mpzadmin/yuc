@@ -4,13 +4,16 @@
 using namespace std;
 
 void display(string str);
-void display(string str, bool newLine);
+void display(string str, bool newline);
+
 
 int main()
 {
-    display("Hello", true);
-    display("Welcome");
-    display("Bye",true);    
+    display("hello", true);
+    display("wellcome");
+    display("bye", true);
+
+    
 }
 
 void display(string str)
@@ -18,10 +21,10 @@ void display(string str)
     cout << str;
 }
 
-void display(string str, bool newLine)
+void display(string str, bool newline)
 {
     display(str);
-    if (newLine)
+    if(newline)
     {
         cout << endl;
     }

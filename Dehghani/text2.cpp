@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -9,19 +9,22 @@ void display(string str, bool newLine);
 int main()
 {
     display("Hello", true);
-    display("Welcome");
-}
+    display("welcome");
+    display("Bye",true);
 
-void display(string str)
+
+}
+void display (string str)
 {
     cout << str;
 }
 
 void display(string str, bool newLine)
-{
-    display(str); // to prevent repeating 
-    if (newLine)
-    {
-        cout << endl;
-    }
+{  
+  display (str);
+  cout << str;
+  if(newLine)
+  {
+      cout << endl;
+  }
 }

@@ -1,9 +1,9 @@
 #include <iostream>
+#include "test60.hpp"
 
 using namespace std;
 
 int main()
 {
-    cout << "hi ";
-    cout <<endl;
+    display("Hello");
 }

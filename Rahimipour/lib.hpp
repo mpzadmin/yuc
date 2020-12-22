@@ -3,15 +3,7 @@
 
 using namespace std;
 
-void display(string str);
-void display(string str, bool newLine);
-
-int main()
-{
-    display("Hello", true);
-    display("Welcome");
-}
-
+// Display starting
 void display(string str)
 {
     cout << str;
@@ -24,4 +16,9 @@ void display(string str, bool newLine)
     {
         cout << endl;
     }
+}
+
+void delay(int delayValue)
+{
+    for (int index = 1; index <= delayValue; index++);
 }

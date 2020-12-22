@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void display(string name);
+void display(string name, size_t len);
 
 int main()
 {
@@ -12,15 +12,15 @@ int main()
     cout << "Enter your name : ";
     getline(cin, name);
 
-    display(name);
+    display(name, 5);
 
     return 0;
 }
 
-void display(string name)
+void display(string name, size_t len)
 {
     string* namePtr = &name;
 
-    for (int index = 0; index <= (name.size() - 1); index++)
+    for (int index = 0; index <= len; index++)
         cout << (*namePtr)[index] << endl;
 }

@@ -7,6 +7,11 @@
 .vscode/
 *.code-workspace
 .history/
+# These rules are for files which are useful for sharing settings across users.
+# This directory is only being used by one user, so it doesn't need any settings to be tracked by git.
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
 
 # Prerequisites
 *.d

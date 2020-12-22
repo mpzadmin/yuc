@@ -14,7 +14,7 @@
 /** Namespaces **/
 using namespace std;
 
-/** Function Declrations **/
+/** Function Declarations **/
 void display(string* ptr, size_t len);
 
 // Program's Entry Point

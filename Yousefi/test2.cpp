@@ -3,37 +3,21 @@
 
 using namespace std;
 
-void display(string name, int number);
+void display(string* ptr,int size);
 
-int main(int argc, char const *argv[])
+int main()
 {
-    string name;
-    int number;
-    cout << "name is: ";
-    cin >> name;
-    cout << "size of name: ";
-    cin >> number;
+    string name = "hello world";
 
-
-    display(name ,number);
-
-    return 0;
+    display(&name, name.length());    
 }
-void display(string name, int number)
+
+ void display(string* ptr,int size)
 {
-    string* n = &name;
-    for (int index=0; index < name.length(); index++)
+    for (int index=0; index<size; index++)
     {
-        cout << (*n)[index] << endl;
+        cout << (*ptr)[index] << endl;
     }
-    
-         
-    
-    
-   
-    
+
 }
-
-
-    
 

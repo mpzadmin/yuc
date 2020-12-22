@@ -4,7 +4,6 @@
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{DATE}
  */
 
 /** External Libraries **/
@@ -15,22 +14,26 @@
 /** Namespaces **/
 using namespace std;
 
-/** Constants **/
-
-
 /** Function Declrations **/
-
+void display(string* ptr, size_t len);
 
 // Program's Entry Point
 int main()
 {
-    /* TODO: VARIABLES GO HERE */
+    string txt = "Hello";
 
     clearConsole();
 
-    /* TODO: CODE GOES HERE */
+    display(&txt, txt.length());
 
     return 0;
 }
 
-/* TODO: PROGRAM FUNCTIONS GO HERE */
+// Displays a string (Each character in a new line)
+void display(string* ptr, size_t len)
+{
+    for (size_t i = 0; i < len; i++)
+    {
+        cout << (*ptr)[i] << endl;
+    }
+}

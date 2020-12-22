@@ -1,20 +1,21 @@
 /*
- *  Text Display Program
- * 
- *  By: YektaDev [Ali Khaleqi Yekta]
- *  Website: Yekta.Dev
- *  Email: Me@Yekta.Dev
+ * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ *
+ * Author: Ali Khaleqi Yekta [YektaDev]
+ * Website: https://Yekta.Dev
+ * Email: Me@Yekta.Dev
+ * Creation Date: 2020-12-18
  */
 
-// External Libraries
+/** External Libraries **/
 #include <iostream>
 #include <string>
 #include "console.hpp"
 
-// Namespaces
+/** Namespaces **/
 using namespace std;
 
-// Function Declrations
+/** Function Declrations **/
 void display(string str);
 void display(string str, bool newLine);
 
@@ -23,18 +24,21 @@ int main()
 {
     clearConsole();
 
+    // Test cases
     display("Hello World!", true);
     display("Hello Class!", false);
     display("Hello Teacher!");
+
+    return 0;
 }
 
-// Display a text to user
+// Displays a text to user
 void display(string str)
 {
     cout << str;
 }
 
-// Display a text to user
+// Displays a text to user
 void display(string str, bool newLine)
 {
     display(str);

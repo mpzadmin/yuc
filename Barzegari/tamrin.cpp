@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
 {
     string s = "Hello";
     string* ptr = &s; 
-    display(ptr, 4);
+    display(ptr, 5);
 }
 
 void display (string *str, int size)

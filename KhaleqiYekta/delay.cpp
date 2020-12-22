@@ -1,9 +1,10 @@
 /*
- *  @brief Print Animator Program
- * 
- *  @author YektaDev [Ali Khaleqi Yekta]
- *  Website: Yekta.Dev
- *  Email: Me@Yekta.Dev
+ * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ *
+ * Author: Ali Khaleqi Yekta [YektaDev]
+ * Website: https://Yekta.Dev
+ * Email: Me@Yekta.Dev
+ * Creation Date: 2020-12-15
  */
 
 /** External Libraries **/
@@ -36,7 +37,7 @@ int main()
     return 0;
 }
 
-// Block the thread for some time
+// Blocks the thread for some time
 void delay(int delay)
 { 
     for (int i = 0; i < 1000000; i++)
@@ -45,7 +46,7 @@ void delay(int delay)
     }
 }
 
-// Clear the console (on any OS)
+// Clears the console (on any OS)
 void clearConsole()
 { 
     #ifdef _WIN32

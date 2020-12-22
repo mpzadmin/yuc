@@ -1,9 +1,10 @@
 /*
- *  @brief Text Display Program
- * 
- *  @author YektaDev [Ali Khaleqi Yekta]
- *  Website: Yekta.Dev
- *  Email: Me@Yekta.Dev
+ * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ *
+ * Author: Ali Khaleqi Yekta [YektaDev]
+ * Website: https://Yekta.Dev
+ * Email: Me@Yekta.Dev
+ * Creation Date: 2020-12-18
  */
 
 /** External Libraries **/
@@ -31,13 +32,13 @@ int main()
     return 0;
 }
 
-// Display a text to user
+// Displays a text to user
 void display(string str)
 {
     cout << str;
 }
 
-// Display a text to user
+// Displays a text to user
 void display(string str, bool newLine)
 {
     display(str);

@@ -1,9 +1,10 @@
 /*
- *  @brief Hello World Program Using User-Defined Libraries
- * 
- *  @author YektaDev [Ali Khaleqi Yekta]
- *  Website: Yekta.Dev
- *  Email: Me@Yekta.Dev
+ * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ *
+ * Author: Ali Khaleqi Yekta [YektaDev]
+ * Website: https://Yekta.Dev
+ * Email: Me@Yekta.Dev
+ * Creation Date: 2020-12-18
  */
 
 /** External Libraries **/

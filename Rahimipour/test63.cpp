@@ -13,24 +13,7 @@ int main()
     cout << list[1] << endl;
     cout << *(ptr+1) << endl;
     cout << *(list+1) << endl;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     /*
     for (int index = 0; index < name.length(); index++)
     {

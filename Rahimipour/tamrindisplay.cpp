@@ -10,7 +10,7 @@ int main()
     display(&name, name.length());
 }
 
-void display(string* ptr, size_t len)
+void display(string* ptr, size_t len) // we could use int len.
 {
     for (int index = 0; index < len; index++)
     {

@@ -7,7 +7,7 @@ void printNumbers(int* numbers, size_t len);
 int main()
 {
     int* numbers;
-    int count;
+    int count;               
 
     system("cls");
     cout << "Enter count of numbers: ";

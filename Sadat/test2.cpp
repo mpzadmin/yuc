@@ -18,6 +18,9 @@ int main()
     //be jaie adress mohtava chap mishe
     cout << list2 << endl;
     cout << listptr2 << endl;
+    //hala adress chap mishe
+    cout << &list2 << endl;
+    cout << &listptr2 << endl;
     //adress chap mishe
     cout << list3 << endl;
     cout << listptr3 << endl;

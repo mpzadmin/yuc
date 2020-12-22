@@ -15,7 +15,7 @@
 using namespace std;
 
 /** Function Declrations **/
-void display(string* text, int len);
+void display(string* ptr, size_t len);
 
 // Program's Entry Point
 int main()
@@ -24,15 +24,15 @@ int main()
 
     clearConsole();
 
-    display(&txt, 5);
+    display(&txt, txt.length());
 
     return 0;
 }
 
 // Displays a string (Each character in a new line)
-void display(string* ptr, int len)
+void display(string* ptr, size_t len)
 {
-    for (int i = 0; i < len; i++)
+    for (size_t i = 0; i < len; i++)
     {
         cout << (*ptr)[i] << endl;
     }

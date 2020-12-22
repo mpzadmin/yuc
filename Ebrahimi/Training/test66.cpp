@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -37,5 +38,6 @@ int main()
 
     //For string
     cout << myString << "\t" << *ptrMyString << endl;
-    cout <<  myStrings[1] << "\t" << ptrMyStrings[1] << "\t" << *(ptrMyStrings+1) << endl;
+    cout << myString[1] << "\t" << (*ptrMyString)[1] << endl;       //Not an Array
+    cout <<  myStrings[1] << "\t" << ptrMyStrings[1] << "\t" << *(ptrMyStrings+1) << endl;   //Array
 }

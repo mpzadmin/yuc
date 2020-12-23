@@ -3,7 +3,9 @@
 #include <iomanip>
     
 using namespace std;
-    
+
+void printNumbers(int* numbers, size_t len);
+
 int main()   
 {
     int* numbers;

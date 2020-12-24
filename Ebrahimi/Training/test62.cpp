@@ -13,7 +13,7 @@ int main()
     cout << "a = " << a << "\t" << "b = " << b << endl;
     calculation(a, b);    //Function call with value      
     cout << "a = " << a << "\t" << "b = " << b << endl;
-    /* Two above couts are the same because the function in between doesn't return sth to "a" and "b"
+    /* Two above couts are the same because the function in between doesn't apply changes to "a" and "b"
     unless we use refrence in definition */
 
     exchange(a, b);       //Function call with refrences

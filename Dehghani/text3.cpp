@@ -1,19 +1,25 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 void display(string* ptr, size_t len);
 
-int main()
+int main(int argc, const char** argv)
 {
-    string name = "Ahad";
-    display(&name, name.length());
+  string name = "Arash";
+  display(&name, name.length());
+
 }
 
-void display(string* ptr, size_t len) // we could use int len.
+
+
+void display(string* ptr, size_t len)
 {
     for (int index = 0; index < len; index++)
     {
         cout << (*ptr)[index] << endl;
     }
+
+
 }

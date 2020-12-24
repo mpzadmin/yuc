@@ -22,6 +22,25 @@
 				"isDefault": true
 			},
 			"detail": "compiler: C:\\mingw-w64\\mingw32\\bin\\g++.exe"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: cpp.exe build active file",
+			"command": "C:\\mingw-w64\\mingw32\\bin\\cpp.exe",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "C:\\mingw-w64\\mingw32\\bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:\\mingw-w64\\mingw32\\bin\\cpp.exe"
 		}
 	]
 }

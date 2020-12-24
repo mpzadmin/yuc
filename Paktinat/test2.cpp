@@ -4,12 +4,19 @@ using namespace std;
 
 int main ()
 {
-    int number, factorial;
+    int number, factorial=1;
     cout << "enter a number : ";
     cin >> number;
-    for (int i=1; i <= number; i++)
+     if ( number == 0 )
+        {
+            cout << "error" << endl;
+            return 0;
+        }
+    for (int i=1; i<=number; i++)
     {
-        factorial *= number-1;
+        factorial *= i;
+       
     }
+
     cout << factorial;
 }

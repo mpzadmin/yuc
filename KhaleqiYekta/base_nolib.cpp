@@ -1,10 +1,10 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © TODO:{YEAR} Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{DATE}
+ * Creation Date: TODO:{YEAR-MONTH-DAY}
  */
 
 /** External Libraries **/
@@ -15,12 +15,11 @@
 using namespace std;
 
 /** Constants **/
-const string defaultStringRequestTitle = "Please enter a text: ";
-const string defaultIntRequestTitle = "Please enter a number: ";
+
 
 /** Function Declarations **/
-string askForString(string titleToPrint = defaultStringRequestTitle);
-int askForInt(string titleToPrint = defaultIntRequestTitle);
+string askForString(const string &titleToPrint);
+int askForInt(const string &titleToPrint);
 void clearConsole();
 
 // Program's Entry Point
@@ -38,7 +37,7 @@ int main()
 /* TODO: PROGRAM FUNCTIONS GO HERE */
 
 // Returns a string which is requested from user, then goes to a new line after the process is done.
-string askForString(string titleToPrint)
+string askForString(const string &titleToPrint)
 {
     string data;
 
@@ -50,7 +49,7 @@ string askForString(string titleToPrint)
 }
 
 // Returns an integer which is requested from user, then goes to a new line after the process is done.
-int askForInt(string titleToPrint)
+int askForInt(const string &titleToPrint)
 {
     int data;
 

@@ -30,6 +30,8 @@ int main()
 
     /* TODO: CODE GOES HERE */
 
+    pauseConsole();
+
     return 0;
 }
 

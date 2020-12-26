@@ -51,7 +51,7 @@ void printLine(const string &str)
 // Prints a separator line
 void printSeparatorLine(const char &separator, const size_t &len)
 {
-    string separatorLine = "";
+    string separatorLine;
 
     for (size_t i = 0; i < len; ++i)
     {
@@ -88,7 +88,7 @@ int askForInt(const string &titleToPrint)
 // Returns a float which is requested from user, then goes to a new line after the process is done.
 float askForFloat(const string &titleToPrint)
 {
-    int data;
+    float data;
 
     print(titleToPrint);
     cin >> data;

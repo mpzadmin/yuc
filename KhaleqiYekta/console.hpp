@@ -24,6 +24,7 @@ void newLine();
 void printLine(const string &str);
 string askForString(const string &titleToPrint = defaultStringRequestTitle);
 int askForInt(const string &titleToPrint = defaultIntRequestTitle);
+float askForFloat(const string &titleToPrint = defaultIntRequestTitle);
 void clearConsole();
 
 // Prints a text
@@ -59,6 +60,18 @@ string askForString(const string &titleToPrint)
 
 // Returns an integer which is requested from user, then goes to a new line after the process is done.
 int askForInt(const string &titleToPrint)
+{
+    int data;
+
+    print(titleToPrint);
+    cin >> data;
+    newLine();
+
+    return data;
+}
+
+// Returns a float which is requested from user, then goes to a new line after the process is done.
+float askForFloat(const string &titleToPrint)
 {
     int data;
 

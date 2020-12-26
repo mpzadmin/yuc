@@ -18,16 +18,19 @@ using namespace std;
 const string defaultStringRequestTitle = "Please enter a text: ";
 const string defaultIntRequestTitle = "Please enter a number: ";
 
-/** Function Declrations **/
-void print(string str);
+/** Function Declarations **/
+void print(const string &str);
 void newLine();
-void printLine(string str);
-string askForString(string titleToPrint = defaultStringRequestTitle);
-int askForInt(string titleToPrint = defaultIntRequestTitle);
+void printLine(const string &str);
+void printSeparatorLine(const char &separator, const size_t &len);
+string askForString(const string &titleToPrint = defaultStringRequestTitle);
+int askForInt(const string &titleToPrint = defaultIntRequestTitle);
+float askForFloat(const string &titleToPrint = defaultIntRequestTitle);
 void clearConsole();
+void pauseConsole();
 
 // Prints a text
-void print(string str)
+void print(const string &str)
 {
     cout << str;
 }
@@ -39,14 +42,27 @@ void newLine()
 }
 
 // Prints a text and end the line
-void printLine(string str)
+void printLine(const string &str)
 {
     print(str);
     newLine();
 }
 
-// Returns a string which is requested from user, then goes to a new line after the procces is done.
-string askForString(string titleToPrint)
+// Prints a separator line
+void printSeparatorLine(const char &separator, const size_t &len)
+{
+    string separatorLine;
+
+    for (size_t i = 0; i < len; ++i)
+    {
+        separatorLine += separator;
+    }
+
+    printLine(separatorLine);
+}
+
+// Returns a string which is requested from user, then goes to a new line after the process is done.
+string askForString(const string &titleToPrint)
 {
     string data;
 
@@ -57,10 +73,22 @@ string askForString(string titleToPrint)
     return data;
 }
 
-// Returns an integer which is requested from user, then goes to a new line after the procces is done.
-int askForInt(string titleToPrint)
+// Returns an integer which is requested from user, then goes to a new line after the process is done.
+int askForInt(const string &titleToPrint)
 {
     int data;
+
+    print(titleToPrint);
+    cin >> data;
+    newLine();
+
+    return data;
+}
+
+// Returns a float which is requested from user, then goes to a new line after the process is done.
+float askForFloat(const string &titleToPrint)
+{
+    float data;
 
     print(titleToPrint);
     cin >> data;
@@ -76,5 +104,15 @@ void clearConsole()
     system("cls");
     #else
     system("clear");
+    #endif
+}
+
+// Pauses the console (on any OS)
+void pauseConsole()
+{
+    #ifdef _WIN32
+    system("pause");
+    #else
+    system("read -n1 -r -p \"Press any key to continue...\" key");
     #endif
 }

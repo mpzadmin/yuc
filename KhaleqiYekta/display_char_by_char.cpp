@@ -4,6 +4,7 @@
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
+ * Creation Date: 2020-12-22
  */
 
 /** External Libraries **/
@@ -14,7 +15,7 @@
 /** Namespaces **/
 using namespace std;
 
-/** Function Declrations **/
+/** Function Declarations **/
 void display(string* ptr, size_t len);
 
 // Program's Entry Point

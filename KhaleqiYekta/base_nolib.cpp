@@ -1,10 +1,10 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © TODO:{YEAR} Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{DATE}
+ * Creation Date: TODO:{YEAR-MONTH-DAY}
  */
 
 /** External Libraries **/
@@ -15,12 +15,11 @@
 using namespace std;
 
 /** Constants **/
-const string defaultStringRequestTitle = "Please enter a text: ";
-const string defaultIntRequestTitle = "Please enter a number: ";
 
-/** Function Declrations **/
-string askForString(string titleToPrint = defaultStringRequestTitle);
-int askForInt(string titleToPrint = defaultIntRequestTitle);
+
+/** Function Declarations **/
+string askForString(const string &titleToPrint);
+int askForInt(const string &titleToPrint);
 void clearConsole();
 
 // Program's Entry Point
@@ -37,8 +36,8 @@ int main()
 
 /* TODO: PROGRAM FUNCTIONS GO HERE */
 
-// Returns a string which is requested from user, then goes to a new line after the procces is done.
-string askForString(string titleToPrint)
+// Returns a string which is requested from user, then goes to a new line after the process is done.
+string askForString(const string &titleToPrint)
 {
     string data;
 
@@ -49,8 +48,8 @@ string askForString(string titleToPrint)
     return data;
 }
 
-// Returns an integer which is requested from user, then goes to a new line after the procces is done.
-int askForInt(string titleToPrint)
+// Returns an integer which is requested from user, then goes to a new line after the process is done.
+int askForInt(const string &titleToPrint)
 {
     int data;
 

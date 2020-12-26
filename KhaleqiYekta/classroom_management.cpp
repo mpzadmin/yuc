@@ -57,10 +57,10 @@ void getStudentsData()
 {
     for (size_t i = 0; i < studentsCount; ++i)
     {
-        students[i].code = askForInt("Enter student " + to_string(i) + "'s code: ");
-        students[i].firstName = askForString("Enter student " + to_string(i) + "'s first name: ");
-        students[i].lastName = askForString("Enter student " + to_string(i) + "'s last name: ");
-        students[i].grade = askForFloat("Enter student " + to_string(i) + "'s grade: ");
+        students[i].code = askForInt("Enter student " + to_string(i+1) + "'s code: ");
+        students[i].firstName = askForString("Enter student " + to_string(i+1) + "'s first name: ");
+        students[i].lastName = askForString("Enter student " + to_string(i+1) + "'s last name: ");
+        students[i].grade = askForFloat("Enter student " + to_string(i+1) + "'s grade: ");
     }
 }
 

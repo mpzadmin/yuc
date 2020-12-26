@@ -8,7 +8,6 @@
  */
 
 /** External Libraries **/
-#include <iostream>
 #include <string>
 #include "console.hpp"
 
@@ -31,7 +30,7 @@ size_t studentsCount;
 /** Function Declarations **/
 void getStudentsData();
 void printStudentsData();
-float getGradesAverage(Student* &s, size_t &studentsCount);
+float getGradesAverage();
 
 // Program's Entry Point
 int main()
@@ -45,7 +44,7 @@ int main()
 
     printStudentsData();
 
-    studentsAvg = getGradesAverage(students);
+    studentsAvg = getGradesAverage();
     printLine("The average grade of inserted students is: " + to_string(studentsAvg));
 
     pauseConsole();
@@ -71,7 +70,7 @@ void printStudentsData()
     for (size_t i = 0; i < studentsCount; ++i)
     {
         printLine("Student " + to_string(students[i].code) + ": ");
-        printLine("Name: " + students[i].firstName + "\tLast Name: " + students[i].lastName + "\tGrade: " + students[i].grade);
+        printLine("Name: " + students[i].firstName + "\tLast Name: " + students[i].lastName + "\tGrade: " + to_string(students[i].grade));
         printSeparatorLine('_', 2);
     }
 }
@@ -83,7 +82,7 @@ float getGradesAverage()
 
     for (size_t i = 0; i < studentsCount; ++i)
     {
-        sum += s[i].grade;
+        sum += students[i].grade;
     }
 
     return sum/studentsCount;

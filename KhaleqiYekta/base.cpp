@@ -18,6 +18,9 @@ using namespace std;
 /** Constants **/
 
 
+/** Other Variables **/
+
+
 /** Function Declarations **/
 
 
@@ -29,6 +32,8 @@ int main()
     clearConsole();
 
     /* TODO: CODE GOES HERE */
+
+    pauseConsole();
 
     return 0;
 }

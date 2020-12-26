@@ -10,7 +10,7 @@ int main()
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     int number;
     SetConsoleTextAttribute(consoleHandle, 1);
-    cout << "Enter a number: ";
+    cout << "Enter a number and you'll see all it's divisor: ";
     cin >> number;
     int list[number];
     

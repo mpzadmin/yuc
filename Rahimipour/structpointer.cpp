@@ -11,9 +11,9 @@ struct Student
     string lastName;
 };
 
-void getStudentsData(Student students[], size_t len);
-void printStudentsData(Student students[], size_t len);
-float average(Student students[], size_t len);
+void getStudentsData(Student* students, size_t len);
+void printStudentsData(Student* students, size_t len);
+float average(Student* students, size_t len);
 
 int main()
 {
@@ -24,7 +24,7 @@ int main()
     cout << "Enter count of students: ";
     cin >> studentsCount;
 
-    Student* students = new int [studentsCount];
+    students = new int [studentsCount];
 
     getStudentsData(students, studentsCount);
     system("pause");
@@ -32,9 +32,11 @@ int main()
     printStudentsData(students, studentsCount);
     cout << endl;
     cout << "The average of the class is: " << average(students, studentsCount);
+
+    delete[] students;
 }
 
-void getStudentsData(Student students[], size_t len)
+void getStudentsData(Student* students, size_t len)
 {
     for (int index = 0; index < len; index++)
     {
@@ -50,7 +52,7 @@ void getStudentsData(Student students[], size_t len)
     }
 }
 
-void printStudentsData(Student students[], size_t len)
+void printStudentsData(Student* students, size_t len)
 {
     for (int index = 0; index < len; index++)
     {

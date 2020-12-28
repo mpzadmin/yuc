@@ -27,14 +27,15 @@ using namespace std;
 // Program's Entry Point
 int main()
 {
+    /** Initialization Of Local Variables **/
     /* TODO: VARIABLES GO HERE */
 
     clearConsole();
 
     /* TODO: CODE GOES HERE */
 
+    /** End of the program **/
     pauseConsole();
-
     return 0;
 }
 

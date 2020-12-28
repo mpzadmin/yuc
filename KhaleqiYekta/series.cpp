@@ -1,14 +1,13 @@
 /*
- * Copyright © ۲۰۲۰ Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: ۲۰۲۰-12-28
+ * Creation Date: 2020-12-28
  */
 
 /** External Libraries **/
-#include <iostream>
 #include <string>
 #include "console.hpp"
 
@@ -16,12 +15,13 @@
 using namespace std;
 
 /** Function Declarations **/
-float getSeries(const float num);
-size_t factorial(const size_t num);
+float getSeries(const float &num);
+size_t factorial(const size_t &num);
 
 // Program's Entry Point
 int main()
 {
+    // Initializations
     size_t number;
     float seriesResult;
 
@@ -33,17 +33,19 @@ int main()
     // Print the result
     printLine("The result is: " + to_string(seriesResult));
 
+    // End of the program
     pauseConsole();
-
     return 0;
 }
 
-float getSeries(const float num)
+// Calculates (1/1!) + (1/2!) + (1/3!) + ... + (1/n!)
+float getSeries(const float &num)
 {
-    return (num > 1) ? (1 / factorial(num)) + getSeries(num - 1) : num;
+    return (num > 1) ? (1.0 / (float)factorial(num)) + getSeries(num - 1.0) : num;
 }
 
-size_t factorial(const size_t num)
+// Calculates the factorial of a number
+size_t factorial(const size_t &num)
 {
     return (num > 1) ? num * factorial(num - 1) : num;
 }

@@ -2,8 +2,8 @@
 
 using namespace std;
 
-float calculateSeries(float number);
-float factorial(float number);
+float calculateSeries(size_t number);
+size_t factorial(size_t number);
 
 int main()
 {
@@ -13,12 +13,12 @@ int main()
     cout << "The calculation result is: " << calculateSeries(number);
 }
 
-float calculateSeries(float number)
+float calculateSeries(size_t number)
 {
-    return (number == 1) ? number : 1/factorial(number) + calculateSeries(number - 1);
+    return (number == 1) ? number : 1/(float) factorial(number) + calculateSeries(number - 1);
 }
 
-float factorial(float number)
+size_t factorial(size_t number)
 {
     return (number == 0) ? 1 : number * factorial(number - 1);
 }

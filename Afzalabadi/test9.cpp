@@ -1,6 +1,7 @@
 #include<iostream>
 
 using namespace std;
+size_t factor(int number);
 float function(int number);
 
 int main()
@@ -18,5 +19,5 @@ size_t factor(int number)
  float function(int number)
  {
 
-     return(number==1) ? number : (1/( number * factor(number )) +  function(number-1));
+     return(number==1) ? number :(float) (1/((float) number * factor(number )) +  function(number-1));
  }

@@ -77,9 +77,9 @@ void clearConsole()
 // Pauses the console (on any OS)
 void pauseConsole()
 {
-#ifdef _WIN32
+    #ifdef _WIN32
     system("pause");
-#else
+    #else
     system("read -n1 -r -p \"Press any key to continue...\" key");
-#endif
+    #endif
 }

@@ -21,16 +21,20 @@ using namespace std;
 string askForString(const string &titleToPrint);
 int askForInt(const string &titleToPrint);
 void clearConsole();
+void pauseConsole();
 
 // Program's Entry Point
 int main()
 {
+    /** Initialization Of Local Variables **/
     /* TODO: VARIABLES GO HERE */
 
     clearConsole();
 
     /* TODO: CODE GOES HERE */
 
+    /** End of the program **/
+    pauseConsole();
     return 0;
 }
 
@@ -67,5 +71,15 @@ void clearConsole()
     system("cls");
     #else
     system("clear");
+    #endif
+}
+
+// Pauses the console (on any OS)
+void pauseConsole()
+{
+    #ifdef _WIN32
+    system("pause");
+    #else
+    system("read -n1 -r -p \"Press any key to continue...\" key");
     #endif
 }

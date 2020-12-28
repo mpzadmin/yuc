@@ -7,7 +7,10 @@ float factorial(float number);
 
 int main()
 {
-    cout << calculateSeries(4);
+    int number;
+    cout << "Enter a number to calculate its series: ";
+    cin >> number;
+    cout << "The calculation result is: " << calculateSeries(number);
 }
 
 float calculateSeries(float number)

@@ -3,6 +3,7 @@
 using namespace std;
 
 double recursiveFunction(double number);
+size_t factorial(size_t number);
 
 int main()
 {
@@ -18,5 +19,10 @@ int main()
 
 double recursiveFunction(double number)
 {
-    return (number == 1) ? number : (1 / number) + recursiveFunction(number-1);
+    return (number == 1) ? number : (double) (1 / factorial(number)) + recursiveFunction(number-1);
+}
+
+size_t factorial(size_t number)
+{
+    return (number == 1) ? number : number * factorial(number-1);
 }

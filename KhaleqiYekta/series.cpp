@@ -1,14 +1,13 @@
 /*
- * Copyright © ۲۰۲۰ Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: ۲۰۲۰-12-28
+ * Creation Date: 2020-12-28
  */
 
 /** External Libraries **/
-#include <iostream>
 #include <string>
 #include "console.hpp"
 
@@ -34,7 +33,7 @@ int main()
     // Print the result
     printLine("The result is: " + to_string(seriesResult));
 
-    // End of program
+    // End of the program
     pauseConsole();
     return 0;
 }

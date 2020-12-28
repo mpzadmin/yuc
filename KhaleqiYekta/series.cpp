@@ -39,10 +39,10 @@ int main()
 
 float getSeries(const float num)
 {
-    return (num > 1) ? (1/factorial(num)) + getSeries(num-1) : num;
+    return (num > 1) ? (1 / factorial(num)) + getSeries(num - 1) : num;
 }
 
 size_t factorial(const size_t num)
 {
-    return (num <= 1) ? num : num * factorial(num - 1);
+    return (num > 1) ? num * factorial(num - 1) : num;
 }

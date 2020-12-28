@@ -16,8 +16,8 @@
 using namespace std;
 
 /** Function Declarations **/
-float getSeries(const float num);
-size_t factorial(const size_t num);
+float getSeries(const float &num);
+size_t factorial(const size_t &num);
 
 // Program's Entry Point
 int main()
@@ -38,12 +38,12 @@ int main()
     return 0;
 }
 
-float getSeries(const float num)
+float getSeries(const float &num)
 {
-    return (num > 1) ? (1 / factorial(num)) + getSeries(num - 1) : num;
+    return (num > 1) ? (1.0 / (float)factorial(num)) + getSeries(num - 1.0) : num;
 }
 
-size_t factorial(const size_t num)
+size_t factorial(const size_t &num)
 {
     return (num > 1) ? num * factorial(num - 1) : num;
 }

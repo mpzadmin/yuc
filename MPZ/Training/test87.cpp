@@ -12,5 +12,5 @@ int main()
 
 size_t factorial(size_t number)
 {
-    return (number == 1) ? number : number * factorial(number - 1);    
+    return (number <= 1) ? number : number * factorial(number - 1);    
 }

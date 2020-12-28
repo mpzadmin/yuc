@@ -6,21 +6,9 @@ size_t factorial(size_t number);
 
 int main()
 {
-    int number;
+    size_t number;
     cout << "Enter a number: ";
     cin >> number;
-
-    try
-    {
-        if (number < 0)
-        throw number;
-    }
-    catch(int value)
-    {
-        cout << "You should have entered a nonnegative number!" << endl;
-        cout << "Your number was " << value << endl;
-        return 0;
-    }
     
     cout << "The factorial of " << number << " is " << factorial(number) << endl; 
 } 

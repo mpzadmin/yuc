@@ -22,7 +22,8 @@ size_t factorial(const size_t num);
 // Program's Entry Point
 int main()
 {
-    size_t number, seriesResult;
+    size_t number;
+    float seriesResult;
 
     clearConsole();
 

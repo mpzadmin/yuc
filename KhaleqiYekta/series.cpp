@@ -22,6 +22,7 @@ size_t factorial(const size_t &num);
 // Program's Entry Point
 int main()
 {
+    // Initializations
     size_t number;
     float seriesResult;
 
@@ -33,16 +34,18 @@ int main()
     // Print the result
     printLine("The result is: " + to_string(seriesResult));
 
+    // End of program
     pauseConsole();
-
     return 0;
 }
 
+// Calculates (1/1!) + (1/2!) + (1/3!) + ... + (1/n!)
 float getSeries(const float &num)
 {
     return (num > 1) ? (1.0 / (float)factorial(num)) + getSeries(num - 1.0) : num;
 }
 
+// Calculates the factorial of a number
 size_t factorial(const size_t &num)
 {
     return (num > 1) ? num * factorial(num - 1) : num;

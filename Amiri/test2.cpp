@@ -16,6 +16,7 @@ int main()
 
     for (int i=0; i<number; i++)
     {
+        cout << "enter number " << i+1 << " :";
         cin >> count;
         numbers.push_back(count);
     }
@@ -27,5 +28,8 @@ int main()
         sum += numbers[j];
     }
 
-    cout << sum/number;
+    float average;
+    average = sum/number;
+    cout << "the average is :" << average;
+    
 }

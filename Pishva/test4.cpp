@@ -10,7 +10,6 @@ int main()
     int maxNumbers, minNumbers;
     double sum, average;
     int number;
-    int x, y;
 
     system("cls");
 

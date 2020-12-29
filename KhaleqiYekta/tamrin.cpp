@@ -27,13 +27,14 @@ int main()
 
     clearConsole();
 
+    // Getting the count of numbers
     numbersCount = askForInt("Enter the count of numbers: ");
 
+    // Getting numbers
     for (size_t i = 0; i < numbersCount; ++i)
     {
         int number = askForInt("Enter number " + to_string(i + 1) + ": ");
         numbers.push_back(number);
-
 
         if (i == 0)
         {
@@ -44,6 +45,7 @@ int main()
         }
         else
         {
+            // Add to sum
             sum += number;
         }
     }

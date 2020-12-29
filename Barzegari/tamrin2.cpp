@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 
 float fibinachi(float number)
 {
-    return (number == 1) ? number : 1/factorial(number) + fibinachi(number-1);
+    return (number == 1) ? number : 1/(float)factorial(number) + fibinachi(number-1);
 }
 
 size_t factorial(size_t number)

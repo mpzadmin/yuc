@@ -1,10 +1,10 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © TODO:{YEAR} Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{DATE}
+ * Creation Date: TODO:{YEAR-MONTH-DAY}
  */
 
 /** External Libraries **/
@@ -18,18 +18,24 @@ using namespace std;
 /** Constants **/
 
 
+/** Other Variables **/
+
+
 /** Function Declarations **/
 
 
 // Program's Entry Point
 int main()
 {
+    /** Initialization Of Local Variables **/
     /* TODO: VARIABLES GO HERE */
 
     clearConsole();
 
     /* TODO: CODE GOES HERE */
 
+    /** End of the program **/
+    pauseConsole();
     return 0;
 }
 

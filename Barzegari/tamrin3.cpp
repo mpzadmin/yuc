@@ -34,7 +34,7 @@ float maxList(vector<float> numbers)
     {
         max(maxNumber,numbers[i]);
     }
-    return maxNuber;
+    return maxNumber;
 }
 
 float minList(vector<float> numbers)
@@ -44,7 +44,7 @@ float minList(vector<float> numbers)
     {
         min(minNumber, numbers[i]);
     }
-    return minNuber;
+    return minNumber;
 }
 
 float averageList(vector<float> numbers)

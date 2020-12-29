@@ -38,7 +38,7 @@ int main()
 
     }
      cout << "The maxnumber is:" << maxNumber << endl;
-     cout << "The minnumber is:"  << minNumber  << endl;
+     cout << "The minnumber is:"  << minNumber  << endl;      
      avarage = (sum / count);
      cout << "The avarage is:" << (float) avarage;
 

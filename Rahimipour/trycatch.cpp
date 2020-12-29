@@ -27,6 +27,6 @@ int main()
 
     catch(int value)
     {
-        cout << "Access denied."
+        cout << "Access denied.";
     }
 }

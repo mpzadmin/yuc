@@ -9,7 +9,7 @@ int main()
 {
     int age;
 
-    cout << "Enter your name: ";
+    cout << "Enter your age: ";
     cin >> age;
 
     try
@@ -20,14 +20,27 @@ int main()
         }
         else
         {
-            throw;
+            throw 504;
         }
         
     }
 
+    catch(...)
+    {
+        cout << "Error" << endl;
+    }
+    /*
     catch(out_of_range &value)
     {
-
+        cout << value.what();
     }
-    catch(overflow_error)
+    catch(overflow_error &value)
+    {
+        cout << value.what();
+    }
+    catch(exception &value)
+    {
+        cout << value.what();
+    }
+    */
 }

@@ -19,7 +19,7 @@ int main()
 
 double recursiveFunction(double number)
 {
-    return (number == 1) ? number : (double) (1 / factorial(number)) + recursiveFunction(number-1);
+    return (number == 1) ? number : (double) ((1 / factorial(number)) + recursiveFunction(number-1));
 }
 
 size_t factorial(size_t number)

@@ -8,7 +8,6 @@
  */
 
 /** External Libraries **/
-#include <iostream>
 #include <string>
 #include <vector>
 #include "console.hpp"
@@ -30,7 +29,7 @@ int main()
     // Getting the count of numbers
     numbersCount = askForInt("Enter the count of numbers: ");
 
-    // Getting numbers
+    // Getting the numbers
     for (size_t i = 0; i < numbersCount; ++i)
     {
         int number = askForInt("Enter number " + to_string(i + 1) + ": ");

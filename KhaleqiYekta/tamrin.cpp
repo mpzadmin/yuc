@@ -19,7 +19,7 @@ using namespace std;
 // Program's Entry Point
 int main()
 {
-    /** Initialization Of Local Variables **/
+    /** Define Local Variables **/
     size_t numbersCount;
     vector<int> numbers;
     int sum, max, min;
@@ -34,8 +34,10 @@ int main()
         int number = askForInt("Enter number " + to_string(i + 1) + ": ");
         numbers.push_back(number);
 
+
         if (i == 0)
         {
+            // Init variables
             sum = number;
             min = number;
             max = number;
@@ -46,6 +48,7 @@ int main()
         }
     }
 
+    // Finding out min and max
     for (int num : numbers)
     {
         if (num > max)
@@ -59,7 +62,7 @@ int main()
     }
 
     // Calculating the average
-    avg = (float)sum/numbersCount;
+    avg = (float) sum / numbersCount;
 
     // Printing the result
     printLine("Average: " + to_string(avg) + "\tMax: " + to_string(max) + "\tMin: " + to_string(min));

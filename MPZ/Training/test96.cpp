@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     vector<int> numbers;
-
+    
     for (int index=0; index<numbers.size(); index++) 
     {
         cout << numbers.at(index) << endl;

@@ -5,7 +5,8 @@ using namespace std;
 
 int main(int argc, const char** argv) 
 {
-    int count, number, average;
+    int count, number;
+    float average;
     int sum = 0;
 
     vector<int> numbers;
@@ -37,7 +38,7 @@ int main(int argc, const char** argv)
     }
 
     // calculate average
-    average = sum / count;
+    average = (float) sum / (float) count;
     cout << "Average = " << average << endl;
 
     int max = numbers.front();

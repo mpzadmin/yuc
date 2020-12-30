@@ -4,6 +4,8 @@
 
 using namespace std;
 
+bool findList(list<string> names,name)
+
 int main(int argc, char const *argv[])
 {
     int count;
@@ -21,9 +23,9 @@ int main(int argc, char const *argv[])
     cout << findList(names, nameKey);
 }
 
-bool findList(list<string> names,name)
+bool findList(list<string> names,string name)
 {
-    for (list<string>::iterator index=numbers.begin(); index!=numbers.end(); index++)
+    for (list<string>::iterator index=names.begin(); index!=names.end(); index++)
     {
         if(*index == name)
             return true;

@@ -4,55 +4,56 @@
 
 using namespace std;
 
-float maxList(vector<float> numbers);
-float minList(vector<float> numbers);
-float averageList(vector<float> numbers);
+int maxList(vector<int> numbers);
+int minList(vector<int> numbers);
+float averageList(vector<int> numbers);
 
 int main(int argc, char const *argv[])
 {
-    int count;
-    vector<float> numbers;
+    int count, tempNumber;
+    vector<int> numbers;
 
     cout << "Enter count number: "; 
     cin >> count;
 
-    for(int i=1; i<=numbers.size(); i++)
+    for(int i=1; i<=count; i++)
     {
         cout << "Enter number(" << i << "):";
-        numbers.push_back(cin.get());
+        cin >> tempNumber;
+        numbers.push_back(tempNumber);
     }
 
     cout << maxList(numbers) << endl;
     cout << minList(numbers) << endl;
-    cout << avrageList(numbers) << endl;
+    cout << averageList(numbers) << endl;
 }
 
-float maxList(vector<float> numbers)
+int maxList(vector<int> numbers)
 {
-    float maxNumber;
+    int maxNumber = -32768;
     for(int i=0; i<numbers.size(); i++)
     {
-        max(maxNumber,numbers[i]);
+        maxNumber = max(maxNumber,numbers[i]);
     }
-    return maxNuber;
+    return maxNumber;
 }
 
-float minList(vector<float> numbers)
+int minList(vector<int> numbers)
 {
-    float maxNumber;
+    int minNumber = 32767;
     for(int i=0; i<numbers.size(); i++)
     {
-        min(maxNumber,numbers[i]);
+        minNumber = min(minNumber, numbers[i]);
     }
-    return maxNuber;
+    return minNumber;
 }
 
-float averageList(vector<float> numbers)
+float averageList(vector<int> numbers)
 {
     float average;
     for(int i=0; i<numbers.size(); i++)
     {
         average += numbers[i];
     }
-    return average/numbers.size();
+    return (float)(average/numbers.size());
 }

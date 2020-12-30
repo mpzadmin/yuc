@@ -19,5 +19,5 @@ size_t factorial(size_t number)
 
 float series(float number)
 {
-    return (number == 1) ? number : (float) (1/(float)factorial(number) + series(number - 1));
+    return (number == 1) ? number : (float) (1/(float)factorial(number)) + series(number - 1);
 }

@@ -23,7 +23,7 @@ int main()
     }
     minNumber= vec.at(0);
     maxNumber= vec.at(0);
-    for(size_t index=1; index<number; index++)
+    for(size_t index=0; index<number; index++)
     {
         if(vec[index]>maxNumber)
         {

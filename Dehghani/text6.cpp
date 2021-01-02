@@ -1,31 +1,38 @@
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
 
-int main()
-{
-    vector<int> numbers;
+int main(int argc, char const *argv[])
+{   int count;
     int tempNumber;
-    int count;    
-    int maxNumber, minNumber;
-    float sum = 0;
+    int maxNumber;
+    int minNumber;
+    int sum = 0;
 
-    system("cls");
-    cout << "Enter numbers count: ";
+    vector <int> numbers;
+
+    cout << "Enter count of number : ";
     cin >> count;
 
-    for (int index=0; index<count; index++)
+    for (int index = 0; index < count; index++)
     {
-        cout << "Enter number(" << index+1 << "): ";
+        cout << "enter number  ( " <<  index +1  << ") :" << endl;
         cin >> tempNumber;
-        numbers.push_back(tempNumber); 
+
+        numbers.push_back(tempNumber);
     }
 
     minNumber = numbers.front();
     maxNumber = numbers.front();
-    
-    for (int number : numbers)
+
+   /* for (int index = 0; index < numbers.size(); index++)
+    {
+        cout << numbers.at(index)  << endl;
+    }
+    */
+   for (int number : numbers)
     {
         if (number > maxNumber)
         {
@@ -35,10 +42,11 @@ int main()
         {
             minNumber = number;
         }
-        sum += number;        
+         sum += number;          /*sum + number = number*/
     }
-
     cout << "The maximum number is: " << maxNumber << endl;
     cout << "The minimum number is: " << minNumber << endl;
     cout << "The average is: " << (float) sum/numbers.size() << endl;    
+
+    return 0;
 }

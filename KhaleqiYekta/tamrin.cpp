@@ -1,10 +1,14 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © 2021 Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: 2020-12-30
+ */
+
+/**
+ * @file tamrin.cpp
+ * @brief A program which gets a group of names plus one name from the user and tell whether the name exists in names or not.
  */
 
 /** External Libraries **/

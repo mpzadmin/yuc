@@ -82,7 +82,7 @@ void clearConsole();
  */
 void pauseConsole();
 
-// Prints a text
+// Prints a text.
 void print(const string &str)
 {
     cout << str;

@@ -134,6 +134,8 @@ int askForInt(const string &titleToPrint)
     print(titleToPrint);
     cin >> data;
     newLine();
+    cin.clear();
+    cin.ignore();
 
     return data;
 }
@@ -146,6 +148,8 @@ float askForFloat(const string &titleToPrint)
     print(titleToPrint);
     cin >> data;
     newLine();
+    cin.clear();
+    cin.ignore();
 
     return data;
 }

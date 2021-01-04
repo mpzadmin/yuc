@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool findList(list<string> names,name)
+bool findList(list<string> names, string name);
 
 int main(int argc, char const *argv[])
 {

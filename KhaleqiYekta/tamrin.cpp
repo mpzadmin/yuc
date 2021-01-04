@@ -69,6 +69,8 @@ int main() {
         printLine("Result: The word \"" + word + "\" is repeated " + to_string(wordCount) + " times in file: " + fileName);
     }
 
+    printSeparatorLine('=',40);
+
     /** End of the program **/
     pauseConsole();
     return 0;

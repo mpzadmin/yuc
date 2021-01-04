@@ -1,10 +1,14 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © 2021 Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: 2020-12-28
+ */
+
+/**
+ * @file series.cpp
+ * @brief A program which calculates the series: 1/1!, 1/2!, 1/3!, ...
  */
 
 /** External Libraries **/

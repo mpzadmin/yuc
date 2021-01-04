@@ -19,6 +19,8 @@ int main(int argc, char const *argv[])
       names.push_back(tempName);
 
     }
+    cout<<"Enter a name for find in the list:";
+    cin >> name;
     if (nameFind(names,name))
     {
         cout <<"Found"<<endl ;

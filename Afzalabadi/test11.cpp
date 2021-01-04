@@ -9,7 +9,7 @@ bool search(list<string> names,string name);
 
 int main ()
 {
-string name;
+ string name;
  list<string> names;
  
 

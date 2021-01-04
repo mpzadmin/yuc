@@ -1,12 +1,16 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
 fstream file;
 
+int find(string fileName, string keyWord);
+
 int main(int argc, char const *argv[])
 {
+    int result;
     string fileName;
     string keyWord;
 
@@ -16,7 +20,11 @@ int main(int argc, char const *argv[])
     cin >> keyWord; 
 
     system("cls");
-    cout << find(fileName, keyWord);
+    result = find(fileName, keyWord);
+    if(result == -1)
+        cerr << "Cant open the file";
+    else
+        cout << "count of name (" << keyWord << "):" << find(fileName, keyWord);
 }
 
 int find(string fileName, string keyWord)
@@ -24,18 +32,21 @@ int find(string fileName, string keyWord)
     string str;
     int count = 0;
 
-    textFile.open(fileName, ios::in);
+    file.open(fileName, ios::in);
 
-    while ( !textFile.eof() )
+    if(file.fail())
+        return -1;
+    
+    while ( !file.eof() )
     {
-        getline(textFile, str);
+        getline(file, str);
         if(str == keyWord)
         {
-            getline(textFile, str);
-            cout++;
+            getline(file, str);
+            count++;
         }
     } 
 
-    textFile.close();
+    file.close();
     return count;
 }

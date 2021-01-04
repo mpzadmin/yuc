@@ -1,0 +1,12 @@
+/*
+ * Copyright © {YEAR} Ali Khaleqi Yekta, All Rights Reserved.
+ *
+ * Author: Ali Khaleqi Yekta [YektaDev]
+ * Website: https://Yekta.Dev
+ * Email: Me@Yekta.Dev
+ */
+
+/**
+ * @file {FILENAME}.cpp
+ * @brief {EXPLANATION}
+ */

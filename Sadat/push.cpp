@@ -1,6 +1,10 @@
 #include <iostream>
 
 using namespace std;
+
+int *numbers;
+int numbersCount = 0;
+
 void push(int numbers[], int length, int value);
 
 int main()
@@ -15,7 +19,7 @@ int main()
         cout << num[i] << " ";
     }
     cout << "\n";
-    push(num , 3 , 5);
+    push(num, 3, 5);
     push(num , 4 , 6);
     push(num , 5 , 8);
     push(num , 6 , 9);

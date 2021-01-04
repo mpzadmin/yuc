@@ -1,20 +1,32 @@
 /*
- * Copyright © TODO:{YEAR} Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © {YEAR} Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{YEAR-MONTH-DAY}
+ */
+
+/**
+ * @file {FILENAME}.cpp
+ * @brief {EXPLANATION}
  */
 
 /** External Libraries **/
 #include <iostream>
 #include <string>
+#include <list>
+#include <algorithm>
 
 /** Namespaces **/
 using namespace std;
 
+/** Typedefs **/
+
+
 /** Constants **/
+
+
+/** Other Variables **/
 
 
 /** Function Declarations **/
@@ -26,7 +38,7 @@ void pauseConsole();
 // Program's Entry Point
 int main()
 {
-    /** Initialization Of Local Variables **/
+    /** Local Variables **/
     /* TODO: VARIABLES GO HERE */
 
     clearConsole();

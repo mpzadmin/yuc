@@ -22,7 +22,7 @@ int main()
     }
 
     reverseString(texts, count);
-    delete[] texts;  //Making the storage free
+    delete[] texts;  // Making the storage free
 }
 
 void reverseString(string* texts, int count)

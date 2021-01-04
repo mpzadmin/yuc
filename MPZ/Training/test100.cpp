@@ -48,6 +48,6 @@ int main()
     advance(it, 4);
     cout << endl << *it << endl;
 
-    
+    numbers.insert(numbers.begin(), 1000);    
 
 }

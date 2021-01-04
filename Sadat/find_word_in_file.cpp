@@ -9,9 +9,9 @@ size_t findWord(string adress, string word);
 int main()
 {
     string fileAdress, word;
-
+    
     cout << "Enter the adress of file: ";
-    cin>>  fileAdress;
+    cin >>  fileAdress;
     cout << "Enter a word you want to search: ";
     cin >> word;
     cout << word << " found in " << fileAdress << " " << findWord(fileAdress, word) << " times." << endl;
@@ -26,5 +26,6 @@ size_t findWord(string adress, string word)
     {
         if (name == word) count++;
     }
+    file.close();
     return count;
 }

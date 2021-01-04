@@ -7,7 +7,7 @@
  */
 
 /**
- * @file tamrin.cpp
+ * @file search_name.cpp
  * @brief A program which gets a group of names plus one name from the user and tell whether the name exists in names or not.
  */
 

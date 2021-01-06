@@ -11,7 +11,8 @@ int main()
 {
     list<string> names;
     string main, name;
-
+    system("cls");
+    
     cout << "Enter something: ";
     getline(cin, main);
     names.push_back(main);
@@ -20,7 +21,6 @@ int main()
     cin >> name;
 
     
-
     if (searchName(names, name))
     {
         cout << "FOUND" << endl;

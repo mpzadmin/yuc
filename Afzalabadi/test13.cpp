@@ -13,71 +13,46 @@ int getData(string name);
 
 int main ()
 {
-    
-     int result;
-     cout << "Enter name [1]:" <<endl;
+         
+     cout << "Enter name  :" << endl;
      getline (cin, name);
      names.push_back(name);
-    getData(name);
-
-
- while(true)
- 
- {
-     int index= 2;
-     
-     int result =getData(name);
-      if (result ==0)
-      {
-          
-        cout << "Enter name : " << endl;
+    for (; ;)
+    {
+       
+        
+        if(!(name.empty()))
+        {
+            
+        cout << "Enter name  :" << endl;
         getline (cin, name);
         names.push_back(name);
-          
-      }
-     else if(result == 1)
-     {
-         
-     cout << "end";
+        
 
+        }
+        
+        else
+        {
+           for(int index =0; index < names.size(); index++)
+             {
+                 int counter = 0;
+                 string repetedName = names[index];
+                 for(int i=0; i< names.size();i++)
+                 {
+                     if(repetedName == names[i])
+                     {
+                        counter++;
+                     }
+                    
+                     cout <<"The "  << repetedName << "repeted" << counter << "times" <<endl;
+
+                 }
+             }
+
+            cout << "end";
+            break;
+        }
  
-      break;
-    
-     }
-
- }
- 
-
-
-}
-int getData(string name)
-{
-     vector<string> names;
-     string name1 = name;
-     
-    
-
-   return name.empty();
-}
-
- /*if ( search(names, name) )
-    {
-        cout << "FOUND";
-    }
-    else
-    {
-        cout << "NOT FOUND";
     }
 
-
-
-
-
 }
-bool search(list<string> names,string name)
-{
-    list <string > ::iterator it;
-    it = find(names.begin(),names.end(),name);
-    return (it != names.end()) ?true :false;
-
-}*/

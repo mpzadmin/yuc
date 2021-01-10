@@ -102,13 +102,15 @@ void printlnSeparator(const char &separator, const size_t &len);
 /**
  * Asks the user for a string, then goes to the next line.
  *
+ * @param titleToPrint The text which will be shown to the user before getting the input.
  * @return User input
  */
 string askString(const string &titleToPrint = defaultStringRequestTitle);
 
 /**
- * Asks the user for an integer, then goes to the next line.
+ * Asks the user for an int, then goes to the next line.
  *
+ * @param titleToPrint The text which will be shown to the user before getting the input.
  * @return User input
  */
 int askInt(const string &titleToPrint = defaultIntRequestTitle);
@@ -116,6 +118,7 @@ int askInt(const string &titleToPrint = defaultIntRequestTitle);
 /**
  * Asks the user for a float, then goes to the next line.
  *
+ * @param titleToPrint The text which will be shown to the user before getting the input.
  * @return User input
  */
 float askFloat(const string &titleToPrint = defaultIntRequestTitle);

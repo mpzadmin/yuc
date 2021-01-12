@@ -11,23 +11,19 @@
 
 using namespace std;
 
-const int width = 10;
-const int height = 10;
-
-int main(int argc, char const * argv[])
+int main()
 {
+    int num;
 
     system("cls");
 
-    for (int i = 1; i <= height; i++)
-    {
-        for (int j = 1; j <= width; j++)
-        {
-            cout << i * j << " ";
-        }
+    cout << "Enter a number: ";
+    cin >> num;
 
-        cout << endl;
-    }
+    num |= 0100001011000;
+    num &= 00111111011;
+
+    cout << endl << "Result: " << num << endl;
 
     return 0;
 }

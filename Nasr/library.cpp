@@ -16,8 +16,7 @@ int main()
     library lib;
     list<library> lst;
     list<library>::iterator itr;
-     list<library>::iterator it;
-    itr=lst.begin();
+    list<library>::iterator it;
 
 
 
@@ -37,9 +36,9 @@ int main()
     }
     float mrx;
     string str;
-    for(itr; itr!=lst.end(); itr++)
+    for(itr=lst.begin(); itr!=lst.end(); itr++)
     {
-        for(it=itr++; it!= lst.end(); it++)
+        for(it=itr; it!= lst.end(); it++)
         {
             if((*it). price>(*itr).price)
             {
@@ -60,10 +59,9 @@ int main()
     }
    
     int sum=0;
-     itr=lst.begin();
     for(auto counter: lst)
     {
-        sum+=(*itr).price;   
+        sum+=counter.price;   
     }
     cout<<sum<<endl;
 

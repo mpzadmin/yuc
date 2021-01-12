@@ -11,23 +11,18 @@
 
 using namespace std;
 
-const int width = 10;
-const int height = 10;
-
-int main(int argc, char const * argv[])
+int main()
 {
+    char character;
 
-    system("cls");
-
-    for (int i = 1; i <= height; i++)
+    while (true)
     {
-        for (int j = 1; j <= width; j++)
+        cout << "Enter a character (q to quit): ";
+        cin >> character;
+        if (character == 'q')
         {
-            cout << i * j << " ";
+            break;
         }
-
-        cout << endl;
+        cout << endl << "Character: " << character << endl;
     }
-
-    return 0;
 }

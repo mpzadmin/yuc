@@ -9,13 +9,20 @@
 #endif
 
 using namespace std;
-// display(str) = display string
+/**
+ * 
+ * @param  {string} str : for print string str.
+ */
 void display(string str)
 {
        cout << str;
 }
 
-// string and add endl with boolean
+/**
+ * 
+ * @param  {string} str   : for print string str.
+ * @param  {bool} newLine : add endl with boolean.
+ */
 void display(string str, bool newLine)
 {
     display(str);
@@ -25,7 +32,10 @@ void display(string str, bool newLine)
     }
 }
 
-// delay (takhir)
+/**
+ * 
+ * @param  {unsigned} milliseconds : takhir at program.
+ */
 void delay(unsigned milliseconds)
 {
     #ifdef _WIN32
@@ -35,7 +45,12 @@ void delay(unsigned milliseconds)
     #endif
 }
 
-// the max of numbers
+/**
+ * 
+ * @param  {int} a : number1.
+ * @param  {int} b : number2.
+ * @return {int}   : print maximum number.
+ */
 int myMax(int a, int b)
 {
     int result;
@@ -48,7 +63,12 @@ int myMax(int a, int b)
 
 }
 
-// max float number
+/**
+ * 
+ * @param  {float} a : number1.
+ * @param  {float} b : number2.
+ * @return {float}   : print maximum number.
+ */
 float myMax(float a, float b)
 {
     float result;
@@ -63,7 +83,12 @@ float myMax(float a, float b)
 
 }
 
-// max double number
+/**
+ * 
+ * @param  {double} a : number1.
+ * @param  {double} b : number2.
+ * @return {double}   : print maximum number.
+ */
 double myMax(double a, double b)
 {
     double result;
@@ -80,7 +105,12 @@ double myMax(double a, double b)
 }
 
 
-// the min of numbers
+/**
+ * 
+ * @param  {int} a : number1.
+ * @param  {int} b : number2.
+ * @return {int}   : print minimum of numbers.
+ */
 int myMin(int a, int b)
 {
     int result;
@@ -93,7 +123,12 @@ int myMin(int a, int b)
 
 }
 
-// min float number
+/**
+ * 
+ * @param  {float} a : number1
+ * @param  {float} b : number2
+ * @return {float}   : print minimum of numbers.
+ */
 float myMin(float a, float b)
 {
     float result;
@@ -108,7 +143,12 @@ float myMin(float a, float b)
         
 }
 
-// min double number
+/**
+ * 
+ * @param  {double} a : number1
+ * @param  {double} b : number2
+ * @return {double}   : print minimum of numbers.
+ */
 double myMin(double a, double b)
 {
     double result;
@@ -124,7 +164,11 @@ double myMin(double a, double b)
     
 }
 
-// find even number
+/**
+ * 
+ * @param  {int} number : number.
+ * @return {bool}       : Distinguish Even Number.
+ */
 bool isEven(int number)
 {
     bool result = false;
@@ -136,7 +180,11 @@ bool isEven(int number)
     
 }
 
-// find odd number
+/**
+ * 
+ * @param  {int} number : number.
+ * @return {bool}       : Distinguish Odd Number.
+ */
 bool isOdd(int number)
 {
     bool result = false;
@@ -147,7 +195,10 @@ bool isOdd(int number)
     return result;
 }
 
-// takhir
+/**
+ * 
+ * @param  {int} delayValue : delay at program.
+ */
 void delay(int delayValue)
 {
     for (int index = 0; index < delayValue; index++)
@@ -156,7 +207,13 @@ void delay(int delayValue)
     }
 }
 
-
+/**
+ * 
+ * @param  {int} number          : a number.
+ * @param  {int} minRandomNumber : max random in numbers limited.
+ * @param  {int} maxRandomNumber : min random in numbers limited.
+ * @return {int}                 : 
+ */
 int myRandom(int number, int minRandomNumber, int maxRandomNumber)
 {
     srand((unsigned) time(0));
@@ -168,7 +225,11 @@ int myRandom(int number, int minRandomNumber, int maxRandomNumber)
 
     }
 }
-
+/**
+ * 
+ * @param  {int} number : one number.
+ * @return {int}        : find numbers with random. 
+ */
 int myRandom2 (int number)
 {
     srand((unsigned) time(0));

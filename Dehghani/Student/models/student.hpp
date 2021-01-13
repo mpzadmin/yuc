@@ -26,3 +26,14 @@ class Student
         Student();
         ~Student();
 };
+
+Student::Student()
+{
+    this->students.clear();
+    this->error = false;
+}
+
+Student::~Student()
+{
+
+}

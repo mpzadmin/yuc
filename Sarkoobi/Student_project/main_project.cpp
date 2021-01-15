@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int int main() 
+int main() 
 {
-    
+
 }
+    

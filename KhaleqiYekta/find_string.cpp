@@ -28,7 +28,7 @@ const int colorWhite = 7;
 const int colorBlue = 3;
 const int colorPurple = 5;
 
-// Function Declrations
+// Function Declarations
 int findString(string mainStr, string subStr);
 void printSearchResult(string mainStr, string subStr, int index);
 void clearConsole();

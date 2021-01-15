@@ -22,24 +22,17 @@
 using namespace std;
 
 /** Typedefs **/
-
-
 /** Constants **/
-
-
 /** Other Variables **/
-
-
 /** Function Declarations **/
 
-
-// Program's Entry Point
+/**
+ * Program's Entry Point
+ */
 int main()
 {
-    /** Local Variables **/
-    /* TODO: VARIABLES GO HERE */
-
     clearConsole();
+    /** Start of the program **/
 
     /* TODO: CODE GOES HERE */
 
@@ -47,5 +40,3 @@ int main()
     pauseConsole();
     return 0;
 }
-
-/* TODO: PROGRAM FUNCTIONS GO HERE */

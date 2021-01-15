@@ -7,7 +7,7 @@
  */
 
 /**
- * @file factorial.cpp
+ * @file factorial_recursive.cpp
  * @brief A program which calculates the factorial of a number.
  */
 

@@ -33,7 +33,8 @@ class Student
         int getCOde();
         Student* setName(string name);
         string getName();
-        Student* setAvr
+        Student* setAverage(int average);
+        int getAverage();
             
 
         bool fail();

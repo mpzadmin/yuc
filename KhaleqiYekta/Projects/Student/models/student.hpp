@@ -16,23 +16,35 @@ using namespace std;
 class StudentModel
 {
     public:
-    int code;
-    string name;
-    float average;
+        int code;
+        string name;
+        float average;
 };
 
 class Student
 {
     private:
-    StudentModel studentModel;
-    list<StudentModel> students;
-
-    bool error;
+        StudentModel studentModel;
+        list<StudentModel> students;
+        bool error;
+        string errorMessage;
 
     protected:
     public:
-    Student();
-    ~Student();
+        Student();
+        ~Student();
+
+        Student* setCode(int code);
+        int getCode();
+        Student* setName(string name);
+        string getName();
+        Student* setAverage(float avg);
+        float getAverage();
+
+        bool fail();
+        string getError();
+
+    string getName(int code);
 };
 
 Student::Student()
@@ -44,4 +56,47 @@ Student::Student()
 Student::~Student()
 {
 
+}
+
+Student* Student::setCode(int code)
+{
+    this->studentModel.code = code;
+    return this;
+}
+
+int Student::getCode()
+{
+    return studentModel.code;
+}
+
+Student* Student::setName(string name)
+{
+    this->studentModel.name = name;
+    return this;
+}
+
+string Student::getName(int code)
+{
+    return studentModel.name;
+}
+
+bool Student::fail()
+{
+    return this->error;
+}
+
+string Student::getError()
+{
+    return this->error ? this->errorMessage : "";
+}
+
+Student* Student::setAverage(float avg)
+{
+    this->studentModel.average = avg;
+    return this;
+}
+
+float Student::getAverage()
+{
+    return this->studentModel.average;
 }

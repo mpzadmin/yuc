@@ -1,14 +1,13 @@
 #include <iostream>
 #include <string>
-#include <fstream>
 #include <list>
+#include <fstream>
 
 using namespace std;
 
-class StudentModel 
+class StudentModel
 {
     public:
-        int id;
         int code;
         string name;
         float average;
@@ -18,24 +17,24 @@ class Student
 {
     private:
         StudentModel studentModel;
-        list <StudentModel> students;
+        list<StudentModel> students;
 
         bool error;
 
-        string errorMessage;
+        string errorMassage;    
     protected:
     public:
         Student();
         ~Student();
-        debug();
+        void debug();
 
         Student* setCode(int code);
-        int getCOde();
+        int getCode();
         Student* setName(string name);
         string getName();
-        Student* setAverage(int average);
-        int getAverage();
-            
+        Student* setAverage(float avarage);
+        float getAverage();
+
 
         bool fail();
         string getError();
@@ -44,66 +43,56 @@ class Student
 Student::Student()
 {
     this->students.clear();
-    this->error = false;
+    this->error = false;    
 }
 
 Student::~Student()
 {
 
 }
-
-void Student::debuge()
+void Student:: debug()
 {
     cout << endl;
-    cout << "****************************" << endl;
+    cout << "***********************************" << endl;
     cout << "Code: " << this->getCode() << endl;
     cout << "Name: " << this->getName() << endl;
-    cout << "Average: " << this->getAverage() << endl;
-    cout << "****************************" << endl;
-
-
-
+    cout << "Avetage: " << this->getAverage() << endl;
+    cout << "**********************************" << endl; 
 }
-
 bool Student::fail()
 {
     return this->error;
 }
-
 string Student::getError()
 {
-    return this->error ? this->errorMessage : "";
+    return this->error ? this->errorMassage : "";
 }
+
 
 Student* Student::setCode(int code)
 {
     this->studentModel.code = code;
     return this;
 }
-
-int Student::getcode();
+int Student::getCode()
 {
-  return  this->studentModel.code;
+    return this->studentModel.code;
 }
-
 Student* Student::setName(string name)
 {
-    this->studentModel.name = name;
+    this->studentModel.name =name;
     return this;
 }
-
-string Student::getname();
+string Student::getName()
 {
-  return  this->studentModel.name;
+    return this->studentModel.name;
 }
-
-Student* Student::setAverage(int average)
+Student* Student::setAverage(float average)
 {
     this->studentModel.average = average;
     return this;
 }
-
-int Student::getAvarage();
+float Student::getAverage()
 {
-  return  this->studentModel.average;
+    return this->studentModel.average;
 }

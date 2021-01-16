@@ -1,41 +1,42 @@
 #include <iostream>
 #include <string>
-#include <fstream>
 #include <list>
+#include <fstream>
 
 using namespace std;
 
-class StudentModel 
+class StudentModel
 {
     public:
-        int id;
         int code;
         string name;
         float average;
 };
 
-class Student
+class Student // main class
 {
     private:
         StudentModel studentModel;
-        list <StudentModel> students;
+        list<StudentModel> students;
 
         bool error;
-
         string errorMessage;
     protected:
     public:
         Student();
         ~Student();
-        debug();
+        void debug(); // to show data 
 
         Student* setCode(int code);
-        int getCOde();
+        int getCode();
+
         Student* setName(string name);
         string getName();
-        Student* setAverage(int average);
-        int getAverage();
-            
+
+        Student* setAverage(float average);
+        float getAverage();
+
+       
 
         bool fail();
         string getError();
@@ -45,24 +46,22 @@ Student::Student()
 {
     this->students.clear();
     this->error = false;
+
 }
 
 Student::~Student()
 {
-
+    
 }
 
-void Student::debuge()
+void Student::debug()
 {
     cout << endl;
-    cout << "****************************" << endl;
+    cout << "*************" << endl;
     cout << "Code: " << this->getCode() << endl;
     cout << "Name: " << this->getName() << endl;
     cout << "Average: " << this->getAverage() << endl;
-    cout << "****************************" << endl;
-
-
-
+    cout << "*************" << endl;
 }
 
 bool Student::fail()
@@ -81,9 +80,9 @@ Student* Student::setCode(int code)
     return this;
 }
 
-int Student::getcode();
+int Student::getCode()
 {
-  return  this->studentModel.code;
+    return this->studentModel.code;
 }
 
 Student* Student::setName(string name)
@@ -92,18 +91,21 @@ Student* Student::setName(string name)
     return this;
 }
 
-string Student::getname();
+string Student::getName()
 {
-  return  this->studentModel.name;
+    return this->studentModel.name;
 }
 
-Student* Student::setAverage(int average)
+Student* Student::setAverage(float average)
 {
     this->studentModel.average = average;
     return this;
 }
 
-int Student::getAvarage();
+float Student::getAverage()
 {
-  return  this->studentModel.average;
+    return this->studentModel.average;
 }
+
+
+

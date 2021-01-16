@@ -52,9 +52,9 @@ int main()
      bmw.setModel("i8");
      bmw.setYear(2016);
     
-    ford.setBrand("ford");
-    ford.setModel("mustang");
-    ford.setYear(2010);
+     ford.setBrand("ford");
+     ford.setModel("mustang");
+     ford.setYear(2010);
  
     cout << bmw.getBrand() << "   "  << bmw.getModel() << "   " << bmw.getYear()  << "    " << endl;
     cout << ford.getBrand() << "   "  << ford.getModel() << "   " << ford.getYear()  << "    " << endl;

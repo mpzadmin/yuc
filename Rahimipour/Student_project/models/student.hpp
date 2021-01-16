@@ -25,6 +25,7 @@ class Student // main class
     public:
         Student();
         ~Student();
+        void debug(); // to show data 
 
         Student* setCode(int code);
         int getCode();
@@ -34,6 +35,8 @@ class Student // main class
 
         Student* setAverage(float average);
         float getAverage();
+
+       
 
         bool fail();
         string getError();
@@ -51,6 +54,16 @@ Student::~Student()
     
 }
 
+void Student::debug()
+{
+    cout << endl;
+    cout << "*************" << endl;
+    cout << "Code: " << this->getCode() << endl;
+    cout << "Name: " << this->getName() << endl;
+    cout << "Average: " << this->getAverage() << endl;
+    cout << "*************" << endl;
+}
+
 bool Student::fail()
 {
     return this->error;
@@ -58,7 +71,7 @@ bool Student::fail()
 
 string Student::getError()
 {
-    return this->errorMessage;//TODO: complete base mpz
+    return this->error ? this->errorMessage : "";
 }
 
 Student* Student::setCode(int code)

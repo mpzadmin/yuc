@@ -27,7 +27,7 @@ class Student
     public:
         Student();
         ~Student();
-        debug();
+        void debug();
 
         Student* setCode(int code);
         int getCOde();
@@ -35,6 +35,8 @@ class Student
         string getName();
         Student* setAverage(int average);
         int getAverage();
+
+        Student* list();
             
 
         bool fail();
@@ -52,7 +54,7 @@ Student::~Student()
 
 }
 
-void Student::debuge()
+void Student::debug()
 {
     cout << endl;
     cout << "****************************" << endl;
@@ -106,4 +108,20 @@ Student* Student::setAverage(int average)
 int Student::getAvarage();
 {
   return  this->studentModel.average;
+}
+
+Student* Student::list()
+{
+    if (this->students.size() <= 0)
+    {
+        return this;
+    }
+    for (StudentModel stu : this->students)
+    {
+        cout << "Code: " << stu.code << endl;
+        cout << "Name: " << stu.name << endl;
+        cout << "Average: " << stu.average << endl;
+        cout << endl;
+    }
+    return this;
 }

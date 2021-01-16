@@ -10,8 +10,7 @@ int main()
     Student* Student;
 
     Student = new Student;
-    Student->setcode(1)->setName("Mojtaba")->setAverage(19)->debug();
-    Student->setcode(1)->setName("Mojtaba")->setAverage(19)->debug();
+    //Student->setCode(1)->setName("Mojtaba")->setAverage(19)->debug();
+    Student->list();
     delete student
 }
-    

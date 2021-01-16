@@ -27,6 +27,7 @@ class Student
         StudentModel studentModel;
         list<StudentModel> students;
         bool error;
+        string errorMessage;
 
     protected:
     public:
@@ -37,11 +38,13 @@ class Student
         int getCode();
         Student* setName(string name);
         string getName();
-        Student* setAverage(float avarage);
+        Student* setAverage(float avg);
         float getAverage();
 
         bool fail();
         string getError();
+
+    string getName(int code);
 };
 
 Student::Student()
@@ -68,7 +71,7 @@ int Student::getCode()
 
 Student* Student::setName(string name)
 {
-    this->studentModel.name =name;
+    this->studentModel.name = name;
     return this;
 }
 
@@ -82,7 +85,18 @@ bool Student::fail()
     return this->error;
 }
 
-bool Student::getError()
+string Student::getError()
 {
     return this->error ? this->errorMessage : "";
+}
+
+Student* Student::setAverage(float avg)
+{
+    this->studentModel.average = avg;
+    return this;
+}
+
+float Student::getAverage()
+{
+    return this->studentModel.average;
 }

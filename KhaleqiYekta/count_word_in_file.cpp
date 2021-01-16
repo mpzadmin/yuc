@@ -7,7 +7,7 @@
  */
 
 /**
- * @file tamrin.cpp
+ * @file count_words_in_file.cpp
  * @brief A program which gets a filename and a word from user
  * and shows the repeat count of that word in the file.
  * [Each word is in one line]

@@ -24,7 +24,7 @@ const string output2 = "consectetur adipiscing elit, ";
 const string output3 = "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
 const string output4 = "Ut enim ad minim veniam.";
 
-// Function Declrations
+// Function Declarations
 void setColor(int colorCode);
 void clearConsole();
 

@@ -26,6 +26,7 @@ class Student
     private:
         StudentModel studentModel;
         list<StudentModel> students;
+
         bool error;
         string errorMessage;
 
@@ -36,14 +37,18 @@ class Student
 
         Student* setCode(int code);
         int getCode();
+
         Student* setName(string name);
+        string getName(int code);
         string getName();
+
         Student* setAverage(float avg);
         float getAverage();
+
+        void debug();
+
         bool fail();
         string getError();
-        string getName(int code);
-        void debug();
 };
 
 Student::Student()

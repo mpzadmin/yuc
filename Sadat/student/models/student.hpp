@@ -7,6 +7,7 @@ class StudentModel
 {
     public:
         string name;
+        int code;
         float average;
 };
 
@@ -24,7 +25,8 @@ class Student
 
 Student::Student()
 {
-
+    this->students.clear();
+    this->error = false;
 }
 
 Student::~Student()

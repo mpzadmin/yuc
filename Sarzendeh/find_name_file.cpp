@@ -10,8 +10,8 @@ fstream File;
 
 int main()
 {
-    cout << find("test92.txt", "ehsan") << endl;
-    cout << find("test92.txt", "ali") << endl;
+    cout << find("find_name_file.txt", "ehsan") << endl;
+    cout << find("find_name_file.txt", "ali") << endl;
 }
 
 int find(string fileName, string name)

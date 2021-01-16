@@ -32,7 +32,11 @@ int main()
     c::clear();
     /** Start of the program **/
 
-    /* TODO: CODE GOES HERE */
+    Student* student;
+
+    student = new Student;
+    student->setCode(1)->setName("Ali")->setAverage(20)->debug();
+    student->setCode(2)->setName("Mehdi")->setAverage(2.5)->debug();
 
     /** End of the program **/
     c::pause();

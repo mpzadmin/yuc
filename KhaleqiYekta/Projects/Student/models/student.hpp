@@ -40,11 +40,10 @@ class Student
         string getName();
         Student* setAverage(float avg);
         float getAverage();
-
         bool fail();
         string getError();
-
-    string getName(int code);
+        string getName(int code);
+        void debug();
 };
 
 Student::Student()
@@ -56,6 +55,16 @@ Student::Student()
 Student::~Student()
 {
 
+}
+
+void Student::debug()
+{
+    cout << endl;
+    cout << "************************************************" << endl;
+    cout << "Code: " << this->getCode() << endl;
+    cout << "Name: " << this->getName() << endl;
+    cout << "Average: " << this->getAverage() << endl;
+    cout << "************************************************" << endl;
 }
 
 Student* Student::setCode(int code)

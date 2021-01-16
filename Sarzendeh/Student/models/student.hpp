@@ -35,6 +35,8 @@ class Student
         string getName();
         float getAverage();
 
+        void debug();
+
         bool fail();
         string getError();
 };
@@ -47,16 +49,6 @@ Student::Student()
 Student::~Student()
 {
     
-}
-
-bool Student::fail()
-{
-    return this->error;
-}
-
-string Student::getError()
-{
-    return this->error ? this->errorMessage : "";
 }
 
 Student* Student::setCode(int code)
@@ -90,4 +82,24 @@ string Student::getName()
 float Student::getAverage()
 {
     return this->studentModel.average;
+}
+
+void Student::debug()
+{
+    cout << endl;
+    cout << "***********************************" << endl;
+    cout << "Code: " << this->getCode() << endl;
+    cout << "Name: " << this->getName() << endl;
+    cout << "Average: " << this->getAverage() << endl;
+    cout << "***********************************" << endl;
+}
+
+bool Student::fail()
+{
+    return this->error;
+}
+
+string Student::getError()
+{
+    return this->error ? this->errorMessage : "";
 }

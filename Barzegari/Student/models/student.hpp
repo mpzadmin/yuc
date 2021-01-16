@@ -35,6 +35,8 @@ class Student
         string getName();
         Student* setAverage(float avrage);
         float getAverage();
+
+        void debug();
 };
 
 Student::Student()
@@ -67,22 +69,32 @@ int Student::getCode()
     return this->studentModel.code;
 }
 
-string Student::setName(string name)
+Student* Student::setName(string name)
 {
     this->studentModel.name = name;
 }
 
-Student* Student::getName()
+string Student::getName()
 {
     this->studentModel.name;
 }
 
-float Student::setAverage(float avrage)
+Student* Student::setAverage(float avrage)
 {
     this->studentModel.average = avrage;
 }
 
-Student* Student::getAverage()
+float Student::getAverage()
 {
     return this->studentModel.average;
+}
+
+void Student::debug()
+{
+    cout << endl;
+    cout << "************************" << endl;
+    cout << "code: " << this->studentModel.code << endl;
+    cout << "name: " << this->studentModel.name << endl;
+    cout << "avrage: " << this->studentModel.average << endl;
+    cout << "************************" << endl;
 }

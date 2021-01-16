@@ -27,6 +27,7 @@ class Student
     public:
         Student();
         ~Student();
+        debug();
 
         Student* setCode(int code);
         int getCOde();
@@ -47,6 +48,19 @@ Student::Student()
 
 Student::~Student()
 {
+
+}
+
+void Student::debuge()
+{
+    cout << endl;
+    cout << "****************************" << endl;
+    cout << "Code: " << this->getCode() << endl;
+    cout << "Name: " << this->getName() << endl;
+    cout << "Average: " << this->getAverage() << endl;
+    cout << "****************************" << endl;
+
+
 
 }
 

@@ -25,7 +25,7 @@ class Student // main class
     public:
         Student();
         ~Student();
-        void debug();
+        void debug(); // to show data 
 
         Student* setCode(int code);
         int getCode();

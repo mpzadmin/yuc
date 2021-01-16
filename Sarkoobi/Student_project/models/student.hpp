@@ -29,6 +29,7 @@ class Student
     public:
         Student();
         ~Student();
+        void debug();
         Student* setcode(int code);
         int getcode();
         Student* setName(string name);
@@ -36,7 +37,9 @@ class Student
         Student* setAverage(float average);
         float getAverage();
         bool fail();
-        string getError;
+        string getError();
+
+        
 };
 
 Student::Student()
@@ -48,6 +51,15 @@ Student::Student()
 Student::~Student()
 {
     
+}
+void Student::debug()
+{
+    cout << endl;
+    cout << "*******************************************" << endl;
+    cout << "Code: " << this->getcode() << endl;
+    cout << "Name: " << this->getName() << endl;
+    cout << "Average: " << this->getAverage() << endl;
+    cout << "*******************************************" << endl;
 }
 
 bool Student::fail()
@@ -72,7 +84,8 @@ int Student::getcode()
 }
 Student* Student::setName(string name)
 {
-    
+    this->studentmodel.name = name;
+    return this;
 }
 
 

@@ -91,5 +91,5 @@ float Student::getAverage()
 
 void Student::debug()
 {
-    cout << "Code: " << getCode() << ", Name: " << getName() << ", Average: " << getAverage() << endl;
+    cout << "Code: " << this->getCode() << ", Name: " << this->getName() << ", Average: " << this->getAverage() << endl;
 }

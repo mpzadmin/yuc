@@ -62,27 +62,27 @@ Student* Student::setCode(int code)
     this->studentModel.code = code;
 }
 
-int Student::getCode
+int Student::getCode()
 {
-
+    return this->studentModel.code;
 }
 
-string Student::setName
+string Student::setName(string name)
 {
-
+    this->studentModel.name = name;
 }
 
-Student* getName
+Student* Student::getName()
 {
-
+    this->studentModel.name;
 }
 
-float setAverage
+float Student::setAverage(float avrage)
 {
-
+    this->studentModel.average = avrage;
 }
 
-Student* getAverage
+Student* Student::getAverage()
 {
-
+    return this->studentModel.average;
 }

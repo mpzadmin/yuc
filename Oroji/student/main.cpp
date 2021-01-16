@@ -7,6 +7,9 @@ using namespace std;
  
 int main()
 {
-    
-
+    Student* student;
+    student = new Student;
+    student->setCode(1)->setName("dani")->setAverage(10)->debug();
+    student->list();
+    delete student;
 } 

@@ -41,6 +41,8 @@ class Student // main class
        Student* list();// print all data in list sutdent.
        Student* list2();
 
+       Student* add();// 
+
         bool fail();
         string getError();
 };
@@ -144,6 +146,12 @@ Student* Student::list2()
         cout << "-_-_-_-_-_-_-_-_-_-_-" << endl;
     }
 
+    return this;
+}
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentModel);
     return this;
 }
 

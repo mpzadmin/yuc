@@ -7,16 +7,21 @@
 
 using namespace std;
 
+
 int main()
 {
     Student* student;
 
     student = new Student;
-
-    student->setCode(1)->setName("Ahad")->setAverage(19.5)->debug();
-    student->setCode(2)->setName("Ali")->setAverage(16)->debug();
-    student->setCode(3)->setName("Taha")->setAverage(19.75)->add();
+    //student->setcode(1)->setname("habib")->setAverage(18)->debug();
+    
     student->list();
 
     delete student;
 }
+
+
+
+
+
+

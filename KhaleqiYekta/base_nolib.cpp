@@ -1,35 +1,64 @@
 /*
- * Copyright © TODO:{YEAR} Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © {YEAR} Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{YEAR-MONTH-DAY}
+ */
+
+/**
+ * @file {FILENAME}.cpp
+ * @brief {EXPLANATION}
  */
 
 /** External Libraries **/
 #include <iostream>
 #include <string>
+#include <list>
+#include <algorithm>
 
 /** Namespaces **/
 using namespace std;
 
+/** Typedefs **/
 /** Constants **/
-
+/** Other Variables **/
 
 /** Function Declarations **/
+
+/**
+ * Asks the user for a string, then goes to the next line.
+ *
+ * @param titleToPrint The text which will be shown to the user before getting the input.
+ * @return User input
+ */
 string askForString(const string &titleToPrint);
+
+/**
+ * Asks the user for an int, then goes to the next line.
+ *
+ * @param titleToPrint The text which will be shown to the user before getting the input.
+ * @return User input
+ */
 int askForInt(const string &titleToPrint);
+
+/**
+ * Clears the standard output stream (OS independent).
+ */
 void clearConsole();
+
+/**
+ * Pauses the standard output stream by asking the user to press any key (OS independent).
+ */
 void pauseConsole();
 
-// Program's Entry Point
+/**
+ * Program's Entry Point
+ */
 int main()
 {
-    /** Initialization Of Local Variables **/
-    /* TODO: VARIABLES GO HERE */
-
     clearConsole();
+    /** Start of the program **/
 
     /* TODO: CODE GOES HERE */
 
@@ -40,7 +69,6 @@ int main()
 
 /* TODO: PROGRAM FUNCTIONS GO HERE */
 
-// Returns a string which is requested from user, then goes to a new line after the process is done.
 string askForString(const string &titleToPrint)
 {
     string data;
@@ -52,7 +80,6 @@ string askForString(const string &titleToPrint)
     return data;
 }
 
-// Returns an integer which is requested from user, then goes to a new line after the process is done.
 int askForInt(const string &titleToPrint)
 {
     int data;
@@ -60,11 +87,12 @@ int askForInt(const string &titleToPrint)
     cout << titleToPrint;
     cin >> data;
     cout << endl;
+    cin.clear();
+    cin.ignore();
 
     return data;
 }
 
-// Clears the console (on any OS)
 void clearConsole()
 { 
     #ifdef _WIN32
@@ -74,7 +102,6 @@ void clearConsole()
     #endif
 }
 
-// Pauses the console (on any OS)
 void pauseConsole()
 {
     #ifdef _WIN32

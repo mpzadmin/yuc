@@ -1,10 +1,14 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © 2021 Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: 2020-12-22
+ */
+
+/**
+ * @file display_char_by_char.cpp
+ * @brief A program which displays a string character by character.
  */
 
 /** External Libraries **/

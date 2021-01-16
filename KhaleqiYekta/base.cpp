@@ -1,36 +1,38 @@
 /*
- * Copyright © TODO:{YEAR} Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © {YEAR} Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: TODO:{YEAR-MONTH-DAY}
+ */
+
+/**
+ * @file {FILENAME}.cpp
+ * @brief {EXPLANATION}
  */
 
 /** External Libraries **/
 #include <iostream>
 #include <string>
+#include <list>
+#include <algorithm>
 #include "console.hpp"
 
 /** Namespaces **/
 using namespace std;
 
+/** Typedefs **/
 /** Constants **/
-
-
 /** Other Variables **/
-
-
 /** Function Declarations **/
 
-
-// Program's Entry Point
+/**
+ * Program's Entry Point
+ */
 int main()
 {
-    /** Initialization Of Local Variables **/
-    /* TODO: VARIABLES GO HERE */
-
     clearConsole();
+    /** Start of the program **/
 
     /* TODO: CODE GOES HERE */
 
@@ -38,5 +40,3 @@ int main()
     pauseConsole();
     return 0;
 }
-
-/* TODO: PROGRAM FUNCTIONS GO HERE */

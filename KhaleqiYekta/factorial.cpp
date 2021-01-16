@@ -1,43 +1,61 @@
 /*
- * Copyright © 2020 Ali Khaleqi Yekta, All Rights Reserved.
+ * Copyright © 2021 Ali Khaleqi Yekta, All Rights Reserved.
  *
  * Author: Ali Khaleqi Yekta [YektaDev]
  * Website: https://Yekta.Dev
  * Email: Me@Yekta.Dev
- * Creation Date: 2020-12-28
  */
 
-/** External Libraries **/
+// External Libraries
+#include <iostream>
 #include <string>
-#include "console.hpp"
 
-/** Namespaces **/
+// Namespaces
 using namespace std;
 
-/** Function Declarations **/
-size_t factorial(const size_t &number);
+// Function Declarations
+long int factorial(unsigned number);
+void clearConsole();
 
 // Program's Entry Point
 int main()
 {
     clearConsole();
 
-    // Test the factorial function with some numbers
-    for (size_t i = 0; i <= 8; ++i)
-    {
-        printLine(to_string(i) + "! = " + to_string(factorial(i)));
-    }
-
-    /** End of the program **/
-    pauseConsole();
-    return 0;
+    // Test the function
+    cout << "The factorial of 0 is: " << factorial(0) << endl;
+    cout << "The factorial of 3 is: " << factorial(3) << endl;
+    cout << "The factorial of 4 is: " << factorial(4) << endl;
+    cout << "The factorial of 5 is: " << factorial(5) << endl;
+    cout << "The factorial of 8 is: " << factorial(8) << endl;
+    cout << "The factorial of 10 is: " << factorial(10) << endl;
+    cout << "The factorial of 14 is: " << factorial(14) << endl;
 }
 
-// Calculates the factorial of a number
-size_t factorial(const size_t &number)
+// Return the factorial of given positive number
+long int factorial(unsigned number)
 {
-    if (number < 1)
-        return 1;
+    int result = 1;
 
-    return (number > 1) ? number * factorial(number - 1) : number;
+    if (number < 0)
+    {
+        return -1;
+    }
+
+    for(int i = 1; i <= number; i++)
+    {    
+        result = result * i;
+    }
+
+    return result;
+}
+
+// Clear the console (on any OS)
+void clearConsole()
+{ 
+    #ifdef _WIN32
+    system("cls");
+    #else
+    system("clear");
+    #endif
 }

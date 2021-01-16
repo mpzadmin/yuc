@@ -14,8 +14,8 @@ int main()
     student = new Student;
 
     student->setCode(1)->setName("Ahad")->setAverage(19.5)->debug();
-    student->setCode(1)->setName("Ahad")->setAverage(19.5)->debug();
-    
+    student->setCode(2)->setName("Ali")->setAverage(16)->debug();
+    student->list();
 
     delete student;
 }

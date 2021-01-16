@@ -13,6 +13,8 @@ class StudentModel
         float average;
 };
 
+typedef list<StudentModel>::iterator StudentIterator;// SMIterator : student
+
 class Student // main class
 {
     private:
@@ -36,7 +38,8 @@ class Student // main class
         Student* setAverage(float average);
         float getAverage();
 
-       
+       Student* list();// print all data in list sutdent.
+       Student* list2();
 
         bool fail();
         string getError();
@@ -105,6 +108,43 @@ Student* Student::setAverage(float average)
 float Student::getAverage()
 {
     return this->studentModel.average;
+}
+/* the buttom code down this one is more profetional.
+Student* Student::list()
+{
+    if (this->students.size() <= 0)
+    {
+        return this;
+    }
+
+    for (StudentModel stu : this->students)
+    {
+        cout << "Code: " << stu.code << endl;
+        cout << "Name: " << stu.name << endl;
+        cout << "Average: " << stu.average << endl;
+        cout << "-_-_-_-_-_-_-_-_-_-_-" << endl;
+    }
+
+    return this;
+}
+*/
+
+Student* Student::list2()
+{
+    if (this->students.size() <= 0)
+    {
+        return this;
+    }
+
+    for (StudentIterator it = this->students.begin(); it != students.end(); it++)
+    {
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->average << endl;
+        cout << "-_-_-_-_-_-_-_-_-_-_-" << endl;
+    }
+
+    return this;
 }
 
 

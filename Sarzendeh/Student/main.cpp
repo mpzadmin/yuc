@@ -21,6 +21,8 @@ int main()
         ->setName("Reza")
         ->setAverage(18)
         ->debug();
+
+    student->list();
         
     delete student;
 }

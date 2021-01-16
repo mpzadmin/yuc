@@ -1,66 +1,72 @@
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <list>
 
 using namespace std;
 
-struct Student
+class Car
 {
-    int code;
-    string name;    
-    float average;
+    private:
+        string brand;
+        string model;
+        int year;
+    public:
+        void setBrand(string b);
+        string getBrand();
+        void setModel(string m);
+        string getModel();
+        void setYear(int y);
+        int getYear();
+        void showInfo();
 };
 
-const string fileName = "students.dat";
-fstream file;
+void Car::setBrand(string b)
+{
+    // validate brand
+    brand = b;
+}
 
+string Car::getBrand()
+{
+    return "*[" + brand + "]*";
+}
+
+void Car::setModel(string m)
+{
+    // validate model
+    model = m;
+}
+
+string Car::getModel()
+{
+    return "(" + model + ")";
+}
+
+void Car::setYear(int y)
+{
+    // validate year
+    year = y;
+}
+
+int Car::getYear()
+{
+    return year;
+}
+
+void Car::showInfo()
+{
+    cout << getBrand() << " " << getModel() << " " << getYear() << endl;
+}
 
 int main()
 {
-    Student student;
-    list<Student> students;
-    list<Student>::iterator it;      
+    Car bmw;
+    Car *car = &bmw;
 
-    student.code = 101;
-    student.name = "Masoud";
-    student.average = 18;
-    students.push_back(student);
-
-    student.code = 102;
-    student.name = "Omid";
-    student.average = 19;
-    students.push_back(student);
-
-    student.code = 103;
-    student.name = "Arman";
-    student.average = 18.75;
-    students.push_back(student);
-
-    file.open(fileName, ios::out | ios::binary | ios::app);
-    for (int index=0; index<students.size(); index++)
-    {
-        it = students.begin();
-        advance(it, index);
-        student = *it;
-        file.write((char *) &student, sizeof(student));
-    }
-    file.close();
-
-    students.clear();
-
-    file.open(fileName, ios::in | ios::binary);
-    while ( file.read((char *) &student, sizeof(student)) )
-    {
-        //cout << student.code << " : " << student.name << " : " << student.average << endl;
-        students.push_back(student);
-    }
-    file.close();
-
-    cout << "---------------------------------------------------" << endl;
-    //cout << "List size: " << students.size() << endl << endl;
-    for (Student s : students)
-    {
-        cout << s.code << " : " << s.name << " : " << s.average << endl;
-    } 
+    bmw.setBrand("BMW");
+    bmw.setModel("850i");
+    bmw.setYear(2020);
+    
+    cout << bmw.getBrand() << " " << bmw.getModel() << " " << bmw.getYear() << endl;
+    bmw.showInfo();
+    car->showInfo();
 }

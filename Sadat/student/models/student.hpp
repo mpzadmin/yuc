@@ -6,7 +6,6 @@ using namespace std;
 class StudentModel
 {
     public:
-        int id;
         int code;
         string name;
         float average;

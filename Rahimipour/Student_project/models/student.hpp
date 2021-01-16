@@ -58,7 +58,7 @@ bool Student::fail()
 
 string Student::getError()
 {
-    return this->errorMessage;//TODO: complete base mpz
+    return this->error ? this->errorMessage : "";//TODO: complete base mpz
 }
 
 Student* Student::setCode(int code)

@@ -30,6 +30,7 @@ class Student
         string getName();
         float getAverage();
 
+        void debug();
         bool fail();
         string getError();
 };
@@ -86,4 +87,9 @@ string Student::getName()
 float Student::getAverage()
 {
     return this->studentModel.average;
+}
+
+void Student::debug()
+{
+    cout << "Code: " << getCode() << ", Name: " << getName() << ", Average: " << getAverage() << endl;
 }

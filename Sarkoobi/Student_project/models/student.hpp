@@ -37,8 +37,11 @@ class Student
         Student* setAverage(float average);
         float getAverage();
         Student* list();
+        Student* list2();
+        Student* add();
         bool fail();
         string getError();
+
 
         
 };
@@ -128,3 +131,9 @@ Student* Student::list2()
     return this;
 } 
 */
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentmodel);
+    return this;
+}

@@ -2,5 +2,7 @@
 *.log
 *.backup
 *.exe
+*.dat
+*.txt
 
 

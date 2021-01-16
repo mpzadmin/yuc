@@ -1,6 +1,15 @@
+/*
+ * Copyright © 2021 Ali Khaleqi Yekta, All Rights Reserved.
+ *
+ * Author: Ali Khaleqi Yekta [YektaDev]
+ * Website: https://Yekta.Dev
+ * Email: Me@Yekta.Dev
+ */
+
 #include <iostream>
 #include <string>
 #include <list>
+#include <fstream>
 
 using namespace std;
 
@@ -17,22 +26,18 @@ class Student
     private:
         StudentModel studentModel;
         list<StudentModel> students;
-
         bool error;
-        string errorMessage;
 
     protected:
-
     public:
         Student();
         ~Student();
 
         Student* setCode(int code);
-        Student* setName(string name);
-        Student* setAverage(float average);
-
         int getCode();
+        Student* setName(string name);
         string getName();
+        Student* setAverage(float avarage);
         float getAverage();
 
         bool fail();
@@ -41,22 +46,13 @@ class Student
 
 Student::Student()
 {
+    this->students.clear();
     this->error = false;
 }
 
 Student::~Student()
 {
-    
-}
 
-bool Student::fail()
-{
-    return this->error;
-}
-
-string Student::getError()
-{
-    return this->error ? this->errorMessage : "";
 }
 
 Student* Student::setCode(int code)
@@ -65,29 +61,28 @@ Student* Student::setCode(int code)
     return this;
 }
 
-Student* Student::setName(string name)
-{
-    this->studentModel.name = name;
-    return this;
-}
-
-Student* Student::setAverage(float average)
-{
-    this->studentModel.average = average;
-    return this;
-}
-
 int Student::getCode()
 {
-    return this->studentModel.code;
+    return studentModel.code;
 }
 
-string Student::getName()
+Student* Student::setName(string name)
 {
-    return this->studentModel.name;
+    this->studentModel.name =name;
+    return this;
 }
 
-float Student::getAverage()
+string Student::getName(int code)
 {
-    return this->studentModel.average;
+    return studentModel.name;
+}
+
+bool Student::fail()
+{
+    return this->error;
+}
+
+bool Student::getError()
+{
+    return this->error ? this->errorMessage : "";
 }

@@ -84,7 +84,8 @@ int Student::getcode()
 }
 Student* Student::setName(string name)
 {
-
+    this->studentmodel.name = name;
+    return this;
 }
 
 

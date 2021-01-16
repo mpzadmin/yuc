@@ -14,7 +14,7 @@ class StudentModel
         string name;
         float average;
 
-};
+}; 
 
 class Student
 {

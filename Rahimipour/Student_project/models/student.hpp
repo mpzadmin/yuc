@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include <list>
+#include <fstream>
 
 using namespace std;
 
@@ -11,23 +13,26 @@ class StudentModel
         float average;
 };
 
-class Student
+class Student // main class
 {
     private:
         StudentModel studentModel;
         list<StudentModel> students;
-        string errorMessage;
+
         bool error;
+        string errorMessage;
     protected:
     public:
         Student();
         ~Student();
 
         Student* setCode(int code);
-        Student* setName(string name);
-        Student* setAverage(float average);
         int getCode();
+
+        Student* setName(string name);
         string getName();
+
+        Student* setAverage(float average);
         float getAverage();
 
         bool fail();
@@ -38,11 +43,12 @@ Student::Student()
 {
     this->students.clear();
     this->error = false;
+
 }
 
 Student::~Student()
 {
-
+    
 }
 
 bool Student::fail()
@@ -52,7 +58,7 @@ bool Student::fail()
 
 string Student::getError()
 {
-    return (this->error) ? this->errorMessage : "";
+    return this->errorMessage;//TODO: complete base mpz
 }
 
 Student* Student::setCode(int code)
@@ -61,10 +67,20 @@ Student* Student::setCode(int code)
     return this;
 }
 
+int Student::getCode()
+{
+    return this->studentModel.code;
+}
+
 Student* Student::setName(string name)
 {
     this->studentModel.name = name;
     return this;
+}
+
+string Student::getName()
+{
+    return this->studentModel.name;
 }
 
 Student* Student::setAverage(float average)
@@ -73,17 +89,10 @@ Student* Student::setAverage(float average)
     return this;
 }
 
-int Student::getCode()
-{
-    return this->studentModel.code;
-}
-
-string Student::getName()
-{
-    return this->studentModel.name;
-}
-
 float Student::getAverage()
 {
     return this->studentModel.average;
 }
+
+
+

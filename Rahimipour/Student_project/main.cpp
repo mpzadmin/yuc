@@ -1,6 +1,8 @@
 #include <iostream>
-#include <list>
+#include <string>
 #include <fstream>
+#include <list>
+
 #include "models/student.hpp"
 
 using namespace std;

@@ -8,12 +8,12 @@ using namespace std;
 class StudentModel
 {
     public:
-        int id;
         int code;
         string name;
         float average;
         
 };
+typedef list<StudentModel>::iterator StudentIterator;
 
 class Student
 {
@@ -30,14 +30,18 @@ class Student
         Student();
         ~Student();
         void debug();
-        Student* setcode(int code);
-        int getcode();
+        Student* setCode(int code);
+        int getCode();
         Student* setName(string name);
         string getName();
         Student* setAverage(float average);
         float getAverage();
+        Student* list();
+        Student* list2();
+        Student* add();
         bool fail();
         string getError();
+
 
         
 };
@@ -56,7 +60,7 @@ void Student::debug()
 {
     cout << endl;
     cout << "*******************************************" << endl;
-    cout << "Code: " << this->getcode() << endl;
+    cout << "Code: " << this->getCode() << endl;
     cout << "Name: " << this->getName() << endl;
     cout << "Average: " << this->getAverage() << endl;
     cout << "*******************************************" << endl;
@@ -72,13 +76,13 @@ string Student::getError()
     return this->error ? this->errorMessage : " ";
 }
 
-Student* Student::setcode(int code)
+Student* Student::setCode(int code)
 {
     this->studentmodel.code = code;
     return this;
 }
 
-int Student::getcode()
+int Student::getCode()
 {
     return this->studentmodel.code;
 }
@@ -88,4 +92,48 @@ Student* Student::setName(string name)
     return this;
 }
 
+float Student::getAverage()
+{
+    return this->studentmodel.average;
+}
 
+Student* Student::list()
+{
+    if(this->students.size() <= 0)
+    {
+        return this;
+    }
+
+    for (studentmodel stu : this->students)
+    {
+        cout << "code: " << stu.code << endl;
+        cout << "Name: " << stu.name << endl;
+        cout << "Average: " << stu.average << endl;
+        cout << endl;
+    }
+    return this;
+} 
+/*
+Student* Student::list2()
+{
+    if(this->students.size() <= 0)
+    {
+        return this;
+    }
+
+    for (StudentIterator it = this->student.begin(); it != this->student.end(); it++)
+    {
+        cout << "code: " <<it->code << endl;
+        cout << "Name: " <<it->name << endl;
+        cout << "Average: " <<it->average << endl;
+        cout << endl;
+    }
+    return this;
+} 
+*/
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentmodel);
+    return this;
+}

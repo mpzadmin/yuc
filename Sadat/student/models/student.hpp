@@ -1,7 +1,10 @@
 #include <iostream>
+#include <windows.h>
 #include <list>
 
 using namespace std;
+
+HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
 class StudentModel
 {
@@ -30,6 +33,8 @@ class Student
         string getName();
         float getAverage();
 
+        Student* list();
+        Student* add();
         void debug();
         bool fail();
         string getError();
@@ -91,5 +96,33 @@ float Student::getAverage()
 
 void Student::debug()
 {
-    cout << "Code: " << this->getCode() << ", Name: " << this->getName() << ", Average: " << this->getAverage() << endl;
+    SetConsoleTextAttribute(console, 2);
+    cout << "*** Code: " << this->getCode() << " ***" << endl;
+    SetConsoleTextAttribute(console, 4);
+    cout << "*** Name: " << this->getName() << " ***" << endl;
+    SetConsoleTextAttribute(console, 6);
+    cout << "*** Average: " << this->getAverage() << " ***" << endl;
+    SetConsoleTextAttribute(console, 7);
+}
+
+Student* Student::list()
+{
+    if (this->students.size() <= 0) return this;
+    for (StudentModel model : this->students)
+    {
+        SetConsoleTextAttribute(console, 2);
+        cout << "*** Code: " << model.code;
+        SetConsoleTextAttribute(console, 4);
+        cout << " , Name: " << model.name;
+        SetConsoleTextAttribute(console, 6);
+        cout << " , Average: " << model.average << " ***" << endl;
+    }
+    SetConsoleTextAttribute(console, 7);
+    return this;
+}
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentModel);
+    return this;
 }

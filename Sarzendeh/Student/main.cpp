@@ -15,12 +15,19 @@ int main()
         ->setCode(1)
         ->setName("Ehsan")
         ->setAverage(19)
-        ->debug();
+        ->add();
     student
         ->setCode(2)
         ->setName("Reza")
         ->setAverage(18)
-        ->debug();
+        ->add();
+    student
+        ->setCode(3)
+        ->setName("Ali")
+        ->setAverage(17)
+        ->add();
+
+    student->list();
         
     delete student;
 }

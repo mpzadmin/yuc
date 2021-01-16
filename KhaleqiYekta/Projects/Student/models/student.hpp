@@ -37,7 +37,6 @@ public:
     Student();
         ~Student();
 
-        Student* list();
         Student* setCode(int code);
         int getCode();
         Student* setName(string name);
@@ -45,6 +44,10 @@ public:
         string getName();
         Student* setAverage(float avg);
         float getAverage();
+
+        Student* list();
+        Student* add();
+
         void debug();
 
         bool fail();
@@ -130,5 +133,11 @@ Student* Student::list()
         cout << endl;
     }
 
+    return this;
+}
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentModel);
     return this;
 }

@@ -2,14 +2,17 @@
 #include <string>
 #include <list>
 
+
 using namespace std;
 
 class StudentModel
 {
     public:
+        int id;
         int code;
         string name;
         float average;
+        
 };
 
 class Student
@@ -26,6 +29,12 @@ class Student
     public:
         Student();
         ~Student();
+        Student* setcode(int code);
+        int getcode();
+        Student* setName(string name);
+        string getName();
+        Student* setAverage(float average);
+        float getAverage();
         bool fail();
         string getError;
 };
@@ -50,3 +59,20 @@ string Student::getError()
 {
     return this->error ? this->errorMessage : " ";
 }
+
+Student* Student::setcode(int code)
+{
+    this->studentmodel.code = code;
+    return this;
+}
+
+int Student::getcode()
+{
+    return this->studentmodel.code;
+}
+Student* Student::setName(string name)
+{
+    
+}
+
+

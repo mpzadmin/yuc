@@ -36,6 +36,7 @@ class Student
         float getAverage();
 
         Student* list();
+        Student* add();
 
         bool fail();
         string getError();
@@ -109,5 +110,10 @@ Student* Student::list()
         cout << "Average: " << stu.average << endl;
         cout << endl;
     }
+    return this;
+}
+Student* Student::add()
+{
+    this->students.push_back(this->studentModel);
     return this;
 }

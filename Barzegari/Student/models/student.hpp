@@ -64,6 +64,7 @@ string Student::getError()
 Student* Student::setCode(int code)
 {
     this->studentModel.code = code;
+    return this;
 }
 
 int Student::getCode()
@@ -74,16 +75,18 @@ int Student::getCode()
 Student* Student::setName(string name)
 {
     this->studentModel.name = name;
+    return this;
 }
 
 string Student::getName()
 {
-    this->studentModel.name;
+    return this->studentModel.name;
 }
 
 Student* Student::setAverage(float avrage)
 {
     this->studentModel.average = avrage;
+    return this;
 }
 
 float Student::getAverage()
@@ -91,7 +94,7 @@ float Student::getAverage()
     return this->studentModel.average;
 }
 
-Student* Stusent::list()
+Student* Student::list()
 {
     if(this->students.size() <= 0)
         return this;

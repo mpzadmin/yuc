@@ -33,6 +33,7 @@ class Student
         string getName();
         Student* setAverage(float average);
         float getAverage();
+        Student* list();
         bool fail();
         string getError();
 };
@@ -93,4 +94,19 @@ float Student::getAverage()
     return this->studentModel.average;
 }
 
+Student* Student::list()
+{
+    if(this->students.size() <= 0)
+    {
+        return this;
+    }
+    for ( StudentModel stu : this->students)
+    {
+        cout << "Code: " << stu.code << endl;
+        cout << "Name: " << stu.name << endl;
+        cout << "Average: " << stu.average << endl;
+        cout << endl;
+    }
+    return this;
+}
 

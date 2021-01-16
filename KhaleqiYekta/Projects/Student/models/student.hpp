@@ -31,20 +31,18 @@ class Student
         string errorMessage;
 
     protected:
-    public:
-        Student();
+public:
+    Student();
         ~Student();
 
+        Student* list();
         Student* setCode(int code);
         int getCode();
-
         Student* setName(string name);
         string getName(int code);
         string getName();
-
         Student* setAverage(float avg);
         float getAverage();
-
         void debug();
 
         bool fail();
@@ -113,4 +111,22 @@ Student* Student::setAverage(float avg)
 float Student::getAverage()
 {
     return this->studentModel.average;
+}
+
+Student* Student::list()
+{
+    if (this->students.empty())
+    {
+        return this;
+    }
+
+    for (const StudentModel &s : this->students)
+    {
+        cout << "Code: " << s.code << endl;
+        cout << "Name: " << s.name << endl;
+        cout << "Average: " << s.average << endl;
+        cout << endl;
+    }
+
+    return this;
 }

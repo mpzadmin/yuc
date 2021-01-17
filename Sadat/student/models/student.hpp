@@ -34,6 +34,7 @@ class Student
         float getAverage();
 
         Student* list();
+        Student* add();
         void debug();
         bool fail();
         string getError();
@@ -112,10 +113,16 @@ Student* Student::list()
         SetConsoleTextAttribute(console, 2);
         cout << "*** Code: " << model.code;
         SetConsoleTextAttribute(console, 4);
-        cout << ", Name: " << model.name;
+        cout << " , Name: " << model.name;
         SetConsoleTextAttribute(console, 6);
-        cout << ", Average: " << model.average << " ***" << endl;
+        cout << " , Average: " << model.average << " ***" << endl;
     }
     SetConsoleTextAttribute(console, 7);
+    return this;
+}
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentModel);
     return this;
 }

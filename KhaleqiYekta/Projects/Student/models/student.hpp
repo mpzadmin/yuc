@@ -50,6 +50,8 @@ public:
         Student* list();
         Student* add();
 
+        bool find(Field searchField);
+
         void debug();
 
         bool fail();
@@ -142,4 +144,9 @@ Student* Student::add()
 {
     this->students.push_back(this->studentModel);
     return this;
+}
+
+bool find(Field searchField)
+{
+    return true;
 }

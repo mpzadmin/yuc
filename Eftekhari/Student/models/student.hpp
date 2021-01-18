@@ -5,6 +5,8 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
@@ -12,7 +14,6 @@ class StudentModel
         string name;
         float average;
 };
-
 typedef list<StudentModel>::iterator StudentIterator;
 
 class Student
@@ -37,11 +38,13 @@ class Student
         Student* setAverage(float average);
         float getAverage();
 
-        Student* list();
-        Student* list2();
+        Student* list();        
         Student* add();
-
+        Student* remove();
+        bool find(Field searchField);
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();
 };
 
@@ -54,7 +57,6 @@ Student::Student()
 Student::~Student()
 {
 }
-
 void Student::debug()
 {
     cout << endl;
@@ -64,7 +66,6 @@ void Student::debug()
     cout << "Average: " << this->getAverage() << endl;
     cout << "********************************************" << endl;
 }
-
 bool Student::fail()
 {
     return this->error;
@@ -96,7 +97,6 @@ string Student::getName()
 {
     return this->studentModel.name;
 }
-
 Student* Student::setAverage(float average)
 {
     this->studentModel.average = average;
@@ -107,32 +107,12 @@ float Student::getAverage()
 {
     return this->studentModel.average;
 }
-
 Student* Student::list()
 {
     if (this->students.size() <= 0)
     {
         return this;
     }
-
-    for (StudentModel stu : this->students)
-    {
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.average << endl;
-        cout << endl;    
-    }
-
-    return this;
-}
-
-Student* Student::list2()
-{
-    if (this->students.size() <= 0)
-    {
-        return this;
-    }
-
     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
         cout << "Code: " << it->code << endl;
@@ -146,6 +126,82 @@ Student* Student::list2()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+    this->clearError();
+    if ( !this->find(Field::Code) ) {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("The record exists!");
+    }        
+    return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("The record not found!");
+    }
+    return this;
+}
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+    if (this->students.size() <= 0) return result;
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (searchField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+            {                
+                this->studentModel = *it;
+                result = true;
+                break;
+            }    
+        }
+        else if (searchField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+            {                
+                this->studentModel = *it;
+                result = true;
+                break;
+            }                
+        }
+        else
+        {
+             if (it->average == this->studentModel.average)
+            {                
+                this->studentModel = *it;
+                result = true;
+                break;
+            }               
+        }       
+    }
+    return result;
+}
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
     return this;
 }

@@ -22,9 +22,16 @@ int main()
     student->setcode(2)->setname("omid")->setaverage(18)->add();
     student->list();    
 
+    if (student->setname("ali")->find(field::name))
+    {
+        student->debug();
+    }
+    else
+    {
+        cout << "not found!!" << endl;
+    }
+    
     delete student;
-
-
 
 
     student->list();

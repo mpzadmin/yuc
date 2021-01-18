@@ -99,7 +99,7 @@ float Student::getAverage()
 
 void Student::debug()
 {
-    cout << "*** Code: ";
+    cout << "<<< Code: ";
     SetConsoleTextAttribute(console, 4);
     cout << this->getCode();
     SetConsoleTextAttribute(console, 7);
@@ -111,7 +111,7 @@ void Student::debug()
     SetConsoleTextAttribute(console, 5);
     cout << this->getAverage();
     SetConsoleTextAttribute(console, 7);
-    cout << " *** " << endl;
+    cout << " >>>" << endl;
 }
 
 Student* Student::list()
@@ -138,7 +138,10 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
     return this;
 }
 

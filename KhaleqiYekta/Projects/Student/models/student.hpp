@@ -199,10 +199,16 @@ bool Student::find(Field searchField)
 
 Student* Student::setError(const string &err)
 {
+    this->error = true;
+    this->errorMessage = err;
 
+    return this;
 }
 
 Student* Student::clearError()
 {
+    this->error = false;
+    this->errorMessage.clear();
 
+    return this;
 }

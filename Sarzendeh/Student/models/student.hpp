@@ -4,6 +4,8 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
@@ -39,6 +41,8 @@ class Student
 
         Student* list();
         Student* add();
+        
+        bool find(Field searchField);
 
         void debug();
 
@@ -117,6 +121,42 @@ Student* Student::add()
 {
     this->students.push_back(this->studentModel);
     return this;
+}
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+    for (StudentIterator it = students.begin(); it != students.end(); it++)
+    {
+        if (searchField == Field::Code)
+        {
+            if (it->code == studentModel.code)
+            {
+                this->studentModel = *it;
+                result = true;
+                break;
+            }
+        }
+        else if (searchField == Field::Name)
+        {
+            if (it->name == studentModel.name)
+            {
+                this->studentModel = *it;
+                result = true;
+                break;
+            }
+        }
+        else
+        {
+            if (it->average == studentModel.average)
+            {
+                this->studentModel = *it;
+                result = true;
+                break;
+            }
+        }
+    }
+    return result;
 }
 
 void Student::debug()

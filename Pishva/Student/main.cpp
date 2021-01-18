@@ -16,6 +16,16 @@ int main ()
     student->setCode(2)->setName("Amir")->setAverage(18)->add();
     student->list();
 
+    if (student->setName("Ali")->find(Field::Name))
+        student->debug();
+    else
+        cout << "NOT FOUND!" << endl;
+
+    if (student->setName("Mohammad")->find(Field::Name))
+        student->debug();
+    else
+        cout << "NOT FOUND!" << endl;
+
     delete student;
     return 0;
 }

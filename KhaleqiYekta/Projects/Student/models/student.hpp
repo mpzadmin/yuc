@@ -13,6 +13,8 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
@@ -47,6 +49,8 @@ public:
 
         Student* list();
         Student* add();
+
+        bool find(Field searchField);
 
         void debug();
 
@@ -140,4 +144,9 @@ Student* Student::add()
 {
     this->students.push_back(this->studentModel);
     return this;
+}
+
+bool find(Field searchField)
+{
+    return true;
 }

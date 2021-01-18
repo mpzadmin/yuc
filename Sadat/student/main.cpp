@@ -11,6 +11,7 @@ int main()
     student = new Student;
 
     student->setCode(1)->setName("ali")->setAverage(15.8)->add();
+
     if (student->setCode(1)->setName("reza")->setAverage(18.5)->add()->fail())
     {
         SetConsoleTextAttribute(console, 4);
@@ -28,6 +29,8 @@ int main()
     student->setCode(3)->setName("mohsen")->setAverage(19)->add();
     student->list();
     cout << endl;
+    student->remove(2)->list();
+    cout << endl;
 
     if (student->setName("pouya")->find(Field::Name))
     {
@@ -35,7 +38,7 @@ int main()
     }
     else
     {
-        SetConsoleTextAttribute(console, 2);
+        SetConsoleTextAttribute(console, 4);
         cout << "NOT FOUND!" << endl;
         SetConsoleTextAttribute(console, 7);
     }

@@ -15,6 +15,8 @@ class StudentModel
         float average;
 };
 
+typedef list<StudentModel>::iterator StudentItr;
+
 class Student
 {
     private:
@@ -38,6 +40,7 @@ class Student
         Student* add();
         Student* clearError();
         Student* setError(string errorMessage);
+        Student* remove(int code);
 
         void debug();
         bool find(Field searchField);
@@ -197,5 +200,20 @@ Student* Student::setError(string errorMessage)
 {
     this->error = true;
     this->errorMessage = errorMessage;
+    return this;
+}
+
+Student* Student::remove(int code)
+{
+    this->setError("Coudn't find any student with given code!");
+    for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
+    {
+        if (studentItr->code == code)
+        {
+            this->students.erase(studentItr);
+            this->clearError();
+            break;
+        }
+    }
     return this;
 }

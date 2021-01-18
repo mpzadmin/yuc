@@ -149,37 +149,39 @@ Student* Student::add()
 bool Student::find(Field searchField)
 {
     bool result = false;
-    if(this->students.empty())
-        return result;
 
-    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    if (this->students.empty())
+    {
+        return result;
+    }
+
+    for (StudentIterator it = this->students.begin(); it != students.end(); ++it)
     {
         if (searchField == Field::Code)
         {
             if (it->code == this->studentModel.code)
             {
+                result = true;
                 this->studentModel = *it;
 
-                return true;
+                break;
             }
         }
         else if (searchField == Field::Name)
         {
-            if (it->name == this->studentModel.name)
-            {
-                this->studentModel = *it;
+            result = true;
+            this->studentModel = *it;
 
-                return true;
-            }
+            break;
         }
         else
         {
-            if (it->average == this->studentModel.average)
-            {
-                this->studentModel = *it;
+            result = true;
+            this->studentModel = *it;
 
-                return true;
-            }
+            break;
         }
     }
+
+    return result;
 }

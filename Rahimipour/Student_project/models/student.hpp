@@ -5,6 +5,8 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
@@ -38,10 +40,11 @@ class Student // main class
         Student* setAverage(float average);
         float getAverage();
 
-       Student* list();// print all data in list sutdent.
-       Student* list2();
+        Student* list();// print all data in list sutdent.
+        Student* list2();
 
-       Student* add();// 
+        Student* add();// 
+        bool find(Field searchField); // we want to return true or false.
 
         bool fail();
         string getError();
@@ -153,6 +156,48 @@ Student* Student::add()
 {
     this->students.push_back(this->studentModel);
     return this;
+}
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+    if (this->students.size() <= 0)
+    {
+        return result;
+    }
+    for (StudentIterator it = this->students.begin(); it != students.end(); it++)
+    {
+        if (searchField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+            {
+                result = true;
+                /** we can use this. or down of it which is not comment.
+                this->setCode(it->code);
+                this->setName(it->name);
+                this->setAverage(it->average);
+                */
+                this->studentModel = *it;
+                break;
+            }
+        }
+
+        else if (searchField == Field::Name)
+        {
+                result = true;
+                this->studentModel = *it;
+                break;
+        }
+
+        else // will be average
+        {
+                result = true;
+                this->studentModel = *it;
+                break; 
+        }
+        
+    }
+    return result;
 }
 
 

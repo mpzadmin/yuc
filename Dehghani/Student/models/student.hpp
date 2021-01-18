@@ -5,10 +5,11 @@
 
 using namespace std;
 
+typedef list<StudentModel>:: iterator StudentModelIterator;
+
 class StudentModel 
 {
     public:
-        int id;
         int code;
         string name;
         float average;
@@ -30,13 +31,14 @@ class Student
         void debug();
 
         Student* setCode(int code);
-        int getCOde();
+        int getCode();
         Student* setName(string name);
         string getName();
         Student* setAverage(int average);
-        int getAverage();
+        float getAverage();
 
         Student* list();
+        Student* add();
             
 
         bool fail();
@@ -67,6 +69,7 @@ void Student::debug()
 
 }
 
+
 bool Student::fail()
 {
     return this->error;
@@ -83,7 +86,7 @@ Student* Student::setCode(int code)
     return this;
 }
 
-int Student::getcode();
+int Student::getCode()
 {
   return  this->studentModel.code;
 }
@@ -94,7 +97,7 @@ Student* Student::setName(string name)
     return this;
 }
 
-string Student::getname();
+string Student::getName()
 {
   return  this->studentModel.name;
 }
@@ -105,23 +108,29 @@ Student* Student::setAverage(int average)
     return this;
 }
 
-int Student::getAvarage();
+float Student::getAverage()
 {
   return  this->studentModel.average;
 }
-
+//iterator
 Student* Student::list()
 {
     if (this->students.size() <= 0)
     {
         return this;
     }
-    for (StudentModel stu : this->students)
+    for(StudentModelIterator it=this->students.begin(); it != this->students.end(); it++ )
     {
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.average << endl;
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->average << endl;
         cout << endl;
     }
+    return this;
+}
+
+Student* Student::add()
+{
+    this->students.push_back(this->studentModel);
     return this;
 }

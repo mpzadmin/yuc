@@ -12,9 +12,9 @@ int main()
     Student* student;
 
     student = new Student;
-    student->setCode(1)->setName("Masoud")->setAverage(17)->add();    
-    student->setCode(2)->setName("Omid")->setAverage(20)->add();
-    student->setCode(3)->setName("Arman")->setAverage(18.5)->add();
+    student->setCode(1)->setName("Ali")->setAverage(19)->add();    
+    student->setCode(2)->setName("Reza")->setAverage(18)->add();
+    student->setCode(3)->setName("Amir")->setAverage(18.5)->add();
     student->list();    
 
     delete student;

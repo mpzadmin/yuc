@@ -29,14 +29,24 @@ int main()
 
     student->list();
 
-    if (student->setName("Reza")->find(Field::Name))
-    {
-        student->debug();
-    }
-    else
-    {
-        cout << "NOT FOUND" << endl;
-    }
+        student->setCode(3)->setName("Ali")->setAverage(17)->add();
+        if (!student->fail())
+        {
+            cout << "Success" << endl;
+        }
+        else
+        {
+            cout << student->getError() << endl;
+        }
+
+    // if (student->setName("Reza")->find(Field::Name))
+    // {
+    //     student->debug();
+    // }
+    // else
+    // {
+    //     cout << "NOT FOUND" << endl;
+    // }
         
     delete student;
 }

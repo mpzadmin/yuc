@@ -47,6 +47,8 @@ class Student
         void debug();
 
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();
 };
 
@@ -119,7 +121,16 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+    this->clearError();
+    
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("The data exists!");
+    }
     return this;
 }
 
@@ -172,6 +183,20 @@ void Student::debug()
 bool Student::fail()
 {
     return this->error;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
+    return this;
 }
 
 string Student::getError()

@@ -5,6 +5,8 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
@@ -38,8 +40,13 @@ class Student
 
         Student* list();
         Student* add();
+        Student* remove();
+
+        bool find(Field searchField);
 
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();
 };
 
@@ -67,6 +74,20 @@ void Student::debug()
 bool Student::fail()
 {
     return this->error;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
+    return this;
 }
 
 string Student::getError()
@@ -127,6 +148,71 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+    this->clearError();
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("The record exists!");
+    }
     return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("The record not found!");
+    }
+    return this;
+}
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+    if (this->students.size() <= 0) return result;
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (searchField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+            {
+                studentModel = *it;
+                result = true;
+                break;
+            }
+        }
+        else if (searchField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+            {
+                studentModel = *it;
+                result = true;
+                break;
+            }
+        }
+        else
+        {
+            if (it->average == this->studentModel.average)
+            {
+                studentModel = *it;
+                result = true;
+                break;
+            }
+        }   
+    }
+    return result;
 }

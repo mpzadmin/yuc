@@ -11,7 +11,7 @@ int main()
 
     student = new Student;
     student->setCode(1)->setName("Mojtaba")->setAverage(19)->add();
-    student->setCode(1)->setName("Asgar")->setAverage(15)->add();
+    student->setCode(2)->setName("Asgar")->setAverage(15)->add();
     student->list();
 
     if (student->setName("jafar")->find(Field::Name))

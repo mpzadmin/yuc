@@ -8,7 +8,7 @@ int main()
     Student* student;
 
     student = new Student;
-    student->setCode(1)->setName("saeed")->setAverage(18)->debug();
+    student->setCode(1)->setName("saeed")->setAverage(18)->add()->debug();
     student->list();
 
     if(student->setName("saeed")->find(Field::Name))

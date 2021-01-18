@@ -55,7 +55,9 @@ public:
         void debug();
 
         bool fail();
+        Student* setError(const string& err);
         string getError();
+        Student* clearError();
 };
 
 Student::Student()
@@ -193,4 +195,14 @@ bool Student::find(Field searchField)
     }
 
     return result;
+}
+
+Student* Student::setError(const string &err)
+{
+
+}
+
+Student* Student::clearError()
+{
+
 }

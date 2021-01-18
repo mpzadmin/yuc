@@ -7,7 +7,7 @@ using namespace std;
 
 enum Field {Code, Name,Average};
 
-Field field;
+Field fieldName;
 
 
 
@@ -53,7 +53,7 @@ class Student
 
 
 
-         bool find();
+         bool find(Field searchField);
          bool fail();
 
          string getError();
@@ -180,14 +180,14 @@ Student* Student::add()
     return this;
 }
 
-bool Student::find(Field field)
+bool Student::find(Field searchField)
 {
     bool result = false;
     if( this -> students.size()<= 0 ) return result;
      {
     for(StudentIterator it = this -> students.begin(); it != this -> students.end(); it++ )
     {
-     if(field == Field :: Code)
+     if(searchField == Field :: Code)
       {
         if(it->code == this->studentModel.code)
         {
@@ -198,7 +198,7 @@ bool Student::find(Field field)
         }
       }
 
-        else if(field == Field :: Name)
+        else if(searchField == Field :: Name)
         {
              if(it->name == this->studentModel.name)
          {

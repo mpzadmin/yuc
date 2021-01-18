@@ -22,7 +22,7 @@ int main()
 
     
     /*
-    if ( !student->setCode(10)->setName("Masoud")->setAverage(17)->add()->fail() )
+    if ( !student->setCode(10)->setName("ali")->setAverage(20)->add()->fail() )
     {
         cout << "Success" << endl;
     } 
@@ -31,7 +31,7 @@ int main()
         cout << student->getError() << endl;
     }
 
-    if ( student->setName("Omid")->find(Field::Name) )
+    if ( student->setName("reza")->find(Field::Name) )
     {
         student->debug();
     } 
@@ -40,7 +40,7 @@ int main()
         cout << "NOT FOUND!" << endl;
     }
 
-    if ( student->setAverage(17)->find(Field::Average) )
+    if ( student->setAverage(18)->find(Field::Average) )
     {
         student->debug();
     } 

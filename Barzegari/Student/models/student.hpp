@@ -41,6 +41,7 @@ class Student
 
         Student* add();
         Student* list();
+        Student* remove();
 
         bool find(Field searchFeild);
 
@@ -129,6 +130,22 @@ Student* Student::add()
     }
     
     return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if(it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+        }
+    }
+    if(!result)
+        this->setError("The record not found!");
 }
 
 bool Student::find(Field searchFeild)

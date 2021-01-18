@@ -11,10 +11,16 @@ int main()
     student->setCode(1)->setName("saeed")->setAverage(18)->add()->debug();
     student->list();
 
-    if(student->fail())
+    student->setCode(1)->remove()->list();
+    if (student->setCode(1)->remove()->list()->fail())
+    {
+        cout << student->getError() << endl;
+    }
+
+    /*if(student->fail())
         cout << student->getError() << endl;
     else
-        cout << "Success" << endl;
+        cout << "Success" << endl;*/
 
 
     /*if(student->setName("saeed")->find(Field::Name))

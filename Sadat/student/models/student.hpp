@@ -5,6 +5,7 @@
 using namespace std;
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+enum Field {Code, Name, Average};
 
 class StudentModel
 {
@@ -35,7 +36,9 @@ class Student
 
         Student* list();
         Student* add();
+
         void debug();
+        bool find(Field searchField);
         bool fail();
         string getError();
 };
@@ -96,13 +99,19 @@ float Student::getAverage()
 
 void Student::debug()
 {
-    SetConsoleTextAttribute(console, 2);
-    cout << "*** Code: " << this->getCode() << " ***" << endl;
+    cout << "*** Code: ";
     SetConsoleTextAttribute(console, 4);
-    cout << "*** Name: " << this->getName() << " ***" << endl;
-    SetConsoleTextAttribute(console, 6);
-    cout << "*** Average: " << this->getAverage() << " ***" << endl;
+    cout << this->getCode();
     SetConsoleTextAttribute(console, 7);
+    cout << " - Name: ";
+    SetConsoleTextAttribute(console, 2);
+    cout << this->getName();
+    SetConsoleTextAttribute(console, 7);
+    cout << " - Average: ";
+    SetConsoleTextAttribute(console, 5);
+    cout << this->getAverage();
+    SetConsoleTextAttribute(console, 7);
+    cout << " *** " << endl;
 }
 
 Student* Student::list()
@@ -110,14 +119,20 @@ Student* Student::list()
     if (this->students.size() <= 0) return this;
     for (StudentModel model : this->students)
     {
-        SetConsoleTextAttribute(console, 2);
-        cout << "*** Code: " << model.code;
+        cout << "*** Code: ";
         SetConsoleTextAttribute(console, 4);
-        cout << " , Name: " << model.name;
-        SetConsoleTextAttribute(console, 6);
-        cout << " , Average: " << model.average << " ***" << endl;
+        cout << model.code;
+        SetConsoleTextAttribute(console, 7);
+        cout << ", Name: ";
+        SetConsoleTextAttribute(console, 2);
+        cout << model.name;
+        SetConsoleTextAttribute(console, 7);
+        cout << ", Average: ";
+        SetConsoleTextAttribute(console, 5);
+        cout << model.average;
+        SetConsoleTextAttribute(console, 7);
+        cout << " *** " << endl;
     }
-    SetConsoleTextAttribute(console, 7);
     return this;
 }
 
@@ -125,4 +140,41 @@ Student* Student::add()
 {
     this->students.push_back(this->studentModel);
     return this;
+}
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+    for (StudentModel stu : this->students)
+    {
+        switch(searchField)
+        {
+            // Search by code
+            case 0:
+                if (this->studentModel.code == stu.code) 
+                {
+                    result = true;
+                    this->studentModel = stu;
+                }
+                break;
+            // Search by name
+            case 1:
+                if (this->studentModel.name == stu.name) 
+                {
+                    result = true;
+                    this->studentModel = stu;
+                }
+                break;
+            // Search by average
+            case 2:
+                if (this->studentModel.average == stu.average) 
+                {
+                    result = true;
+                    this->studentModel = stu;
+                }
+                break;
+        }
+        if (result) break;
+    }
+    return result;
 }

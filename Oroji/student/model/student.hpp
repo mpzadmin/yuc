@@ -110,6 +110,9 @@ Student* Student::list()
 }*/
 Student* Student::add()
 {
+    if(!this->find(Field::Code)){
+        this->Students.push_back(this->studentModel);
+    }
     this->Students.push_back(this->studentModel);
     return this;
 }

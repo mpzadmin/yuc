@@ -3,6 +3,8 @@
 #include <list>
 #include <fstream>
 using namespace std;
+
+enum Field {Code, Name, Average};
 class StudentModel
 {
     public:
@@ -10,7 +12,7 @@ class StudentModel
     string name;
     float average;
 };
-//typedef list <StudentModel>::iterator It;
+typedef list <StudentModel>::iterator It;
 class Student
 {
     private:
@@ -30,7 +32,9 @@ class Student
         float getAverage();
         Student* list();
         //Student* list2(); 
+       
         Student* add();
+        bool find(Field searchField);
 };
 Student::Student()
 {
@@ -108,4 +112,37 @@ Student* Student::add()
 {
     this->Students.push_back(this->studentModel);
     return this;
+}
+bool Student::find(Field searchField)
+{
+    bool result=false;
+    if (this->Students.size() <= 0) return result;
+    for(It it=this->Students.begin(); it!=this->Students.end(); it++)
+     {
+         if(searchField ==Field::Code)
+         {
+             if(it->code==this->studentModel.code)
+             {
+                // result = true;
+               //  this->setCode(it->code);
+               //  this->setName(it->name);
+               //  this->setAverage(it->average);
+                 this-> studentModel =*it;
+                 result = true;
+                 break;   
+             }
+         }
+         else if (searchField == Field::Name)
+         {
+               if(it->code== this->studentModel.code) 
+                this-> studentModel =*it;
+                 result = true;
+                 break;    
+         }
+         else
+         {
+             
+         }
+         
+     }
 }

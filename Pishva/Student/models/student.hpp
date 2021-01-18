@@ -13,6 +13,8 @@ class StudentModel
         float average;
 };
 
+typedef list<StudentModel>::iterator StudentIterator;
+
 class Student
 {
     private:
@@ -103,13 +105,14 @@ Student* Student::list()
     if (this->students.size() <= 0)
         return this;
 
-    for (StudentModel stu : this->students)
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-        cout << "code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.average << endl;
-        cout << endl;
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->average << endl;
+        cout << endl;    
     }
+
     return this;
 }
 Student* Student::add()

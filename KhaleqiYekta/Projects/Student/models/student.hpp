@@ -49,6 +49,7 @@ public:
 
         Student* list();
         Student* add();
+        Student* remove();
 
         bool find(Field searchField);
 
@@ -153,6 +154,29 @@ Student* Student::add()
     else
     {
         this->setError("Record already exists!");
+    }
+
+    return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); ++it)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("Record not found!");
     }
 
     return this;

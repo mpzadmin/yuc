@@ -35,6 +35,8 @@ class Student
        
         Student* add();
         bool find(Field searchField);
+        Student* clearError();
+        Student* setError(string errorMessage);
 };
 Student::Student()
 {
@@ -110,10 +112,15 @@ Student* Student::list()
 }*/
 Student* Student::add()
 {
+    this->clearError();
     if(!this->find(Field::Code)){
         this->Students.push_back(this->studentModel);
     }
-    this->Students.push_back(this->studentModel);
+    else
+    {
+        this->setError(string errorMessage);
+    }
+    
     return this;
 }
 bool Student::find(Field searchField)
@@ -148,4 +155,15 @@ bool Student::find(Field searchField)
          }
          
      }
-}
+     Student* Student::clearError()
+         {
+             this->error = false;
+             this->errorMessage.clear();
+             return this;
+         }
+    Student* student::setError()
+    {
+        this->error = false;
+        this->errorMessage.clear();
+        return this;
+    }

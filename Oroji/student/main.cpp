@@ -20,7 +20,16 @@ int main()
     {
       cout << "Not found!" << endl;
     }
+    if( !student->setCode(1)->setName("dani")->setAverage(10)->add()->fail())
+    {
+      cout << "success" << endl;
+    }
+    else
+    {
+      {
+        cout << student->getError() <<  endl;
+      }
+    }
     
-  
     delete student;
 } 

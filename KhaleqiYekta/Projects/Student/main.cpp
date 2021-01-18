@@ -39,7 +39,16 @@ int main()
     student->setCode(2)->setName("Mehdi")->setAverage(2.5)->add();
     student->setCode(3)->setName("Reza")->setAverage(19.5)->add();
     student->setCode(4)->setName("Reyhaneh")->setAverage(20)->add();
-    student->list();
+
+
+    if (!student->setCode(5)->setName("Bita")->setAverage(8.75)->add()->fail())
+    {
+        cout << "Student has been successfully added!" << endl;
+    }
+    else
+    {
+        cout << student->getError() << endl;
+    }
 
 
     delete student;

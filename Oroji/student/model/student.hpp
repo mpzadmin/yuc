@@ -29,6 +29,8 @@ class Student
         Student* setAverage(float average);
         float getAverage();
         Student* list();
+        //Student* list2(); 
+        Student* add();
 };
 Student::Student()
 {
@@ -102,3 +104,8 @@ Student* Student::list()
     }
     return this;
 }*/
+Student* Student::add()
+{
+    this->Students.push_back(this->studentModel);
+    return this;
+}

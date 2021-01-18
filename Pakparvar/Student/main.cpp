@@ -10,7 +10,7 @@ int main()
 {
     Student* student;
     student = new Student;
-    student->setCode(1)->setName("Hossein")->setAverage(19)->debug();
-    student->setCode(2)->setName("Ali")->setAverage(20)->debug();
+    student->setCode(1)->setName("Hossein")->setAverage(19)->add();
+    student->setCode(2)->setName("Ali")->setAverage(20)->add();
     delete student;
 }

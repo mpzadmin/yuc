@@ -6,6 +6,7 @@
 using namespace std;
 
 typedef list<StudentModel>:: iterator StudentModelIterator;
+enum Field{Code, Name, Average};
 
 class StudentModel 
 {
@@ -39,6 +40,8 @@ class Student
 
         Student* list();
         Student* add();
+
+        bool find(Field searchField);
             
 
         bool fail();
@@ -134,3 +137,44 @@ Student* Student::add()
     this->students.push_back(this->studentModel);
     return this;
 }
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+    if (this->students.size() <= 0) return result;
+    for(StudentModelIterator it=this->students.begin(); it != this->students.end(); it++ )
+    {
+        if (searchField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+            {
+                this->studentModel= *it;
+                result = true;
+                break;
+            }
+        }
+        else if (searchField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+            {
+                this->studentModel= *it;
+                result = true;
+                break;
+            }
+
+        }
+        else
+        {
+            if (it->average == this->studentModel.average)
+            {
+                this->studentModel= *it;
+                result = true;
+                break;
+            }
+            
+        }
+        
+    }
+    return result;
+}
+

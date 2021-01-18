@@ -144,14 +144,15 @@ Student* Student::list()
 
 Student* Student::add()
 {
+    this->clearError();
+
     if (!this->find(Field::Code))
     {
         this->students.push_back(this->studentModel);
     }
     else
     {
-        this->error = true;
-        this->errorMessage = "Record already exists!";
+        this->setError("Record already exists!");
     }
 
     return this;

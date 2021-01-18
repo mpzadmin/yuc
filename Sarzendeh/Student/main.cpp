@@ -28,6 +28,15 @@ int main()
         ->add();
 
     student->list();
+
+    if (student->setName("Reza")->find(Field::Name))
+    {
+        student->debug();
+    }
+    else
+    {
+        cout << "NOT FOUND" << endl;
+    }
         
     delete student;
 }

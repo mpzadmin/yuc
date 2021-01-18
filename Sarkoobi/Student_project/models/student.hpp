@@ -133,7 +133,8 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentmodel);
+    if ( !this->find(Field::Code) )
+        this->students.push_back(this->studentmodel); 
     return this;
 }
 
@@ -149,7 +150,7 @@ bool Student::find(Field searchField)
         {
             if (it->code == this->studentmodel.code)
             {
-                this->studentmodel = *it;
+                this->studentmodel = *it; 
                 result true;
                 break;
             }

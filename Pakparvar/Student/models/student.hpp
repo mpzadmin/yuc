@@ -4,6 +4,7 @@
 #include <fstream>
 
 using namespace std;
+enum Field {Code, Name, Average};
 
 class StudentModel
 {
@@ -13,6 +14,8 @@ class StudentModel
         string name;
         float average;
 };
+
+typedef list<StudentModel>::iterator StudentIterator;
 
 class Student
 {
@@ -35,6 +38,8 @@ class Student
         float getAverage();
         Student* list();
         Student* add();
+        bool find(Field searchField);
+
         bool fail();
         string getError();
 };
@@ -101,11 +106,11 @@ Student* Student::list()
     {
         return this;
     }
-    for ( StudentModel stu : this->students)
+     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.average << endl;
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->average << endl;
         cout << endl;
     }
     return this;
@@ -116,3 +121,41 @@ Student* Student::add()
     this->students.push_back(this->studentModel);
     return this;
 }
+
+ bool Student::find(Field searchField)
+ {
+     bool result = false;
+
+      if(this->students.size() <= 0)
+    {
+        return result;
+    }
+
+     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+     {
+         if(searchField == Field::Code)
+         {
+             if(it->code == this->studentModel.code)
+             {
+               this->studentModel = *it;
+               result = true;
+               break;
+             }
+         }
+         else if (searchField ==Field::Name)
+         {
+             if(it->name == this->studentModel.name)
+             {
+                 this->studentModel = *it;
+                 result = true;
+                 break;
+             }
+             
+         }
+         else
+         {
+             
+         }
+         
+     }
+ }

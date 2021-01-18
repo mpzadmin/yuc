@@ -45,6 +45,8 @@ class Student
         bool find(Field searchFeild);
 
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();
 };
 
@@ -117,7 +119,15 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(studentModel);
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(studentModel);
+    }
+    else
+    {
+        this->setError("The record exists!");
+    }
+    
     return this;
 }
 
@@ -137,6 +147,20 @@ bool Student::find(Field searchFeild)
         }
     }
     return result;
+}
+
+Student* Student::clearError()
+{
+    error = false;
+    this->errorMessage.clear();
+    return this;
+}
+
+Student* Student::setError(string errorMessage)
+{
+    error = true;
+    this->errorMessage = errorMessage;
+    return this;
 }
 
 void Student::debug()

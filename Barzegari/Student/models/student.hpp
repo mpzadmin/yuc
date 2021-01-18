@@ -117,7 +117,8 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(studentModel);
+    if (!this->find(Field::Code))
+        this->students.push_back(studentModel);
     return this;
 }
 

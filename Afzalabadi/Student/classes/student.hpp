@@ -5,6 +5,12 @@
 
 using namespace std;
 
+enum Field {Code, Name,Average};
+
+Field field;
+
+
+
 class StudentModel
 {
      public:
@@ -43,9 +49,16 @@ class Student
          Student* list();
         // Student* list();
          Student* add();
+          Student* remove();
 
+
+
+         bool find();
          bool fail();
+
          string getError();
+         Student* clearError();
+         Student* setError(string errorMessage);
 
 
 
@@ -155,9 +168,90 @@ Student* Student::list()
 */
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+     this->clearError();
+    if (!this->find(Field::Code) )
+     {
+        this->students.push_back(this->studentModel);
+     }
+    else
+    {
+        this->setError("The record exists!");
+    }        
     return this;
 }
+
+bool Student::find(Field field)
+{
+    bool result = false;
+    if( this -> students.size()<= 0 ) return result;
+     {
+    for(StudentIterator it = this -> students.begin(); it != this -> students.end(); it++ )
+    {
+     if(field == Field :: Code)
+      {
+        if(it->code == this->studentModel.code)
+        {
+            this->studentModel = *it;
+            result = true;
+            break;
+
+        }
+      }
+
+        else if(field == Field :: Name)
+        {
+             if(it->name == this->studentModel.name)
+         {
+            this->studentModel = *it;
+            result = true;
+            break;
+
+         }
+
+        }
+        else
+        {
+         if(it->avarage == this->studentModel.avarage)
+          {
+             this->studentModel = *it;
+             result = true;
+             break;
+
+          }
+        }
+    } 
+ }
+
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
+    return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+
 
 
 

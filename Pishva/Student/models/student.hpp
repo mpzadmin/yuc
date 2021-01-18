@@ -45,6 +45,7 @@ class Student
         bool find(Field searchField);
 
         bool fail();
+        Student* remove();
         Student* setError(string errorMessage);
         Student* clearError();
         string getError();
@@ -181,5 +182,22 @@ Student* Student::setError(string errorMessage)
 {
     this->error = true;
     this->errorMassage = errorMassage;
+    return this;
+}
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if ( !result )
+        this->setError("The record not found!");
     return this;
 }

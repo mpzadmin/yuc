@@ -5,6 +5,8 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
@@ -13,7 +15,7 @@ class StudentModel
         float average;
 };
 
-typedef list<Student>::iterator StudentIterator;
+typedef list<StudentModel>::iterator StudentIterator;
 
 class Student
 {
@@ -40,6 +42,7 @@ class Student
         Student* add();
         Student* list();
 
+        bool find(Field searchFeild);
 
         bool fail();
         string getError();
@@ -115,6 +118,25 @@ Student* Student::list()
 Student* Student::add()
 {
     this->students.push_back(studentModel);
+    return this;
+}
+
+bool Student::find(Field searchFeild)
+{
+    bool result = false;
+    if (this->students.size() <= 0) return result;
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if ((searchFeild == Field::Code && it->code == this->studentModel.code) ||
+            (searchFeild == Field::Name && it->name == this->studentModel.name) ||
+            (searchFeild == Field::Average && it->average == this->studentModel.average))
+        {
+                studentModel = *it;
+                result = true;
+                break;
+        }
+    }
+    return result;
 }
 
 void Student::debug()

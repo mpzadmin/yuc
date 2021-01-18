@@ -41,7 +41,7 @@ class Student
          float getAverage();
 
          Student* list();
-        // Student* list2();
+        // Student* list();
          Student* add();
 
          bool fail();
@@ -135,7 +135,7 @@ Student* Student::list()
     return this;
 }
 /*
-Student* Student::list2()
+Student* Student::list()
 {
     if (this->students.size() <= 0)
     {

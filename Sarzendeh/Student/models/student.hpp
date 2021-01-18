@@ -41,12 +41,15 @@ class Student
 
         Student* list();
         Student* add();
+        Student* remove();
         
         bool find(Field searchField);
 
         void debug();
 
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();
 };
 
@@ -119,7 +122,36 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+    this->clearError();
+
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("The data exists!");
+    }
+    return this;
+}
+
+Student* Student::remove()
+{
+    this->clearError();
+    bool result = false;
+    for (StudentIterator it = students.begin(); it != students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("Not Found!");
+    }
     return this;
 }
 
@@ -172,6 +204,20 @@ void Student::debug()
 bool Student::fail()
 {
     return this->error;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
+    return this;
 }
 
 string Student::getError()

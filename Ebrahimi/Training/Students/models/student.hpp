@@ -23,14 +23,13 @@ class Student
 
         bool error;
 
-        string errorMessage;    
-    protected:
+        string errorMessage;
     public:
         Student();
         ~Student();
         void debug();
 
-        Student* setCode(int code);        
+        Student* setCode(int code);
         int getCode();
         Student* setName(string name);
         string getName();
@@ -38,7 +37,6 @@ class Student
         float getAverage();
 
         Student* list();
-        Student* list2();
         Student* add();
 
         bool fail();
@@ -48,21 +46,22 @@ class Student
 Student::Student()
 {
     this->students.clear();
-    this->error = false;    
+    this->error = false;
 }
 
 Student::~Student()
 {
+
 }
 
 void Student::debug()
 {
     cout << endl;
-    cout << "********************************************" << endl;
+    cout << "**********************************************" << endl;
     cout << "Code: " << this->getCode() << endl;
     cout << "Name: " << this->getName() << endl;
-    cout << "Average: " << this->getAverage() << endl;
-    cout << "********************************************" << endl;
+    cout << "Average:" << this->getAverage() << endl;
+    cout << "**********************************************" << endl;
 }
 
 bool Student::fail()
@@ -115,30 +114,12 @@ Student* Student::list()
         return this;
     }
 
-    for (StudentModel stu : this->students)
-    {
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.average << endl;
-        cout << endl;    
-    }
-
-    return this;
-}
-
-Student* Student::list2()
-{
-    if (this->students.size() <= 0)
-    {
-        return this;
-    }
-
     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
-        cout << endl;    
+        cout << endl;
     }
 
     return this;

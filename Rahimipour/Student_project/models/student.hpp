@@ -22,7 +22,7 @@ class StudentModel
 
 typedef list<StudentModel>::iterator StudentIterator;// SMIterator : student
 
-class Student // main class
+class Student // main class(student class)
 {
     private:
         StudentModel studentModel;
@@ -48,8 +48,7 @@ class Student // main class
         float getAverage();
 
         //Student* list();// print all data in list sutdent.
-        Student* list2();
-
+        Student* list2(bool showFilteredData = false);
         Student* add();// 
         Student* remove();
 
@@ -147,7 +146,7 @@ Student* Student::list()
 }
 */
 
-Student* Student::list2()
+Student* Student::list2(bool showFilteredData)
 {
     if (this->students.size() <= 0)
     {
@@ -156,6 +155,7 @@ Student* Student::list2()
 
     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
+        if (showFilteredData && (!it->filtered)) continue; // mipare aval halghe
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
@@ -279,6 +279,7 @@ Student* Student::filter(Field filterField)
             }
         }
     }
+    return this;
 }
 
 Student* Student::clearError()

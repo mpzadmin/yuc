@@ -14,6 +14,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false;
+        }
 };
 
 class Student
@@ -21,6 +26,7 @@ class Student
     private:
         StudentModel studentModel;
         list <StudentModel> students;
+        list <StudentModel> filteredStudents;
 
         bool error;
 
@@ -206,6 +212,33 @@ bool Student::find(Field searchField)
     }
     return result;
 }
+
+Student* Student::filter(Field filterField)
+{   
+    this->clearError();
+    for(StudentModelIterator it=this->students.begin(); it != this->students.end(); it++ )
+    {
+        it->filtered = false;
+        if (filterField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+                it->filtered = true;            
+        }
+        else if (filterField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+                it->filtered = true;
+
+        }
+        else if (filterField == Field::Average)
+        {
+            if (it->average == this->studentModel.average)
+                it->filtered = true;
+
+        }
+    }
+}
+
 
 Student* Student::clearError()
 {

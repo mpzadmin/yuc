@@ -13,7 +13,14 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            this->filtered = false;
+        }
 };
+
+typedef list<StudentModel>::iterator StudentItr;
 
 class Student
 {
@@ -38,9 +45,11 @@ class Student
         Student* add();
         Student* clearError();
         Student* setError(string errorMessage);
+        Student* remove(int code);
 
         void debug();
         bool find(Field searchField);
+        Student* filter(Field filterField);
         bool fail();
         string getError();
 };
@@ -197,5 +206,53 @@ Student* Student::setError(string errorMessage)
 {
     this->error = true;
     this->errorMessage = errorMessage;
+    return this;
+}
+
+Student* Student::remove(int code)
+{
+    this->setError("Coudn't find any student with given code!");
+    for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
+    {
+        if (studentItr->code == code)
+        {
+            this->students.erase(studentItr);
+            this->clearError();
+            break;
+        }
+    }
+    return this;
+}
+
+Student* Student::filter(Field filterField)
+{
+    for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
+    {
+        studentItr->filtered = false;
+        switch(filterField)
+        {
+            // Filter by code
+            case 0:
+                if (this->studentModel.code == studentItr->code) 
+                {
+                    studentItr->filtered = true;
+                }
+                break;
+            // Filter by name
+            case 1:
+                if (this->studentModel.name == studentItr->name) 
+                {
+                    studentItr->filtered = true;
+                }
+                break;
+            // Filter by average
+            case 2:
+                if (this->studentModel.average == studentItr->average) 
+                {
+                    studentItr->filtered = true;
+                }
+                break;
+        }
+    }
     return this;
 }

@@ -41,7 +41,7 @@ class Student
         string getName();
         float getAverage();
 
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* add();
         Student* clearError();
         Student* setError(string errorMessage);
@@ -125,11 +125,12 @@ void Student::debug()
     cout << " >>>" << endl;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.size() <= 0) return this;
     for (StudentModel model : this->students)
     {
+        if (showFilteredData && !model.filtered) continue;
         cout << "*** Code: ";
         SetConsoleTextAttribute(console, 4);
         cout << model.code;

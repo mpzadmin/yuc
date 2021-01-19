@@ -18,6 +18,7 @@ class Student
     private:
         StudentModel studentModel;
         list<StudentModel> Students;
+        list<StudentModel> filteredStudents;
     bool error;
     protected:
     public:
@@ -37,7 +38,7 @@ class Student
         bool find(Field searchField);
         Student* clearError();
         Student* setError(string errorMessage);
-        Stident* getError();
+        Student* getError();
         Student* remove();
 };
 Student::Student()

@@ -13,6 +13,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false;
+        }
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
@@ -41,10 +46,15 @@ class Student
 
         Student* list();
         Student* add();
+        Student* remove();
 
         bool find(Field searchField);
+        Student* filter(Field filterField);
+        
 
         bool fail();
+        Student* setError(string errorMessage);
+        Student* clearError();
         string getError();
 };
 
@@ -120,9 +130,14 @@ Student* Student::list()
     return this;
 }
 Student* Student::add()
-{
+{   
+    this->clearError();
     if ( !this->find(Field::Code) )
         this->students.push_back(this->studentModel);
+
+    else
+        this->setError("The record exists!");
+
     return this;
 }
 bool Student::find(Field searchField)
@@ -163,4 +178,56 @@ bool Student::find(Field searchField)
         }
     }
     return result;
+}
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMassage.clear();
+    return this;
+}
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMassage = errorMassage;
+    return this;
+}
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if ( !result )
+        this->setError("The record not found!");
+    return this;
+}
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        it->filtered = false;
+        if (filterField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+                it->filtered = true;
+        }
+        else if (filterField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+                it->filtered = true;
+        }
+        else if (filterField == Field::Average)
+        {
+            if (it->average == this->studentModel.average)
+                it->filtered = true;
+        }
+    }
 }

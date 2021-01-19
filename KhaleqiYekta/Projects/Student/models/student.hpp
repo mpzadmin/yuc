@@ -49,13 +49,16 @@ public:
 
         Student* list();
         Student* add();
+        Student* remove();
 
         bool find(Field searchField);
 
         void debug();
 
         bool fail();
+        Student* setError(const string& err);
         string getError();
+        Student* clearError();
 };
 
 Student::Student()
@@ -142,44 +145,95 @@ Student* Student::list()
 
 Student* Student::add()
 {
-    this->students.push_back(this->studentModel);
+    this->clearError();
+
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("Record already exists!");
+    }
+
+    return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); ++it)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("Record not found!");
+    }
+
     return this;
 }
 
 bool Student::find(Field searchField)
 {
     bool result = false;
-    if(this->students.empty())
-        return result;
 
-    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    if (this->students.empty())
+    {
+        return result;
+    }
+
+    for (StudentIterator it = this->students.begin(); it != students.end(); ++it)
     {
         if (searchField == Field::Code)
         {
             if (it->code == this->studentModel.code)
             {
+                result = true;
                 this->studentModel = *it;
 
-                return true;
+                break;
             }
         }
         else if (searchField == Field::Name)
         {
-            if (it->name == this->studentModel.name)
-            {
-                this->studentModel = *it;
+            result = true;
+            this->studentModel = *it;
 
-                return true;
-            }
+            break;
         }
         else
         {
-            if (it->average == this->studentModel.average)
-            {
-                this->studentModel = *it;
+            result = true;
+            this->studentModel = *it;
 
-                return true;
-            }
+            break;
         }
     }
+
+    return result;
+}
+
+Student* Student::setError(const string &err)
+{
+    this->error = true;
+    this->errorMessage = err;
+
+    return this;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+
+    return this;
 }

@@ -40,11 +40,14 @@ class Student
 
         Student* list();
         Student* add();
+        Student* remove();
 
         bool find(Field searchField);
             
 
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMasage);
         string getError();
 };
 
@@ -66,10 +69,7 @@ void Student::debug()
     cout << "Code: " << this->getCode() << endl;
     cout << "Name: " << this->getName() << endl;
     cout << "Average: " << this->getAverage() << endl;
-    cout << "****************************" << endl;
-
-
-
+    cout << "****************************" << endl;  
 }
 
 
@@ -129,12 +129,41 @@ Student* Student::list()
         cout << "Average: " << it->average << endl;
         cout << endl;
     }
+
     return this;
 }
 
 Student* Student::add()
-{
-    this->students.push_back(this->studentModel);
+{   
+    this->clearError();
+    if( !this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("The record exists!");
+    }
+    return this;
+}
+
+Student* Student::remove()
+{   
+    bool result = false;
+    this->clearError();
+    for(StudentModelIterator it = this->students.begin(); it != this->students.end(); it++ )
+    {
+        if(it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("The record not found!");
+    }
     return this;
 }
 
@@ -176,5 +205,21 @@ bool Student::find(Field searchField)
         
     }
     return result;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+
+}
+
+Student* Student::setError(string errorMasage)
+{
+    this->error = false;
+    this->errorMessage = errorMessage;
+    return this;
+
 }
 

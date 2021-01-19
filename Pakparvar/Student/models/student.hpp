@@ -4,6 +4,7 @@
 #include <fstream>
 
 using namespace std;
+enum Field {Code, Name, Average};
 
 class StudentModel
 {
@@ -12,13 +13,21 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false;
+        }
 };
+
+typedef list<StudentModel>::iterator StudentIterator;
 
 class Student
 {
     private:
         StudentModel studentModel;
         list<StudentModel> students;
+      
 
         bool error;  
         string errorMessage;  
@@ -35,7 +44,13 @@ class Student
         float getAverage();
         Student* list();
         Student* add();
+        Student* remove();
+        bool find(Field searchField);
+        Student* filter(Field filterField);
+
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();
 };
 
@@ -101,11 +116,11 @@ Student* Student::list()
     {
         return this;
     }
-    for ( StudentModel stu : this->students)
+     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.average << endl;
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->average << endl;
         cout << endl;
     }
     return this;
@@ -113,6 +128,125 @@ Student* Student::list()
 
 Student* Student::add()
 {
+    this->clearError();
+    if( !this->find(Field::Name))
+    {
     this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("The record exists!");
+    }
+    
     return this;
 }
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("The record not found!");
+    }
+    return this;
+
+}
+
+ bool Student::find(Field searchField)
+ {
+     bool result = false;
+
+      if(this->students.size() <= 0)
+       {
+        return result;
+       }
+
+     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+     {
+         if(searchField == Field::Code)
+         {
+             if(it->code == this->studentModel.code)
+             {
+               this->studentModel = *it;
+               result = true;
+               break;
+             }
+         }
+         else if (searchField ==Field::Name)
+         {
+             if(it->name == this->studentModel.name)
+             {
+                 this->studentModel = *it;
+                 result = true;
+                 break;
+             }
+         }
+         else
+         {
+             if (it->average == this->studentModel.average)
+             {
+                 this->studentModel = *it;
+                 result = true;
+                 break;
+             }
+         }
+         
+     }
+     return result;
+ }
+
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+     {
+         it->filtered = false;
+
+         if (filterField == Field::Code)
+         {
+             if ( it->code == this->studentModel.code)
+             {
+                 it->filtered = true;
+             }
+         }
+         else if (filterField == Field::Name)
+         {
+             if ( it->name == this->studentModel.name)
+             {
+                 it->filtered = true;
+             }
+         }
+         else if (filterField == Field::Average)
+         {
+             if ( it->average == this->studentModel.average)
+             {
+                 it->filtered = true;
+             }
+         }
+         
+     }
+}
+
+
+ Student* Student::clearError()
+ {
+     this->error = false;
+     this->errorMessage.clear();
+     return this;
+ }
+ 
+ Student* Student::setError(string errorMessage)
+ {
+     this->error = true;
+     this->errorMessage = errorMessage;
+     return this;
+ }

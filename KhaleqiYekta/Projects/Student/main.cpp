@@ -35,13 +35,20 @@ int main()
     Student* student;
 
     student = new Student;
-    student->setCode(1)->setName("Ali")->setAverage(20)->debug();
-    student->setCode(2)->setName("Mehdi")->setAverage(2.5)->debug();
-    student->setCode(3)->setName("Reza")->setAverage(19.5)->debug();
-    student->setCode(2)->setName("Laleh")->setAverage(8.75)->debug();
-    student->setCode(2)->setName("Reyhaneh")->setAverage(20)->debug();
-    student->setCode(2)->setName("Mobina")->setAverage(18.75)->debug();
-    student->setCode(2)->setName("Tara")->setAverage(15.0)->debug();
+    student->setCode(1)->setName("Ali")->setAverage(20)->add();
+    student->setCode(2)->setName("Mehdi")->setAverage(2.5)->add();
+    student->setCode(3)->setName("Reza")->setAverage(19.5)->add();
+    student->setCode(4)->setName("Reyhaneh")->setAverage(20)->add();
+
+
+    if (!student->setCode(5)->setName("Bita")->setAverage(8.75)->add()->fail())
+    {
+        cout << "Student has been successfully added!" << endl;
+    }
+    else
+    {
+        cout << student->getError() << endl;
+    }
 
 
     delete student;

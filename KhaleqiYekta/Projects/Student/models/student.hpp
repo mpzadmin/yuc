@@ -13,13 +13,22 @@
 
 using namespace std;
 
+enum Field {Code, Name, Average};
+
 class StudentModel
 {
     public:
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false; // false by default
+        }
 };
+
+typedef list<StudentModel>::iterator StudentIterator;
 
 class Student
 {
@@ -35,7 +44,6 @@ public:
     Student();
         ~Student();
 
-        Student* list();
         Student* setCode(int code);
         int getCode();
         Student* setName(string name);
@@ -43,10 +51,20 @@ public:
         string getName();
         Student* setAverage(float avg);
         float getAverage();
+
+        Student* list();
+        Student* add();
+        Student* remove();
+
+        bool find(Field searchField);
+        Student* filter(Field filterField);
+
         void debug();
 
         bool fail();
+        Student* setError(const string& err);
         string getError();
+        Student* clearError();
 };
 
 Student::Student()
@@ -120,13 +138,135 @@ Student* Student::list()
         return this;
     }
 
-    for (const StudentModel &s : this->students)
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-        cout << "Code: " << s.code << endl;
-        cout << "Name: " << s.name << endl;
-        cout << "Average: " << s.average << endl;
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->average << endl;
         cout << endl;
     }
+
+    return this;
+}
+
+Student* Student::add()
+{
+    this->clearError();
+
+    if (!this->find(Field::Code))
+    {
+        this->students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("Record already exists!");
+    }
+
+    return this;
+}
+
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); ++it)
+    {
+        if (it->code == this->studentModel.code)
+        {
+            this->students.erase(it);
+            result = true;
+
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("Record not found!");
+    }
+
+    return this;
+}
+
+bool Student::find(Field searchField)
+{
+    bool result = false;
+
+    if (this->students.empty())
+    {
+        return result;
+    }
+
+    for (StudentIterator it = this->students.begin(); it != students.end(); ++it)
+    {
+        if (searchField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+            {
+                result = true;
+                this->studentModel = *it;
+
+                break;
+            }
+        }
+        else if (searchField == Field::Name)
+        {
+            result = true;
+            this->studentModel = *it;
+
+            break;
+        }
+        else
+        {
+            result = true;
+            this->studentModel = *it;
+
+            break;
+        }
+    }
+
+    return result;
+}
+
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (auto &student : this->students)
+    {
+        student.filtered = false;
+
+        if (filterField == Field::Code)
+        {
+            if (student.code == this->studentModel.code)
+                student.filtered = true;
+        }
+        else if (filterField == Field::Name)
+        {
+            if (student.name == this->studentModel.name)
+                student.filtered = true;
+        }
+        else if (filterField == Field::Average)
+        {
+            if (student.average == this->studentModel.average)
+                student.filtered = true;
+        }
+    }
+
+    return this;
+}
+
+Student* Student::setError(const string &err)
+{
+    this->error = true;
+    this->errorMessage = err;
+
+    return this;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
 
     return this;
 }

@@ -9,7 +9,7 @@ void display(string str ,bool newline)
 {
     display(str);
     if (newline)
-    {
+    {   
         cout <<endl;
     }
 }

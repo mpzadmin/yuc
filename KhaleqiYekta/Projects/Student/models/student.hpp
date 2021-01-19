@@ -14,6 +14,7 @@
 using namespace std;
 
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc};
 
 class StudentModel
 {
@@ -58,6 +59,7 @@ public:
 
         bool find(Field searchField);
         Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sortMode);
 
         void debug();
 
@@ -256,6 +258,11 @@ Student* Student::filter(Field filterField)
     }
 
     return this;
+}
+
+Student* Student::sort(Field sortField, SortMode sortMode)
+{
+
 }
 
 Student* Student::setError(const string &err)

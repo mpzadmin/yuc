@@ -50,6 +50,12 @@ int main()
         cout << student->getError() << endl;
     }
 
+    c::printlnSeparator('*',40);
+    student->setAverage(20)->filter(Field::Average)->list(true);
+    c::printlnSeparator('*',40);
+    student->setName("Ali")->filter(Field::Name)->list(true);
+    c::printlnSeparator('*',40);
+
 
     delete student;
 

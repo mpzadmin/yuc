@@ -166,7 +166,7 @@ bool Student::find(Field searchField)
         switch(searchField)
         {
             // Search by code
-            case 0:
+            case Field::Code:
                 if (this->studentModel.code == stu.code) 
                 {
                     result = true;
@@ -174,7 +174,7 @@ bool Student::find(Field searchField)
                 }
                 break;
             // Search by name
-            case 1:
+            case Field::Name:
                 if (this->studentModel.name == stu.name) 
                 {
                     result = true;
@@ -182,7 +182,7 @@ bool Student::find(Field searchField)
                 }
                 break;
             // Search by average
-            case 2:
+            case Field::Average:
                 if (this->studentModel.average == stu.average) 
                 {
                     result = true;
@@ -226,27 +226,28 @@ Student* Student::remove(int code)
 
 Student* Student::filter(Field filterField)
 {
+    this->clearError();
     for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
     {
         studentItr->filtered = false;
         switch(filterField)
         {
             // Filter by code
-            case 0:
+            case Field::Code:
                 if (this->studentModel.code == studentItr->code) 
                 {
                     studentItr->filtered = true;
                 }
                 break;
             // Filter by name
-            case 1:
+            case Field::Name:
                 if (this->studentModel.name == studentItr->name) 
                 {
                     studentItr->filtered = true;
                 }
                 break;
             // Filter by average
-            case 2:
+            case Field::Average:
                 if (this->studentModel.average == studentItr->average) 
                 {
                     studentItr->filtered = true;

@@ -3,19 +3,26 @@
 #include <list>
 #include <fstream>
 using namespace std;
+
+enum Field {Code, Name, Average};
 class StudentModel
 {
     public:
     int code;
     string name;
     float average;
+    StudentModel()
+    {
+        filterd = false;
+    }
 };
-//typedef list <StudentModel>::iterator It;
+typedef list <StudentModel>::iterator It;
 class Student
 {
     private:
         StudentModel studentModel;
         list<StudentModel> Students;
+        list<StudentModel> filteredStudents;
     bool error;
     protected:
     public:
@@ -30,7 +37,14 @@ class Student
         float getAverage();
         Student* list();
         //Student* list2(); 
+       
         Student* add();
+        bool find(Field searchField);
+        Student* clearError();
+        Student* setError(string errorMessage);
+        Student* getError();
+        Student* remove();
+        Student* filter(Field filter)
 };
 Student::Student()
 {
@@ -106,6 +120,94 @@ Student* Student::list()
 }*/
 Student* Student::add()
 {
-    this->Students.push_back(this->studentModel);
+    this->clearError();
+    if(!this->find(Field::Code)){
+        this->Students.push_back(this->studentModel);
+    }
+    else
+    {
+        this->setError("");
+    }
+    
     return this;
 }
+Student* Student::remove()
+{
+    bool result =false;
+    this->clearError();
+    for(It it=this->Students.begin(); it!=this->student.end(); it++)
+    {
+        if(it->code == this->studentModel.code)
+        {
+            this->Students.erase(it);
+            result = true;
+            break;
+        }
+    }
+}
+bool Student::find(Field searchField)
+{
+    bool result=false;
+    if (this->Students.size() <= 0) return result;
+    for(It it=this->Students.begin(); it!=this->Students.end(); it++)
+     {
+         if(searchField ==Field::Code)
+         {
+             if(it->code==this->studentModel.code)
+             {
+                // result = true;
+               //  this->setCode(it->code);
+               //  this->setName(it->name);
+               //  this->setAverage(it->average);
+                 this-> studentModel =*it;
+                 result = true;
+                 break;   
+             }
+         }
+         else if (searchField == Field::Name)
+         {
+               if(it->code== this->studentModel.code) 
+                this-> studentModel =*it;
+                 result = true;
+                 break;    
+         }
+         else
+         {
+             
+         }
+         
+     }
+   /*  Student* Student::clearError()
+         {
+             this->error = false;
+             this->errorMessage.clear();
+             return this;
+         }*/
+    Student* Student::setError()
+    {
+        this->error = false;
+        this->errorMessage.clear();
+        return this;
+    }
+    Student* Student::filter(Field filterField)
+    {
+        for(It it=this->Students.begin(); it!=this->Students.end(); it++)
+        {
+            it->filterd = false;
+            if(filterField ==Field::Code)
+            {
+                if (it->code == this->studentModel.code)
+                it->filterd = true;
+            }
+            else if (filterField==Field::Name)
+            {
+                if (it->name == this->studentModel.name)
+                it->filterd = true;
+            }
+            else if (filterField == Field::Average)
+            {
+             if (it->average == this->studentModel.average)
+                it->filterd = true;   
+            }
+        }
+    }

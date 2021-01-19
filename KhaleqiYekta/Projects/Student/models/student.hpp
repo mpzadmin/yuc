@@ -14,6 +14,7 @@
 using namespace std;
 
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc};
 
 class StudentModel
 {
@@ -21,6 +22,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false; // false by default
+        }
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
@@ -47,11 +53,13 @@ public:
         Student* setAverage(float avg);
         float getAverage();
 
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* add();
         Student* remove();
 
         bool find(Field searchField);
+        Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sortMode);
 
         void debug();
 
@@ -125,18 +133,21 @@ float Student::getAverage()
     return this->studentModel.average;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.empty())
     {
         return this;
     }
 
-    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    for (auto &student : this->students)
     {
-        cout << "Code: " << it->code << endl;
-        cout << "Name: " << it->name << endl;
-        cout << "Average: " << it->average << endl;
+        if (showFilteredData && (!student.filtered))
+            continue;
+
+        cout << "Code: " << student.code << endl;
+        cout << "Name: " << student.name << endl;
+        cout << "Average: " << student.average << endl;
         cout << endl;
     }
 
@@ -220,6 +231,38 @@ bool Student::find(Field searchField)
     }
 
     return result;
+}
+
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (auto &student : this->students)
+    {
+        student.filtered = false;
+
+        if (filterField == Field::Code)
+        {
+            if (student.code == this->studentModel.code)
+                student.filtered = true;
+        }
+        else if (filterField == Field::Name)
+        {
+            if (student.name == this->studentModel.name)
+                student.filtered = true;
+        }
+        else if (filterField == Field::Average)
+        {
+            if (student.average == this->studentModel.average)
+                student.filtered = true;
+        }
+    }
+
+    return this;
+}
+
+Student* Student::sort(Field sortField, SortMode sortMode)
+{
+
 }
 
 Student* Student::setError(const string &err)

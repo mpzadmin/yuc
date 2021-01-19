@@ -11,7 +11,11 @@ class StudentModel
         int code;
         string name;
         float average;
-        
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false;
+        }   
 };
 typedef list<StudentModel>::iterator StudentIterator;
 
@@ -20,7 +24,7 @@ class Student
     private:
         StudentModel studentmodel;
         list<StudentModel> students;
-
+    
         bool error;
 
         string errorMessage;
@@ -40,9 +44,12 @@ class Student
         //Student* list2();
         
         Student* add();
-
+        Student* remove();
         bool find(Field searchField);
+        Student* filter(Field filterField);
         bool fail();
+        Student* clearError();
+        Student* setError(string errorMessage);
         string getError();    
 };
 
@@ -135,6 +142,29 @@ Student* Student::add()
 {
     if ( !this->find(Field::Code) )
         this->students.push_back(this->studentmodel); 
+    else
+    {
+        this->setError("The record exists!");
+    }
+    return this;
+}
+Student* Student::remove()
+{
+    bool result = false;
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        if (it->code == this->studentmodel.code)
+        {
+            this->students.erase(it);
+            break;
+        }
+    }
+    if (!result)
+    {
+        this->setError("The record not found!");
+    }
+    
     return this;
 }
 
@@ -175,4 +205,40 @@ bool Student::find(Field searchField)
             }
         }
     }
+    return result;
+}
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        it->filtered = false;
+        if (filterField == Field::Code)
+        {
+            if (it->code == this->studentmodel.code)
+                it->filtered = true;
+        }
+        else if (filterField == Field::Name)
+        {
+            if (it->code == this->studentmodel.name)
+                it->filtered = true;
+        }
+        else if (filterField == Field::Average)
+        {
+            if (it->code == this->studentmodel.average)
+                it->filtered = true;
+        } 
+    }
+}
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
+    return this;
 }

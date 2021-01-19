@@ -21,6 +21,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false; // false by default
+        }
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
@@ -52,6 +57,7 @@ public:
         Student* remove();
 
         bool find(Field searchField);
+        Student* filter(Field filterField);
 
         void debug();
 
@@ -220,6 +226,33 @@ bool Student::find(Field searchField)
     }
 
     return result;
+}
+
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (auto &student : this->students)
+    {
+        student.filtered = false;
+
+        if (filterField == Field::Code)
+        {
+            if (student.code == this->studentModel.code)
+                student.filtered = true;
+        }
+        else if (filterField == Field::Name)
+        {
+            if (student.name == this->studentModel.name)
+                student.filtered = true;
+        }
+        else if (filterField == Field::Average)
+        {
+            if (student.average == this->studentModel.average)
+                student.filtered = true;
+        }
+    }
+
+    return this;
 }
 
 Student* Student::setError(const string &err)

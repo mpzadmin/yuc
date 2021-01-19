@@ -13,6 +13,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false;
+        }
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
@@ -40,10 +45,11 @@ class Student
         float getAverage();
 
         Student* add();
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* remove();
 
         bool find(Field searchFeild);
+        Student* filter(Field filterFeild);
 
         bool fail();
         Student* clearError();
@@ -104,16 +110,17 @@ float Student::getAverage()
     return this->studentModel.average;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if(this->students.size() <= 0)
         return this;
     
     for(StudentModel stu : this->students)
     {
+        if (showFilteredData && (!stu.filtered)) continue;
         cout << "code: " << this->studentModel.code << endl;
         cout << "name: " << this->studentModel.name << endl;
-        cout << "avrage: " << this->studentModel.average << endl;
+        cout << "avrage: " << this->studentModel.average << endl << endl;
     }
     return this;
 }
@@ -146,6 +153,7 @@ Student* Student::remove()
     }
     if(!result)
         this->setError("The record not found!");
+    return this;
 }
 
 bool Student::find(Field searchFeild)
@@ -164,6 +172,22 @@ bool Student::find(Field searchFeild)
         }
     }
     return result;
+}
+
+Student* Student::filter(Field filterFeild)
+{
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        it->filtered = false;
+        if ((filterFeild == Field::Code && it->code == this->studentModel.code) ||
+            (filterFeild == Field::Name && it->name == this->studentModel.name) ||
+            (filterFeild == Field::Average && it->average == this->studentModel.average))
+        {
+                it->filtered = true;
+        }
+    }
+    return this;
 }
 
 Student* Student::clearError()

@@ -16,6 +16,23 @@ int main()
     student->setCode(2)->setName("Arian")->setAverage(19)->add();
     student->setCode(3)->setName("Arman")->setAverage(18)->add();
     student->list();
+    student->setCode(2)->remove()->list();
+    if (student->setCode(2)->remove()->fail())
+    {
+        cout << student->getError() << endl;
+    }
+
+    /*
+    if ( !student->setCode(1)->setName("Arash")->setAverage(19->add()->fail()))
+    {
+        cout << "Success" << endl;
+    }
+    else
+    {
+        cout << student->getError() << endl;
+    }
+    
+    
 
     if (student->setName("Arash")->find(Field::Name))
     {
@@ -33,7 +50,7 @@ int main()
     else
     {
         cout << "NOT FOUND!" << endl;
-    }
+    }*/
     
 
     delete student;

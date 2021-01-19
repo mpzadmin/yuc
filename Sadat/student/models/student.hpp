@@ -13,6 +13,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            this->filtered = false;
+        }
 };
 
 typedef list<StudentModel>::iterator StudentItr;
@@ -36,7 +41,7 @@ class Student
         string getName();
         float getAverage();
 
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* add();
         Student* clearError();
         Student* setError(string errorMessage);
@@ -44,6 +49,7 @@ class Student
 
         void debug();
         bool find(Field searchField);
+        Student* filter(Field filterField);
         bool fail();
         string getError();
 };
@@ -119,11 +125,12 @@ void Student::debug()
     cout << " >>>" << endl;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.size() <= 0) return this;
     for (StudentModel model : this->students)
     {
+        if (showFilteredData && !model.filtered) continue;
         cout << "*** Code: ";
         SetConsoleTextAttribute(console, 4);
         cout << model.code;
@@ -160,7 +167,7 @@ bool Student::find(Field searchField)
         switch(searchField)
         {
             // Search by code
-            case 0:
+            case Field::Code:
                 if (this->studentModel.code == stu.code) 
                 {
                     result = true;
@@ -168,7 +175,7 @@ bool Student::find(Field searchField)
                 }
                 break;
             // Search by name
-            case 1:
+            case Field::Name:
                 if (this->studentModel.name == stu.name) 
                 {
                     result = true;
@@ -176,7 +183,7 @@ bool Student::find(Field searchField)
                 }
                 break;
             // Search by average
-            case 2:
+            case Field::Average:
                 if (this->studentModel.average == stu.average) 
                 {
                     result = true;
@@ -213,6 +220,40 @@ Student* Student::remove(int code)
             this->students.erase(studentItr);
             this->clearError();
             break;
+        }
+    }
+    return this;
+}
+
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
+    {
+        studentItr->filtered = false;
+        switch(filterField)
+        {
+            // Filter by code
+            case Field::Code:
+                if (this->studentModel.code == studentItr->code) 
+                {
+                    studentItr->filtered = true;
+                }
+                break;
+            // Filter by name
+            case Field::Name:
+                if (this->studentModel.name == studentItr->name) 
+                {
+                    studentItr->filtered = true;
+                }
+                break;
+            // Filter by average
+            case Field::Average:
+                if (this->studentModel.average == studentItr->average) 
+                {
+                    studentItr->filtered = true;
+                }
+                break;
         }
     }
     return this;

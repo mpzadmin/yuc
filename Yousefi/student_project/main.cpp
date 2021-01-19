@@ -20,8 +20,20 @@ int main()
     student = new Student;
     student->setcode(1)->setname("ali")->setaverage(14)->add();    
     student->setcode(2)->setname("omid")->setaverage(18)->add();
-    student->list();    
+    student->setcode(1)->setname("ali")->setaverage(14)->add();  // repeat
+    student->setcode(5)->setname("omid")->setaverage(18)->add();
+    //student->list(); 
 
+    if(! student->setcode(5)->setname("ali")->setaverage(18)->add())   
+    {
+        cout << "success" << endl;
+    }
+    else
+    {
+        cout << student-> getError() << endl;
+    }
+    
+    
     if (student->setname("ali")->find(field::name))
     {
         student->debug();

@@ -25,11 +25,19 @@ int main()
         SetConsoleTextAttribute(console, 7);
     }
     
-    student->setCode(2)->setName("pouya")->setAverage(18)->add();
+    student->setCode(2)->setName("pouya")->setAverage(19)->add();
     student->setCode(3)->setName("mohsen")->setAverage(19)->add();
+    student->setCode(4)->setName("mohammad")->setAverage(20)->add();
+    student->setCode(5)->setName("hassan")->setAverage(20)->add();
+    student->setCode(6)->setName("hosein")->setAverage(20)->add();
+    student->setCode(7)->setName("sina")->setAverage(19)->add();
     student->list();
     cout << endl;
-    student->remove(2)->list();
+    student->remove(3)->list();
+    cout << endl;
+    student->setAverage(20)->filter(Field::Average)->list(true);
+    cout << endl;
+    student->setAverage(19)->filter(Field::Average)->list(true);
     cout << endl;
 
     if (student->setName("pouya")->find(Field::Name))

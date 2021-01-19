@@ -19,7 +19,7 @@ int main()
     student->setCode(4)->setName("Reza")->setAverage(18)->add();
     student->setCode(5)->setName("Mohammad")->setAverage(10)->add();
     student->setCode(6)->setName("Yasin")->setAverage(12.5)->add();
-    student->setCode(7)->setName("Javad")->setAverage(17.75)->add();
+    student->setCode(7)->setName("Javad")->setAverage(20)->add();
     student->list2();
     student->setAverage(20)->filter(Field::Average)->list2(true);
 

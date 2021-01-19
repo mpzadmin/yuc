@@ -6,6 +6,7 @@
 using namespace std;
 
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc}; 
 
 class StudentModel
 {
@@ -54,6 +55,7 @@ class Student // main class(student class)
 
         bool find(Field searchField); // we want to return true or false.
         Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode SortMode);
 
 
         bool fail();
@@ -280,6 +282,11 @@ Student* Student::filter(Field filterField)
         }
     }
     return this;
+}
+
+Student* Student::sort(Field sortField, SortMode SortMode)
+{
+    
 }
 
 Student* Student::clearError()

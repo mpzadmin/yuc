@@ -19,8 +19,8 @@ int main ()
     student->setCode(4)->setName("Ali")->setAverage(17)->add();
     student->setCode(5)->setName("Reza")->setAverage(15)->add();
     student->list();
-
-    student->setAverage(20)->filter(Field::Average)->list(true);
+    cout << "---------------------------------------------------" << endl;
+    student->setAverage(19)->filter(Field::Average)->list(true);
 
     /*
     student->setCode(2)->remove()->list();

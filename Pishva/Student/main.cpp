@@ -14,26 +14,25 @@ int main ()
     
     student->setCode(1)->setName("Mohammad")->setAverage(19)->add();
     student->setCode(2)->setName("Amir")->setAverage(18)->add();
-    student->setCode(1)->setName("Mohammad")->setAverage(19)->add();
+   // student->setCode(1)->setName("Mohammad")->setAverage(19)->add();
     student->setCode(3)->setName("Mohammad")->setAverage(19)->add();
+    student->setCode(4)->setName("Ali")->setAverage(17)->add();
+    student->setCode(5)->setName("Reza")->setAverage(15)->add();
     student->list();
+
+    student->setAverage(20)->filter(Field::Average)->list(true);
+
+    /*
     student->setCode(2)->remove()->list();
     if (student->setCode(2)->remove()->fail())
-        cout << student->getError() << endl;
-
-
+        cout << student->getError() << endl;*/
     
     /*
     student->setCode(1)->setName("Mohammad")->setAverage(18)->add();
     if ( !student->fail() )
         cout << "Success" << endl;
     else
-        cout << student->getError() << endl;*/
-
-    
-
-    
-    
+        cout << student->getError() << endl;*/ 
     /*
     if (student->setName("Ali")->find(Field::Name))
         student->debug();

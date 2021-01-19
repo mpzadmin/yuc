@@ -231,24 +231,24 @@ bool Student::find(Field searchField)
 Student* Student::filter(Field filterField)
 {
     this->clearError();
-    for (StudentIterator it = this->students.begin(); it != this->students.end(); ++it)
+    for (auto &student : this->students)
     {
-        it->filtered = false;
+        student.filtered = false;
 
         if (filterField == Field::Code)
         {
-            if (it->code == this->studentModel.code)
-                it->filtered = true;
+            if (student.code == this->studentModel.code)
+                student.filtered = true;
         }
         else if (filterField == Field::Name)
         {
-            if (it->name == this->studentModel.name)
-                it->filtered = true;
+            if (student.name == this->studentModel.name)
+                student.filtered = true;
         }
         else if (filterField == Field::Average)
         {
-            if (it->average == this->studentModel.average)
-                it->filtered = true;
+            if (student.average == this->studentModel.average)
+                student.filtered = true;
         }
     }
 

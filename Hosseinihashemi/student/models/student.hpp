@@ -25,20 +25,21 @@ class Student
 
         bool error;
 
-        string errorMessage;
+        string errorMessage;    
+    protected:
     public:
         Student();
         ~Student();
         void debug();
 
-        Student* setCode(int code);
+        Student* setCode(int code);        
         int getCode();
         Student* setName(string name);
         string getName();
         Student* setAverage(float average);
         float getAverage();
 
-        Student* list();
+        Student* list();        
         Student* add();
         Student* remove();
 
@@ -53,41 +54,26 @@ class Student
 Student::Student()
 {
     this->students.clear();
-    this->error = false;
+    this->error = false;    
 }
 
 Student::~Student()
 {
-
 }
 
 void Student::debug()
 {
     cout << endl;
-    cout << "**********************************************" << endl;
+    cout << "********************************************" << endl;
     cout << "Code: " << this->getCode() << endl;
     cout << "Name: " << this->getName() << endl;
-    cout << "Average:" << this->getAverage() << endl;
-    cout << "**********************************************" << endl;
+    cout << "Average: " << this->getAverage() << endl;
+    cout << "********************************************" << endl;
 }
 
 bool Student::fail()
 {
     return this->error;
-}
-
-Student* Student::clearError()
-{
-    this->error = false;
-    this->errorMessage.clear();
-    return this;
-}
-
-Student* Student::setError(string errorMessage)
-{
-    this->error = true;
-    this->errorMessage = errorMessage;
-    return this;
 }
 
 string Student::getError()
@@ -140,7 +126,7 @@ Student* Student::list()
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
-        cout << endl;
+        cout << endl;    
     }
 
     return this;
@@ -149,14 +135,13 @@ Student* Student::list()
 Student* Student::add()
 {
     this->clearError();
-    if (!this->find(Field::Code))
-    {
+    if ( !this->find(Field::Code) ) {
         this->students.push_back(this->studentModel);
     }
     else
     {
         this->setError("The record exists!");
-    }
+    }        
     return this;
 }
 
@@ -189,30 +174,44 @@ bool Student::find(Field searchField)
         if (searchField == Field::Code)
         {
             if (it->code == this->studentModel.code)
-            {
-                studentModel = *it;
+            {                
+                this->studentModel = *it;
                 result = true;
                 break;
-            }
+            }    
         }
         else if (searchField == Field::Name)
         {
             if (it->name == this->studentModel.name)
-            {
-                studentModel = *it;
+            {                
+                this->studentModel = *it;
                 result = true;
                 break;
-            }
+            }                
         }
         else
         {
-            if (it->average == this->studentModel.average)
-            {
-                studentModel = *it;
+             if (it->average == this->studentModel.average)
+            {                
+                this->studentModel = *it;
                 result = true;
                 break;
-            }
-        }   
+            }               
+        }       
     }
     return result;
+}
+
+Student* Student::clearError()
+{
+    this->error = false;
+    this->errorMessage.clear();
+    return this;
+}
+
+Student* Student::setError(string errorMessage)
+{
+    this->error = true;
+    this->errorMessage = errorMessage;
+    return this;
 }

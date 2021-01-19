@@ -44,7 +44,7 @@ class Student
         Student* setAverage(float avarage);
         float getAverage();
 
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* add();
         Student* remove();
 
@@ -114,13 +114,15 @@ float Student::getAverage()
 {
     return this->studentModel.average;
 }
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.size() <= 0)
         return this;
 
     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
+        if (showFilteredData && (!it->filtered)) 
+            continue;
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
@@ -230,4 +232,5 @@ Student* Student::filter(Field filterField)
                 it->filtered = true;
         }
     }
+    return this;
 }

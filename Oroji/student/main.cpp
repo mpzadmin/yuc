@@ -10,9 +10,12 @@ int main()
     Student* student;
     student = new Student;
     student->setCode(1)->setName("dani")->setAverage(10)->add();
-    student->setCode(1)->setName("dani")->setAverage(10)->add();
-    student->list();
-    if(student->setName("ali")->find(Field::Name))
+    student->setCode(2)->setName("do")->setAverage(10)->add();
+    student->setCode(3)->setName("ali")->setAverage(20)->add();
+    student->setCode(4)->setName("hasani")->setAverage(20)->add();
+    student->sort(Field::Name)->list();
+    student->sort(Field::Average)->list();
+   /* if(student->setName("ali")->find(Field::Name))
     {
       student->debug();
     }
@@ -29,7 +32,7 @@ int main()
       {
         cout << student->getError() <<  endl;
       }
-    }
+    }*/
     
     delete student;
 } 

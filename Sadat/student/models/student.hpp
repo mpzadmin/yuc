@@ -6,6 +6,7 @@ using namespace std;
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc};
 
 class StudentModel
 {
@@ -50,6 +51,7 @@ class Student
         void debug();
         bool find(Field searchField);
         Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sortMode);
         bool fail();
         string getError();
 };
@@ -252,6 +254,84 @@ Student* Student::filter(Field filterField)
                 if (this->studentModel.average == studentItr->average) 
                 {
                     studentItr->filtered = true;
+                }
+                break;
+        }
+    }
+    return this;
+}
+
+Student* Student::sort(Field sortField, SortMode sortMode)
+{
+    StudentItr itr1, itr2;
+    StudentModel stu;
+    itr1 = this->students.begin();
+
+    while(itr1 != this->students.end())
+    {
+        itr2 = itr1;
+        itr2++;
+        while(itr2 != this->students.end())
+        switch(sortField)
+        {
+            case Field::Code:
+                if (sortMode == SortMode::Asc)
+                {
+                    if (itr1->code > itr2->code)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                else if (sortMode == SortMode::Desc)
+                {
+                    if (itr1->code < itr2->code)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                break;
+            case Field::Name:
+                if (sortMode == SortMode::Asc)
+                {
+                    if (itr1->name > itr2->name)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                else if (sortMode == SortMode::Desc)
+                {
+                    if (itr1->name < itr2->name)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                break;
+            case Field::Average:
+                if (sortMode == SortMode::Asc)
+                {
+                    if (itr1->average > itr2->average)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                else if (sortMode == SortMode::Desc)
+                {
+                    if (itr1->average < itr2->average)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
                 }
                 break;
         }

@@ -5,12 +5,21 @@
 using namespace std;
 
 enum  Field {Code, Name, Average};
+enum  SortMode{Asc, Desc}; //soudi va nozooli
+
 class StudentModel
 {
     public:
-      int code;
-      string name;
-      float average;
+        int code;
+        string name;
+        float average;
+        bool filter;
+        StudentModel()
+        {
+            filter=false;
+        }
+       
+
 };
 class Student
 {
@@ -18,28 +27,32 @@ class Student
     StudentModel studentModel;
     list<StudentModel> lst;
     list<StudentModel>::iterator itr;
+
       bool error;
       string errorMassage;
     protected:
     public:
-      Student();
-      ~ Student();
-      Student* setError(string errorMassage);
-      Student* clearError();
-      Student* setCode(int code);
-      Student*  setName(string name);
-      Student* setAverage(float average);
-      Student* list();
-      Student*  add(); 
-      Student* remove();
-      
-      void debug();
-      int getCode();
-      string getName();
-      string getError();
-      float  getAverage();
-      bool fail();
-      bool find(Field searchField);
+        Student();
+        ~ Student();
+        Student* setError(string errorMassage);
+        Student* clearError();
+        Student* setCode(int code);
+        Student*  setName(string name);
+        Student* setAverage(float average);
+        Student* list(bool showFilterData=false);
+        Student*  add(); 
+        Student* remove();
+        Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sorting );
+
+        void debug();
+        int getCode();
+        string getName();
+        string getError();
+        float  getAverage();
+        bool fail();
+        bool find(Field searchField);
+
      
       
       
@@ -94,6 +107,42 @@ Student* Student::setAverage(float average)
     return this;
 }
 
+Student*Student::filter(Field  filterField)
+{
+    this->clearError();
+    for(itr=lst.begin(); itr!=lst.end(); itr++)
+    {
+        itr->filter=false;
+        if(filterField==Field::Code)
+        {
+            if(itr->code==this->studentModel.code);
+            itr->filter=true;
+        }
+        else if(filterField==Field::Name)
+        {
+            if(itr->name==studentModel.name)
+            {
+                itr->filter=true;
+            }
+        }
+        else if(filterField==Field::Average)
+        {
+            if(itr->average==this->studentModel.average)
+            {
+                itr->filter=true;
+            }
+        }
+        
+    }
+    return this;
+
+}
+
+Student* sort(Field sortField, SortMode sorting )
+{
+    
+}
+
 string  Student::getName()
 {
     return this->studentModel.name;
@@ -108,7 +157,7 @@ float Student::getAverage()
 {
     return this->studentModel.average;
 }
-Student* Student::list()
+Student* Student::list(bool showFilterData)
 {
     if(this->lst.size()<=0)
     {
@@ -128,6 +177,7 @@ Student* Student::list()
         //2.
         for(itr=lst.begin(); itr!=lst.end(); itr++)
         {
+            if(showFilterData && !itr->filter) continue;
             cout<<itr->name<<"    "<<itr->average<<"   "<<itr->code<<endl;
         }
         return this;

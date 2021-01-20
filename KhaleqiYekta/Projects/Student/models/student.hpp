@@ -59,7 +59,7 @@ public:
 
         bool find(Field searchField);
         Student* filter(Field filterField);
-        Student* sort(Field sortField, SortMode sortMode);
+        Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
 
         void debug();
 
@@ -262,7 +262,94 @@ Student* Student::filter(Field filterField)
 
 Student* Student::sort(Field sortField, SortMode sortMode)
 {
+    StudentIterator it, it2;
+    StudentModel st;
 
+    it = this->students.begin();
+
+    while (it != students.end())
+    {
+        it2 = it;
+        it2++;
+
+        while (it2 != this->students.end())
+        {
+            if (sortField == Field::Code)
+            {
+                if (sortMode == SortMode::Asc) // Asc
+                {
+                    if (it->code > it2->code)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+                else // Desc
+                {
+                    if (it->code < it2->code)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+            }
+            else if (sortField == Field::Average)
+            {
+                if (sortMode == SortMode::Asc) // Asc
+                {
+                    if (it->average > it2->average)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+                else // Desc
+                {
+                    if (it->average < it2->average)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+            }
+            else if (sortField == Field::Name)
+            {
+                if (sortMode == SortMode::Asc) // Asc
+                {
+                    if (it->name > it2->name)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+                else // Desc
+                {
+                    if (it->name < it2->name)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+            }
+
+            it2++;
+        }
+        it++;
+    }
+
+    return this;
 }
 
 Student* Student::setError(const string &err)

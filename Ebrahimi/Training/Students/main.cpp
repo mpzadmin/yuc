@@ -12,13 +12,23 @@ int main()
     Student* student;
     
     student = new Student;
-    student->setCode(1)->setName("Mahdi")->setAverage(17)->add();
-    student->setCode(2)->setName("Matin")->setAverage(18)->add();
-    student->setCode(3)->setName("Moeen")->setAverage(17.5)->add();
-    student->setCode(4)->setName("Mobin")->setAverage(19)->add();
+    student->setCode(1)->setName("Mahdi Ebrahimi")->setAverage(17)->add();
+    student->setCode(2)->setName("Matin Ebrahimi")->setAverage(18)->add();
+    student->setCode(3)->setName("Moeen Ebrahimi")->setAverage(17)->add();
+    student->setCode(4)->setName("Mobin Ebrahimi")->setAverage(19)->add();
+    student->setCode(5)->setName("Alireza Ebrahimi")->setAverage(20)->add();
+    student->setCode(6)->setName("Reza Hosseini")->setAverage(15)->add();
+    student->setCode(7)->setName("Mobina Ahmadzade")->setAverage(17)->add();
+    student->setCode(8)->setName("Ashkan Rezayi")->setAverage(15)->add();
+    student->setCode(9)->setName("Alireza Khatibi")->setAverage(16)->add();
     student->list();
 
-    if ( student->setCode(2)->setName("Matin")->setAverage(18)->add()->fail() )
+    cout << "----------------------------------------------" << endl;
+    student->setName("Alireza")->filter(Field::Name)->list(true);
+    cout << "----------------------------------------------" << endl;
+    student->setAverage(17)->filter(Field::Average)->list(true);
+
+    /* if ( student->setCode(2)->setName("Matin")->setAverage(18)->add()->fail() )
     {
         cout << student->getError() << endl;
     }
@@ -76,6 +86,6 @@ int main()
     {
         cout << "Student with average \"19\" was NOT found!" << endl;
     }
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl; */
     delete student;
 }

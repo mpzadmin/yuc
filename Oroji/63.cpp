@@ -15,5 +15,5 @@ size_t factorial(size_t number)
 }
 float sum(size_t number)
 {
-    return( number>=1 ) ? 1 : 1/factorial(number)+1/factorial(number - 1);
+    return( number>=1 ) ? 1 :(float) (1/((float)factorial(number)))+sum(number - 1);
 }

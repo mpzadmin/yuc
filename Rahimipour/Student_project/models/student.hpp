@@ -6,6 +6,7 @@
 using namespace std;
 
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc}; 
 
 class StudentModel
 {
@@ -22,7 +23,7 @@ class StudentModel
 
 typedef list<StudentModel>::iterator StudentIterator;// SMIterator : student
 
-class Student // main class
+class Student // main class(student class)
 {
     private:
         StudentModel studentModel;
@@ -48,13 +49,13 @@ class Student // main class
         float getAverage();
 
         //Student* list();// print all data in list sutdent.
-        Student* list2();
-
+        Student* list2(bool showFilteredData = false);
         Student* add();// 
         Student* remove();
 
         bool find(Field searchField); // we want to return true or false.
         Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode SortMode);
 
 
         bool fail();
@@ -147,7 +148,7 @@ Student* Student::list()
 }
 */
 
-Student* Student::list2()
+Student* Student::list2(bool showFilteredData)
 {
     if (this->students.size() <= 0)
     {
@@ -156,6 +157,7 @@ Student* Student::list2()
 
     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
+        if (showFilteredData && (!it->filtered)) continue; // mipare aval halghe
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
@@ -279,6 +281,12 @@ Student* Student::filter(Field filterField)
             }
         }
     }
+    return this;
+}
+
+Student* Student::sort(Field sortField, SortMode SortMode)
+{
+    
 }
 
 Student* Student::clearError()

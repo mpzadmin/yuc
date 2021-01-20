@@ -26,7 +26,7 @@ int main()
     //student->sort(Field::Average, SortMode::Desc)->list2();
     //student->sort(Field::Name)->list2();
     cout << "*/*/*/*/*/*/*/*/*/*/*" << endl;
-    student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->list2(true_type);
+    student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->list2(true);
     //student->list2();
     cout << endl << "*/*/*/*/*/*/*/*/*/*" << endl;
     

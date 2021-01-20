@@ -36,6 +36,8 @@ class Student
          StudentModel studentModel;
          list <StudentModel> students;
 
+         size_t limitCount;
+
          bool error;
 
          string errorMessage;
@@ -150,13 +152,13 @@ Student* Student::list(bool showFilteredData)
     }
 
     
-    for (StudentModel stu : this->students)
+    for (StudentIterartor it : this->students)
     {
-        if(showFilteredData && (!it-> filtered)) continue;
+        if(showFilteredData && (!it->filtered)) continue;
 
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.avarage << endl;
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->avarage << endl;
         cout << endl;  
         counter++;
         if ((this->limitCount > 0) && (counter >= this->limitCount)) break;    

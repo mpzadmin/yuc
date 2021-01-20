@@ -11,6 +11,8 @@ int main()
 {
     Student* student;
 
+    system("cls");
+
     student = new Student;
 
     student->setCode(1)->setName("Ahad")->setAverage(19.5)->add();// print data
@@ -20,14 +22,24 @@ int main()
     student->setCode(5)->setName("Mohammad")->setAverage(10)->add();
     student->setCode(6)->setName("Yasin")->setAverage(12.5)->add();
     student->setCode(7)->setName("Javad")->setAverage(20)->add();
-    student->list2();
-    student->setAverage(20)->filter(Field::Average)->list2(true);
-
+    //student->sort(Field::Average)->list2();
+    //student->sort(Field::Average, SortMode::Desc)->list2();
+    //student->sort(Field::Name)->list2();
+    cout << "*/*/*/*/*/*/*/*/*/*/*" << endl;
+    student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->list2(true_type);
+    //student->list2();
+    cout << endl << "*/*/*/*/*/*/*/*/*/*" << endl;
+    
+    
+    
+    //student->setAverage(20)->filter(Field::Average)->list2(true);
+    /*
     student->setCode(2)->remove()->list2();
     if ( student->setCode(2)->remove()->fail() )
     {
         cout << student->getError() << endl;
     }
+    */
     
     /*
     if ( !student->setCode(10)->setName("Ali")->setAverage(16)->add()->fail() ) 

@@ -27,7 +27,7 @@ class Student
     private:
         StudentModel studentModel;
         list<StudentModel> students;
-
+        size_t limitCount;
         bool error;
         string errorMessage;
 
@@ -52,6 +52,7 @@ class Student
         bool find(Field searchField);
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
+        Student* limit(size_t count);
 
         void debug();
 
@@ -64,7 +65,8 @@ class Student
 Student::Student()
 {
     this->error = false;
-}
+    this->limitCount = 0;
+}   
 
 Student::~Student()
 {
@@ -106,6 +108,8 @@ float Student::getAverage()
 
 Student* Student::list(bool showFilterData)
 {
+    size_t counter = 0;
+
     if (this->students.size() <= 0)
         return this;
 
@@ -113,10 +117,15 @@ Student* Student::list(bool showFilterData)
     {
         if (showFilterData && (!it->filtered))
             continue;
+
         cout << "Code   : " << it->code << endl;
         cout << "Name   : " << it->name << endl;
         cout << "Average: " << it->average << endl;
         cout << "----------------------------" << endl;
+        counter++;
+
+        if ((this->limitCount > 0) && (counter >= this->limitCount))
+            break;
     }
     
     return this;
@@ -298,6 +307,12 @@ Student* Student::sort(Field sortField, SortMode sortMode)
         it++;
     }
     
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
     return this;
 }
 

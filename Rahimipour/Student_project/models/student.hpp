@@ -55,7 +55,7 @@ class Student // main class(student class)
 
         bool find(Field searchField); // we want to return true or false.
         Student* filter(Field filterField);
-        Student* sort(Field sortField, SortMode SortMode);
+        Student* sort(Field sortField, SortMode SortMode = SortMode::Asc);
 
 
         bool fail();
@@ -284,9 +284,90 @@ Student* Student::filter(Field filterField)
     return this;
 }
 
-Student* Student::sort(Field sortField, SortMode SortMode)
+Student* Student::sort(Field sortField, SortMode sortMode)
 {
-    
+    StudentIterator it, it2;
+    StudentModel stu;
+
+    it = this->students.begin();
+    while (it != this->students.end())
+    {
+        it2 = it;
+        it2++;
+        // or advance(it2, 1)
+        while (it2 != this->students.end())
+        {
+            if (sortField == Field::Code)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->code > it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+                else // Means Desc
+                {
+                    if (it->code < it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+            }
+
+            else if (sortField == Field::Name)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->name > it2->name)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+                else 
+                {
+                    if (it->name < it2->name)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+            }
+
+            else if (sortField == Field::Average)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->average > it2->average)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+                else // Means Desc
+                {
+                    if (it->average < it2->average)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+            }
+            
+            it2++;
+        }
+        it++;
+    }
+    return this;
 }
 
 Student* Student::clearError()

@@ -39,9 +39,11 @@ int main()
     student->setCode(2)->setName("Mehdi")->setAverage(2.5)->add();
     student->setCode(3)->setName("Reza")->setAverage(19.5)->add();
     student->setCode(4)->setName("Reyhaneh")->setAverage(20)->add();
+    student->setCode(5)->setName("Mohammad")->setAverage(2)->add();
+    student->setCode(6)->setName("Arya")->setAverage(5.75)->add();
+    student->setCode(7)->setName("Afsaneh")->setAverage(19.75)->add();
 
-
-    if (!student->setCode(5)->setName("Bita")->setAverage(8.75)->add()->fail())
+    if (!student->setCode(8)->setName("Bita")->setAverage(8.75)->add()->fail())
     {
         cout << "Student has been successfully added!" << endl;
     }
@@ -53,7 +55,10 @@ int main()
     c::printlnSeparator('*',40);
     student->setAverage(20)->filter(Field::Average)->list(true);
     c::printlnSeparator('*',40);
-
+    student->setName("Ali")->filter(Field::Name)->list(true);
+    c::printlnSeparator('*',40);
+    student->sort(Field::Average,SortMode::Desc)->list(true);
+    c::printlnSeparator('*',40);
 
     delete student;
 

@@ -6,6 +6,7 @@
 using namespace std;
 
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc};
 
 class StudentModel
 {
@@ -13,6 +14,11 @@ class StudentModel
         int code;
         string name;
         float average;
+        bool filtered;
+        StudentModel()
+        {
+            filtered = false;
+        }
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
@@ -38,11 +44,13 @@ class Student
         Student* setAverage(float average);
         float getAverage();
 
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* add();
         Student* remove();
 
         bool find(Field searchField);
+        Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sortMode);
 
         bool fail();
         Student* clearError();
@@ -128,7 +136,7 @@ float Student::getAverage()
     return this->studentModel.average;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.size() <= 0)
     {
@@ -137,6 +145,7 @@ Student* Student::list()
 
     for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
+        if (showFilteredData && (!it->filtered)) continue;
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
@@ -215,4 +224,30 @@ bool Student::find(Field searchField)
         }   
     }
     return result;
+}
+
+Student* Student::filter(Field filterField)
+{
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    {
+        it->filtered = false;
+        if (filterField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+                it->filtered = true;
+        }
+        else if (filterField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+                it->filtered = true;
+        }
+        else if (filterField == Field::Average)
+        {
+            if (it->average == this->studentModel.average)
+                it->filtered = true;
+        }
+    }
+
+    return this;
 }

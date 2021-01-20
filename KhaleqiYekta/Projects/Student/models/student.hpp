@@ -348,6 +348,8 @@ Student* Student::sort(Field sortField, SortMode sortMode)
         }
         it++;
     }
+
+    return this;
 }
 
 Student* Student::setError(const string &err)

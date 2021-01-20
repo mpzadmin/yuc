@@ -321,14 +321,16 @@ Student* Student::sort(Field sortField, SortMode sortMode)
 
             else if (sortField == Field::Name)
             {
-                if (it->name > it2->name)
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->name > it2->name)
                     {
                         stu = *it;
                         *it = *it2;
                         *it2 = stu;
                     }
                 }
-                else // Means Desc
+                else 
                 {
                     if (it->name < it2->name)
                     {
@@ -341,7 +343,9 @@ Student* Student::sort(Field sortField, SortMode sortMode)
 
             else if (sortField == Field::Average)
             {
-                if (it->average > it2->average)
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->average > it2->average)
                     {
                         stu = *it;
                         *it = *it2;
@@ -356,7 +360,7 @@ Student* Student::sort(Field sortField, SortMode sortMode)
                         *it = *it2;
                         *it2 = stu;
                     }
-                } 
+                }
             }
             
             it2++;

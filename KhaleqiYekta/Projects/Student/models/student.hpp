@@ -14,6 +14,7 @@
 using namespace std;
 
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc};
 
 class StudentModel
 {
@@ -52,12 +53,13 @@ public:
         Student* setAverage(float avg);
         float getAverage();
 
-        Student* list();
+        Student* list(bool showFilteredData = false);
         Student* add();
         Student* remove();
 
         bool find(Field searchField);
         Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
 
         void debug();
 
@@ -131,18 +133,21 @@ float Student::getAverage()
     return this->studentModel.average;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.empty())
     {
         return this;
     }
 
-    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+    for (auto &student : this->students)
     {
-        cout << "Code: " << it->code << endl;
-        cout << "Name: " << it->name << endl;
-        cout << "Average: " << it->average << endl;
+        if (showFilteredData && (!student.filtered))
+            continue;
+
+        cout << "Code: " << student.code << endl;
+        cout << "Name: " << student.name << endl;
+        cout << "Average: " << student.average << endl;
         cout << endl;
     }
 
@@ -250,6 +255,98 @@ Student* Student::filter(Field filterField)
             if (student.average == this->studentModel.average)
                 student.filtered = true;
         }
+    }
+
+    return this;
+}
+
+Student* Student::sort(Field sortField, SortMode sortMode)
+{
+    StudentIterator it, it2;
+    StudentModel st;
+
+    it = this->students.begin();
+
+    while (it != students.end())
+    {
+        it2 = it;
+        it2++;
+
+        while (it2 != this->students.end())
+        {
+            if (sortField == Field::Code)
+            {
+                if (sortMode == SortMode::Asc) // Asc
+                {
+                    if (it->code > it2->code)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+                else // Desc
+                {
+                    if (it->code < it2->code)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+            }
+            else if (sortField == Field::Average)
+            {
+                if (sortMode == SortMode::Asc) // Asc
+                {
+                    if (it->average > it2->average)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+                else // Desc
+                {
+                    if (it->average < it2->average)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+            }
+            else if (sortField == Field::Name)
+            {
+                if (sortMode == SortMode::Asc) // Asc
+                {
+                    if (it->name > it2->name)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+                else // Desc
+                {
+                    if (it->name < it2->name)
+                    {
+                        // Swapping it and it2
+                        st = *it;
+                        *it = *it2;
+                        *it2 = st;
+                    }
+                }
+            }
+
+            it2++;
+        }
+        it++;
     }
 
     return this;

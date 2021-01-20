@@ -17,6 +17,11 @@ class StudentModel
          int code;
          string name;
          float avarage;
+         bool filtered;
+         StudentModel()
+         {
+             filtered = false;
+         }
 
 };
 
@@ -46,10 +51,11 @@ class Student
          Student* setAvarage(float avarage);
          float getAverage();
 
-         Student* list();
+         Student* list(bool showFilteredData = false);
         // Student* list();
          Student* add();
           Student* remove();
+          Student* filter(Field filteredField);
 
 
 
@@ -130,12 +136,14 @@ float Student :: getAverage()
     return this -> studentModel.avarage;
 }
 
-Student* Student::list()
+Student* Student::list(bool showFilteredData)
 {
     if (this->students.size() <= 0)
     {
         return this;
     }
+
+    if(showFilteredData && (!it-> filtered)) continue;
 
     for (StudentModel stu : this->students)
     {
@@ -221,6 +229,40 @@ bool Student::find(Field searchField)
         }
     } 
  }
+
+}
+
+Student* Student :: filter(Field filteredField)
+{
+   
+    for(StudentIterator it = this -> students.begin(); it != this -> students.end(); it++ )
+    {
+          this->filtered = false;
+           if(filteredField == Field :: Code)
+             {
+              if(it->code == this->studentModel.code)
+              {
+               it -> filtered = true;
+              }
+          }
+           else if(filteredField == Field :: Name)
+            {
+             if(it->name == this->studentModel.name)
+            {
+             it -> filtered = true;
+            
+            }
+           else if(filteredField == Field :: Average)
+           {
+             if(it->avarage == this->studentModel.avarage)
+              {
+               it -> filtered = true;
+              }
+            }
+     }
+
+     return this;
+
 
 }
 

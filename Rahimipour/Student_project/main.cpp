@@ -26,10 +26,13 @@ int main()
     //student->sort(Field::Average, SortMode::Desc)->list2();
     //student->sort(Field::Name)->list2();
     cout << "*/*/*/*/*/*/*/*/*/*/*" << endl;
-    student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->list2(true);
+    student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->limit(1)->list2(true);
     //student->list2();
     cout << endl << "*/*/*/*/*/*/*/*/*/*" << endl;
     
+    cout << "*/*/*/**/" << endl;
+    student->sort(Field::Average)->limit(2)->list2();
+
     
     
     //student->setAverage(20)->filter(Field::Average)->list2(true);

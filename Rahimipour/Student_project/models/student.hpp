@@ -28,6 +28,7 @@ class Student // main class(student class)
     private:
         StudentModel studentModel;
         list<StudentModel> students;
+        size_t limitCount;
         
 
         bool error;
@@ -56,7 +57,7 @@ class Student // main class(student class)
         bool find(Field searchField); // we want to return true or false.
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode SortMode = SortMode::Asc);
-
+        Student* limit(size_t count);
 
         bool fail();
         Student* clearError();
@@ -68,6 +69,7 @@ Student::Student()
 {
     this->students.clear();
     this->error = false;
+    this->limitCount = 0;
 
 }
 
@@ -150,6 +152,7 @@ Student* Student::list()
 
 Student* Student::list2(bool showFilteredData)
 {
+    size_t counter = 0;
     if (this->students.size() <= 0)
     {
         return this;
@@ -162,6 +165,11 @@ Student* Student::list2(bool showFilteredData)
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
         cout << "*-*-*-*-*-**-*-*-*-*-*" << endl;
+        counter++;
+        if ((this->limitCount > 0) && (counter >= this->limitCount))
+        {
+            break;
+        }
     }
 
     return this;
@@ -384,5 +392,8 @@ Student* Student::setError(string errorMessage)
     return this;
 }
 
-
-
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}

@@ -37,13 +37,15 @@ class Student
         StudentModel studentModel;
         list<StudentModel> students;
 
+        size_t limitCount;
         bool error;
         string errorMessage;
 
     protected:
 public:
-    Student();
+        Student();
         ~Student();
+        void debug();
 
         Student* setCode(int code);
         int getCode();
@@ -60,8 +62,7 @@ public:
         bool find(Field searchField);
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
-
-        void debug();
+        Student* limit(size_t count);
 
         bool fail();
         Student* setError(const string& err);
@@ -349,6 +350,12 @@ Student* Student::sort(Field sortField, SortMode sortMode)
         it++;
     }
 
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
     return this;
 }
 

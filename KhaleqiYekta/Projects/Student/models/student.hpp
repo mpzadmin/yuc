@@ -30,6 +30,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
+typedef list<StudentModel>::reverse_iterator RStudentIterator;
 
 class Student
 {
@@ -37,13 +38,15 @@ class Student
         StudentModel studentModel;
         list<StudentModel> students;
 
+        size_t limitCount;
         bool error;
         string errorMessage;
 
     protected:
 public:
-    Student();
+        Student();
         ~Student();
+        void debug();
 
         Student* setCode(int code);
         int getCode();
@@ -60,8 +63,9 @@ public:
         bool find(Field searchField);
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
-
-        void debug();
+        Student* limit(size_t count);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         bool fail();
         Student* setError(const string& err);
@@ -347,6 +351,54 @@ Student* Student::sort(Field sortField, SortMode sortMode)
             it2++;
         }
         it++;
+    }
+
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (StudentIterator it = this->students.begin(); it != students.end(); ++it)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                return this;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.front();
+    }
+
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (RStudentIterator rIt = this->students.rbegin(); rIt != students.rend(); --rIt)
+        {
+            if (rIt->filtered)
+            {
+                this->studentModel = *rIt;
+                return this;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.back();
     }
 
     return this;

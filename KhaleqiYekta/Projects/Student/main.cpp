@@ -19,11 +19,6 @@
 /** Namespaces **/
 using namespace std;
 
-/** Typedefs **/
-/** Constants **/
-/** Other Variables **/
-/** Function Declarations **/
-
 /**
  * Program's Entry Point
  */
@@ -58,6 +53,8 @@ int main()
     student->setName("Ali")->filter(Field::Name)->list(true);
     c::printlnSeparator('*',40);
     student->sort(Field::Average,SortMode::Desc)->list(true);
+    c::printlnSeparator('*',40);
+    student->sort(Field::Average)->limit(1)->list();
     c::printlnSeparator('*',40);
 
     delete student;

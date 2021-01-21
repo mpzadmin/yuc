@@ -29,8 +29,8 @@ class Student
         StudentModel studentModel;
         list<StudentModel> students;        
 
-        bool error;
-
+        size_t limitCount;
+        bool error;        
         string errorMessage;    
     protected:
     public:
@@ -51,7 +51,10 @@ class Student
 
         bool find(Field searchField);
         Student* filter(Field filterField);
-        Student* sort(Field sortField, SortMode sortMode); 
+        Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
+        Student* limit(size_t count); 
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         bool fail();
         Student* clearError();
@@ -62,7 +65,8 @@ class Student
 Student::Student()
 {
     this->students.clear();
-    this->error = false;    
+    this->error = false;
+    this->limitCount = 0;    
 }
 
 Student::~Student()
@@ -124,6 +128,7 @@ float Student::getAverage()
 
 Student* Student::list(bool showFilteredData)
 {
+    size_t counter = 0;
     if (this->students.size() <= 0)
     {
         return this;
@@ -135,7 +140,9 @@ Student* Student::list(bool showFilteredData)
         cout << "Code: " << it->code << endl;
         cout << "Name: " << it->name << endl;
         cout << "Average: " << it->average << endl;
-        cout << endl;    
+        cout << endl;
+        counter++;
+        if ((this->limitCount > 0) && (counter >= this->limitCount)) break;    
     }
 
     return this;
@@ -238,7 +245,85 @@ Student* Student::filter(Field filterField)
 
 Student* Student::sort(Field sortField, SortMode sortMode)
 {
-    
+    StudentIterator it, it2;
+    StudentModel stu;
+
+    it = this->students.begin();
+    while (it != this->students.end())
+    {
+        it2 = it;
+        it2++;
+        while (it2 != this->students.end())
+        {
+            if (sortField == Field::Code)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->code > it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+                else
+                {
+                    if (it->code < it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+            }
+            else if (sortField == Field::Name)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->name > it2->name)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+                else
+                {
+                    if (it->name < it2->name)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+            }
+            else if (sortField == Field::Average)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->average > it2->average)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+                else
+                {
+                    if (it->average < it2->average)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+            }
+
+            it2++;
+        }
+        it++;
+    }
+    return this;
 } 
 
 Student* Student::clearError()
@@ -252,5 +337,37 @@ Student* Student::setError(string errorMessage)
 {
     this->error = true;
     this->errorMessage = errorMessage;
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData = false)
+{
+    if (filteredData)
+    {
+        for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+    else
+    {    
+        this->studentModel = this->students.front();   
+    }
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+
     return this;
 }

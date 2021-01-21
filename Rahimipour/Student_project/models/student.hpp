@@ -22,6 +22,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentIterator;// SMIterator : student
+typedef list<StudentModel>::reverse_iterator RStudentIterator;// Az akhar shor mikone be  aval
 
 class Student // main class(student class)
 {
@@ -58,6 +59,8 @@ class Student // main class(student class)
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode SortMode = SortMode::Asc);
         Student* limit(size_t count);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         bool fail();
         Student* clearError();
@@ -395,5 +398,49 @@ Student* Student::setError(string errorMessage)
 Student* Student::limit(size_t count)
 {
     this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+
+    else
+    {
+        this->studentModel = this->students.front();
+    }
+    
+    return this;
+}
+Student* Student::last(bool filteredData)
+{
+        if (filteredData)
+    {
+        for (RStudentIterator it = this->students.rbegin(); it != this->students.rend(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+
+    else
+    {
+        this->studentModel = this->students.back();
+    }
+    
+    return this;
     return this;
 }

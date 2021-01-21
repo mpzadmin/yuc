@@ -24,14 +24,16 @@ int main()
     student->setCode(8)->setName("Hosein Dehghani")->setAverage(19.5)->add();
     cout << endl << "***************************************" << endl;
     
-    cout << endl << "------------------------" << endl;
-    student->sort(Field::Average, SortMode::Desc)->limit(1)->list();
-    cout << endl << "------------------------" << endl;
+    // cout << student->first()->getName() << endl;
+    student->setAverage(10)->filter(Field::Average)->first(true)->debug();
+    // cout << endl << "------------------------" << endl;
+    // student->sort(Field::Average, SortMode::Desc)->limit(1)->list();
+    // cout << endl << "------------------------" << endl;
 
-    cout << endl << "------------------------" << endl;
+   /* cout << endl << "------------------------" << endl;
     student->sort(Field::Average)->limit(1)->list();
     cout << endl << "------------------------" << endl;
-
+*/
 
     
     /*

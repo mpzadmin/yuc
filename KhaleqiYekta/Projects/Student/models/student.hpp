@@ -63,6 +63,8 @@ public:
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
         Student* limit(size_t count);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         bool fail();
         Student* setError(const string& err);
@@ -356,6 +358,18 @@ Student* Student::sort(Field sortField, SortMode sortMode)
 Student* Student::limit(size_t count)
 {
     this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData)
+{
+
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+
     return this;
 }
 

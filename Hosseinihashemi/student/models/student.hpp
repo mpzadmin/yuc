@@ -53,6 +53,8 @@ class Student
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
         Student* limit(size_t count); 
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         bool fail();
         Student* clearError();
@@ -341,5 +343,31 @@ Student* Student::setError(string errorMessage)
 Student* Student::limit(size_t count)
 {
     this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData = false)
+{
+    if (filteredData)
+    {
+        for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+    else
+    {    
+        this->studentModel = this->students.front();   
+    }
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+
     return this;
 }

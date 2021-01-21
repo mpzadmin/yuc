@@ -365,7 +365,7 @@ Student* Student::limit(size_t count)
     return this;
 }
 
-Student* Student::first(bool FilteredData = false)
+Student* Student::first(bool FilteredData)
 {
    if (FilteredData)
    {
@@ -385,7 +385,7 @@ Student* Student::first(bool FilteredData = false)
    
     return this;
 }
-Student* Student::last(bool FilteredData = false)
+Student* Student::last(bool FilteredData)
 {
     if (FilteredData)
    {

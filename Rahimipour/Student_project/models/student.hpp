@@ -22,6 +22,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentIterator;// SMIterator : student
+typedef list<StudentModel>::reverse_iterator RStudentIterator;// Az akhar shor mikone be  aval
 
 class Student // main class(student class)
 {
@@ -423,5 +424,22 @@ Student* Student::first(bool filteredData)
 }
 Student* Student::last(bool filteredData)
 {
+        if (filteredData)
+    {
+        for (RStudentIterator it = this->students.rbegin(); it != this->students.rend(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+
+    else
+    {
+        this->studentModel = this->students.back();
+    }
+    
     return this;
 }

@@ -16,11 +16,13 @@ int main()
     student->setCode(4)->setName("sara daraiee")->setAverage(20)->add();
     student->setCode(5)->setName("Akbar Gigmanesh")->setAverage(18.5)->add();
     cout << endl << "----------------------------------------------------------------" << endl;
+    //cout << student->first()->getName() << endl;
+    student->setAverage(20)->filter(Field::Average)->first(true)->debug();
+
+
+
     //student->sort(Field::Average, SortMode::Desc)->list();
     //student->sort(Field::Name)->list();
-    
-    cout << endl << "----------------------------------------------------------------" << endl;
-
     /*
     student->setAverage(20)->filter(Field::Average)->sort(Field::Name)->limit(1)->list(true);
     student->setAverage(20)->filter(Field::Average)->list(true);

@@ -442,5 +442,4 @@ Student* Student::last(bool filteredData)
     }
     
     return this;
-    return this;
 }

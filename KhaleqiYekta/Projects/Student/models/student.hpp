@@ -363,12 +363,35 @@ Student* Student::limit(size_t count)
 
 Student* Student::first(bool filteredData)
 {
+    if (filteredData)
+    {
+        for (auto &student : this->students)
+        {
+            if (student.filtered)
+            {
+                this->studentModel = student;
+                return this;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.front();
+    }
 
     return this;
 }
 
 Student* Student::last(bool filteredData)
 {
+    if (filteredData)
+    {
+        //TODO: Complete this!
+    }
+    else
+    {
+        this->studentModel = this->students.back();
+    }
 
     return this;
 }

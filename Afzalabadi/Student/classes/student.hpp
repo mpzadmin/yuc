@@ -152,7 +152,7 @@ Student* Student::list(bool showFilteredData)
     }
 
     
-    for (StudentIterartor it : this->students)
+    for ( StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
         if(showFilteredData && (!it->filtered)) continue;
 
@@ -240,41 +240,34 @@ bool Student::find(Field searchField)
         }
     } 
  }
+ return this;
 
 }
 
 Student* Student :: filter(Field filteredField)
 {
-   
-    for(StudentIterator it = this -> students.begin(); it != this -> students.end(); it++ )
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-          this->filtered = false;
-           if(filteredField == Field :: Code)
-             {
-              if(it->code == this->studentModel.code)
-              {
-               it -> filtered = true;
-              }
-          }
-           else if(filteredField == Field :: Name)
-            {
-             if(it->name == this->studentModel.name)
-            {
-             it -> filtered = true;
-            
-            }
-           else if(filteredField == Field :: Average)
-           {
-             if(it->avarage == this->studentModel.avarage)
-              {
-               it -> filtered = true;
-              }
-            }
-     }
-
-     return this;
-
-
+        it->filtered = false;
+        if (filteredField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+                it->filtered = true;    
+        }
+        else if (filteredField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+                it->filtered = true;    
+        }
+        else if (filteredField == Field::Average)
+        {
+            if (it->avarage == this->studentModel.avarage)
+                it->filtered = true;    
+        }
+    }
+    return this;
+    
 }
 Student* Student::sort(Field sortField, SortMode sortMode)
  {
@@ -334,7 +327,7 @@ Student* Student::sort(Field sortField, SortMode sortMode)
             {
                 if (sortMode == SortMode::Asc)
                 {
-                    if (it->average > it2->average)
+                    if (it->avarage > it2->avarage)
                     {
                         stu = *it;
                         *it = *it2;
@@ -343,7 +336,7 @@ Student* Student::sort(Field sortField, SortMode sortMode)
                 }
                 else
                 {
-                    if (it->average < it2->average)
+                    if (it->avarage < it2->avarage)
                     {
                         stu = *it;
                         *it = *it2;
@@ -386,6 +379,7 @@ Student* Student::remove()
             break;
         }
     }
+    return this;
 }
 Student* Student::limit(size_t count)
 {

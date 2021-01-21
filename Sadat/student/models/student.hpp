@@ -22,6 +22,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentItr;
+typedef list<StudentModel>::reverse_iterator RStudentItr;
 
 class Student
 {
@@ -29,6 +30,7 @@ class Student
         StudentModel studentModel;
         list<StudentModel> students;
         string errorMessage;
+        size_t limitCount;
         bool error;
     protected:
     public:
@@ -43,6 +45,9 @@ class Student
         float getAverage();
 
         Student* list(bool showFilteredData = false);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
+        Student* limit(size_t count);
         Student* add();
         Student* clearError();
         Student* setError(string errorMessage);
@@ -335,6 +340,52 @@ Student* Student::sort(Field sortField, SortMode sortMode)
                 }
                 break;
         }
+    }
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
+        {
+            if (studentItr->filtered)
+            {
+                this->studentModel = *studentItr;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.front();
+    }
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (RStudentItr studentItr = this->students.rbegin(); studentItr != this->students.rend(); studentItr++)
+        {
+            if (studentItr->filtered)
+            {
+                this->studentModel = *studentItr;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.back();
     }
     return this;
 }

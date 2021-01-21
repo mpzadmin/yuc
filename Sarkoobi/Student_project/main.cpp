@@ -18,10 +18,11 @@ int main()
     cout << endl << "----------------------------------------------------------------" << endl;
     //student->sort(Field::Average, SortMode::Desc)->list();
     //student->sort(Field::Name)->list();
-    student->setAverage(20)->filter(Field::Average)->sort(Field::Name)->list(true);
+    
     cout << endl << "----------------------------------------------------------------" << endl;
 
     /*
+    student->setAverage(20)->filter(Field::Average)->sort(Field::Name)->limit(1)->list(true);
     student->setAverage(20)->filter(Field::Average)->list(true);
     cout << endl << "----------------------------------------------------------------" << endl;
     student->setName("Mojtaba")->filter(Field::Name)->list(true);

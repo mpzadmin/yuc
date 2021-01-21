@@ -25,7 +25,7 @@ int main()
     cout << endl << "*****************************************************" << endl;
 
     cout << endl << "*****************************************************" << endl;
-    student->sort(Field::Average)->limit(1)->list();
+    student->sort(Field::Average)->limit(2)->list();
     cout << endl << "*****************************************************" << endl;
 
 

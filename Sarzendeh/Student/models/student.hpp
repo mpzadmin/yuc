@@ -21,6 +21,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
+typedef list<StudentModel>::reverse_iterator RStudentIterator;
 
 class Student
 {
@@ -53,6 +54,8 @@ class Student
         Student* filter(Field filterField);
         Student* sort(Field sortField, SortMode sortMode = SortMode::Asc);
         Student* limit(size_t count);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         void debug();
 
@@ -313,6 +316,46 @@ Student* Student::sort(Field sortField, SortMode sortMode)
 Student* Student::limit(size_t count)
 {
     this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (StudentIterator it = students.begin(); it != students.end(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.front();
+    }
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (RStudentIterator it = students.rbegin(); it != students.rend(); it++)
+        {
+            if (it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.back();
+    }
     return this;
 }
 

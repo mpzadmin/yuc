@@ -387,7 +387,7 @@ Student* Student::last(bool filteredData)
 {
     if (filteredData)
     {
-        for (RStudentIterator rIt = this->students.rbegin(); rIt != students.rend(); --rIt)
+        for (RStudentIterator rIt = this->students.rbegin(); rIt != students.rend(); ++rIt)
         {
             if (rIt->filtered)
             {

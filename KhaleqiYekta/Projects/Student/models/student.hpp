@@ -6,13 +6,16 @@
  * Email: Me@Yekta.Dev
  */
 
+/** External Libraries **/
 #include <iostream>
 #include <string>
 #include <list>
 #include <fstream>
 
+/** Namespaces **/
 using namespace std;
 
+/** Enums **/
 enum Field {Code, Name, Average};
 enum SortMode {Asc, Desc};
 
@@ -43,7 +46,7 @@ class Student
         string errorMessage;
 
     protected:
-public:
+    public:
         Student();
         ~Student();
         void debug();
@@ -73,17 +76,17 @@ public:
         Student* clearError();
 };
 
+// Student construction
 Student::Student()
 {
     this->students.clear();
     this->error = false;
 }
 
-Student::~Student()
-{
+// Student deconstruction
+Student::~Student() {}
 
-}
-
+// Prints the current student data.
 void Student::debug()
 {
     cout << endl;
@@ -94,49 +97,58 @@ void Student::debug()
     cout << "************************************************" << endl;
 }
 
+// Sets the code of the current student.
 Student* Student::setCode(int code)
 {
     this->studentModel.code = code;
     return this;
 }
 
+// Gets the code of the current student.
 int Student::getCode()
 {
     return studentModel.code;
 }
 
+// Sets the name of the current student.
 Student* Student::setName(string name)
 {
     this->studentModel.name = name;
     return this;
 }
 
+// Gets the code of the current student.
 string Student::getName(int code)
 {
     return studentModel.name;
 }
 
+// Checks if there are any errors.
 bool Student::fail()
 {
     return this->error;
 }
 
+// Returns the error if exists.
 string Student::getError()
 {
     return this->error ? this->errorMessage : "";
 }
 
+// Sets the average of the current student.
 Student* Student::setAverage(float avg)
 {
     this->studentModel.average = avg;
     return this;
 }
 
+// Gets the average of the current student.
 float Student::getAverage()
 {
     return this->studentModel.average;
 }
 
+// Prints the students.
 Student* Student::list(bool showFilteredData)
 {
     if (this->students.empty())
@@ -158,6 +170,7 @@ Student* Student::list(bool showFilteredData)
     return this;
 }
 
+// Adds a new student.
 Student* Student::add()
 {
     this->clearError();
@@ -174,6 +187,7 @@ Student* Student::add()
     return this;
 }
 
+// Removes a student.
 Student* Student::remove()
 {
     bool result = false;
@@ -197,6 +211,7 @@ Student* Student::remove()
     return this;
 }
 
+// Finds a student.
 bool Student::find(Field searchField)
 {
     bool result = false;
@@ -237,6 +252,7 @@ bool Student::find(Field searchField)
     return result;
 }
 
+// Filters the students by a field.
 Student* Student::filter(Field filterField)
 {
     this->clearError();
@@ -264,6 +280,7 @@ Student* Student::filter(Field filterField)
     return this;
 }
 
+// Sorts the students by a field.
 Student* Student::sort(Field sortField, SortMode sortMode)
 {
     StudentIterator it, it2;
@@ -356,12 +373,14 @@ Student* Student::sort(Field sortField, SortMode sortMode)
     return this;
 }
 
+// Limits the list of students.
 Student* Student::limit(size_t count)
 {
     this->limitCount = count;
     return this;
 }
 
+// Gets the first student.
 Student* Student::first(bool filteredData)
 {
     if (filteredData)
@@ -383,6 +402,7 @@ Student* Student::first(bool filteredData)
     return this;
 }
 
+// Gets the last student.
 Student* Student::last(bool filteredData)
 {
     if (filteredData)
@@ -404,6 +424,7 @@ Student* Student::last(bool filteredData)
     return this;
 }
 
+// Sets an error that can be read later.
 Student* Student::setError(const string &err)
 {
     this->error = true;
@@ -412,6 +433,7 @@ Student* Student::setError(const string &err)
     return this;
 }
 
+// Clears the error.
 Student* Student::clearError()
 {
     this->error = false;

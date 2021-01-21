@@ -15,6 +15,7 @@ int main()
     student->setCode(4)->setName("hasani")->setAverage(20)->add();
     student->sort(Field::Name)->list();
     student->sort(Field::Average)->list();
+    student->setAverage(20)->filter(Field::Average)->sort(Field::Name)->list();
    /* if(student->setName("ali")->find(Field::Name))
     {
       student->debug();

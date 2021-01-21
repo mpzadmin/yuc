@@ -22,6 +22,7 @@ class StudentModel
         }   
 };
 typedef list<StudentModel>::iterator StudentIterator;
+typedef list<StudentModel>::reverse_iterator RStudentIterator;
 
 class Student
 {
@@ -374,10 +375,8 @@ Student* Student::first(bool FilteredData = false)
            {
                this->studentModel = *it;
                break;
-           }
-           
-       }
-       
+           }   
+       }  
    }
    else
    {
@@ -388,6 +387,20 @@ Student* Student::first(bool FilteredData = false)
 }
 Student* Student::last(bool FilteredData = false)
 {
-
+    if (FilteredData)
+   {
+       for (RStudentIterator it = this->students.rbegin(); it != this->students.rend(); it++)
+       {
+           if (it->filtered)
+           {
+               this->studentModel = *it;
+               break;
+           }
+       }   
+   }
+   else
+   {
+       this->studentModel = this->students.back();
+   }
     return this;
 }

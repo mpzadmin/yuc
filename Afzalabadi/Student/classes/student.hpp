@@ -6,6 +6,8 @@
 using namespace std;
 
 enum Field {Code, Name,Average};
+enum SortMode {Asc, Desc};
+
 
 Field fieldName;
 
@@ -34,6 +36,8 @@ class Student
          StudentModel studentModel;
          list <StudentModel> students;
 
+         size_t limitCount;
+
          bool error;
 
          string errorMessage;
@@ -54,8 +58,11 @@ class Student
          Student* list(bool showFilteredData = false);
         // Student* list();
          Student* add();
-          Student* remove();
-          Student* filter(Field filteredField);
+         Student* remove();
+         Student* filter(Field filteredField);
+         Student* sort(Field sortField, SortMode sortMode = SortMode :: Asc); 
+         Student* limit(size_t count);
+
 
 
 
@@ -138,19 +145,23 @@ float Student :: getAverage()
 
 Student* Student::list(bool showFilteredData)
 {
+    size_t counter = 0;
     if (this->students.size() <= 0)
     {
         return this;
     }
 
-    if(showFilteredData && (!it-> filtered)) continue;
-
-    for (StudentModel stu : this->students)
+    
+    for ( StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-        cout << "Code: " << stu.code << endl;
-        cout << "Name: " << stu.name << endl;
-        cout << "Average: " << stu.avarage << endl;
-        cout << endl;    
+        if(showFilteredData && (!it->filtered)) continue;
+
+        cout << "Code: " << it->code << endl;
+        cout << "Name: " << it->name << endl;
+        cout << "Average: " << it->avarage << endl;
+        cout << endl;  
+        counter++;
+        if ((this->limitCount > 0) && (counter >= this->limitCount)) break;    
     }
 
     return this;
@@ -229,42 +240,117 @@ bool Student::find(Field searchField)
         }
     } 
  }
+ return this;
 
 }
 
 Student* Student :: filter(Field filteredField)
 {
-   
-    for(StudentIterator it = this -> students.begin(); it != this -> students.end(); it++ )
+    this->clearError();
+    for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
     {
-          this->filtered = false;
-           if(filteredField == Field :: Code)
-             {
-              if(it->code == this->studentModel.code)
-              {
-               it -> filtered = true;
-              }
-          }
-           else if(filteredField == Field :: Name)
-            {
-             if(it->name == this->studentModel.name)
-            {
-             it -> filtered = true;
-            
-            }
-           else if(filteredField == Field :: Average)
-           {
-             if(it->avarage == this->studentModel.avarage)
-              {
-               it -> filtered = true;
-              }
-            }
-     }
-
-     return this;
-
-
+        it->filtered = false;
+        if (filteredField == Field::Code)
+        {
+            if (it->code == this->studentModel.code)
+                it->filtered = true;    
+        }
+        else if (filteredField == Field::Name)
+        {
+            if (it->name == this->studentModel.name)
+                it->filtered = true;    
+        }
+        else if (filteredField == Field::Average)
+        {
+            if (it->avarage == this->studentModel.avarage)
+                it->filtered = true;    
+        }
+    }
+    return this;
+    
 }
+Student* Student::sort(Field sortField, SortMode sortMode)
+ {
+     StudentIterator it, it2;
+    StudentModel stu;
+
+    it = this->students.begin();
+    while (it != this->students.end())
+    {
+        it2 = it;
+        it2++;
+        while (it2 != this->students.end())
+        {
+            if (sortField == Field::Code)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->code > it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+                else
+                {
+                    if (it->code < it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+            }
+            else if (sortField == Field::Name)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->name > it2->name)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+                else
+                {
+                    if (it->name < it2->name)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+            }
+            else if (sortField == Field::Average)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->avarage > it2->avarage)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+                else
+                {
+                    if (it->avarage < it2->avarage)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;    
+                    } 
+                }
+            }
+
+            it2++;
+        }
+        it++;
+    }
+    return this; 
+ } 
 
 Student* Student::clearError()
 {
@@ -293,6 +379,13 @@ Student* Student::remove()
             break;
         }
     }
+    return this;
+}
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}
 
 
 

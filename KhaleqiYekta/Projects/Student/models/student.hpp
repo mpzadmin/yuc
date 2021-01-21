@@ -30,6 +30,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
+typedef list<StudentModel>::reverse_iterator RStudentIterator;
 
 class Student
 {
@@ -365,11 +366,11 @@ Student* Student::first(bool filteredData)
 {
     if (filteredData)
     {
-        for (auto &student : this->students)
+        for (StudentIterator it = this->students.begin(); it != students.end(); ++it)
         {
-            if (student.filtered)
+            if (it->filtered)
             {
-                this->studentModel = student;
+                this->studentModel = *it;
                 return this;
             }
         }
@@ -386,7 +387,14 @@ Student* Student::last(bool filteredData)
 {
     if (filteredData)
     {
-        //TODO: Complete this!
+        for (RStudentIterator rIt = this->students.rbegin(); rIt != students.rend(); --rIt)
+        {
+            if (rIt->filtered)
+            {
+                this->studentModel = *rIt;
+                return this;
+            }
+        }
     }
     else
     {

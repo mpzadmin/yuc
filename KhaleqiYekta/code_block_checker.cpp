@@ -16,7 +16,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "../../../Desktop/University/Programming Class/c++/samyad/console.hpp"
+#include "console.hpp"
 
 /** Namespaces **/
 using namespace std;

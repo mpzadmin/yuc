@@ -378,10 +378,7 @@ Student* Student::first(bool filteredData = false)
     return this;
 }
 Student* Student::last(bool filteredData = false)
-/**
- * 
- * @param  {{ []} undefined : 
- */
+
 {
      if (filteredData)
     {

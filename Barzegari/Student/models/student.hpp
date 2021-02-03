@@ -5,6 +5,7 @@
 
 using namespace std;
 
+enum SortMode {Asc, Desc};
 enum Field {Code, Name, Average};
 
 class StudentModel
@@ -21,15 +22,16 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentIterator;
+typedef list<StudentModel>::reverse_iterator RStudentIterator;
 
 class Student
 {
     private:
         StudentModel studentModel;
         list<StudentModel> students;
+        size_t limitCount;
 
         bool error;    
-
         string errorMessage;
     protected:
     public:
@@ -50,6 +52,10 @@ class Student
 
         bool find(Field searchFeild);
         Student* filter(Field filterFeild);
+        Student* sort(Field sortFeild, SortMode sortMode);
+        Student* limit(size_t count);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
 
         bool fail();
         Student* clearError();
@@ -190,6 +196,45 @@ Student* Student::filter(Field filterFeild)
     return this;
 }
 
+Student* Student::sort(Field sortFeild, SortMode sortMode)
+{
+    StudentIterator it,it2;
+    StudentModel stu;
+
+    it = this->students.begin();
+    while(it != this->students.end())
+    {
+        it2= it;
+        it2++;
+        while(it2 != this->students.end())
+        {
+            if (sortFeild == Field::Code)
+            {
+                if (sortMode == SortMode::Asc)
+                {
+                    if (it->code > it2->code)
+                    {
+                        stu = *it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+                else
+                {
+                    if (it->code > it2->code)
+                    {
+                        stu =*it;
+                        *it = *it2;
+                        *it2 = stu;
+                    }
+                }
+                
+            }
+        }
+    }
+    return this;
+}
+
 Student* Student::clearError()
 {
     error = false;
@@ -201,6 +246,52 @@ Student* Student::setError(string errorMessage)
 {
     error = true;
     this->errorMessage = errorMessage;
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData = false)
+{
+    if (filteredData)
+    {
+        for (StudentIterator it = this->students.begin(); it != this->students.end(); it++)
+        {
+            if(it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.front();
+    }
+    return this;
+}
+
+Student* Student::last(bool filteredData = false)
+{
+    if (filteredData)
+    {
+        for (RStudentIterator it = this->students.rbegin(); it != this->students.rend(); it++)
+        {
+            if(it->filtered)
+            {
+                this->studentModel = *it;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.back();
+    }
     return this;
 }
 

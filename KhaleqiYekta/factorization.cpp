@@ -10,22 +10,16 @@
 
 using namespace std;
 
-const int width = 10;
-const int height = 10;
-
-int main(int argc, char const * argv[])
+int main()
 {
+    unsigned int num = 8; //The number to find the divisors of.
 
-    system("cls");
-
-    for (int i = 1; i <= height; i++)
+    for (int i = 1; i <= num; ++i)
     {
-        for (int j = 1; j <= width; j++)
+        if (num % i == 0)
         {
-            cout << i * j << " ";
+            cout << i << " ";
         }
-
-        cout << endl;
     }
 
     return 0;

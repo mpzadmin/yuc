@@ -6,6 +6,7 @@ using namespace std;
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 enum Field {Code, Name, Average};
+enum SortMode {Asc, Desc};
 
 class StudentModel
 {
@@ -21,6 +22,7 @@ class StudentModel
 };
 
 typedef list<StudentModel>::iterator StudentItr;
+typedef list<StudentModel>::reverse_iterator RStudentItr;
 
 class Student
 {
@@ -28,6 +30,7 @@ class Student
         StudentModel studentModel;
         list<StudentModel> students;
         string errorMessage;
+        size_t limitCount;
         bool error;
     protected:
     public:
@@ -42,6 +45,9 @@ class Student
         float getAverage();
 
         Student* list(bool showFilteredData = false);
+        Student* first(bool filteredData = false);
+        Student* last(bool filteredData = false);
+        Student* limit(size_t count);
         Student* add();
         Student* clearError();
         Student* setError(string errorMessage);
@@ -50,6 +56,7 @@ class Student
         void debug();
         bool find(Field searchField);
         Student* filter(Field filterField);
+        Student* sort(Field sortField, SortMode sortMode);
         bool fail();
         string getError();
 };
@@ -255,6 +262,130 @@ Student* Student::filter(Field filterField)
                 }
                 break;
         }
+    }
+    return this;
+}
+
+Student* Student::sort(Field sortField, SortMode sortMode)
+{
+    StudentItr itr1, itr2;
+    StudentModel stu;
+    itr1 = this->students.begin();
+
+    while(itr1 != this->students.end())
+    {
+        itr2 = itr1;
+        itr2++;
+        while(itr2 != this->students.end())
+        switch(sortField)
+        {
+            case Field::Code:
+                if (sortMode == SortMode::Asc)
+                {
+                    if (itr1->code > itr2->code)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                else if (sortMode == SortMode::Desc)
+                {
+                    if (itr1->code < itr2->code)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                break;
+            case Field::Name:
+                if (sortMode == SortMode::Asc)
+                {
+                    if (itr1->name > itr2->name)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                else if (sortMode == SortMode::Desc)
+                {
+                    if (itr1->name < itr2->name)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                break;
+            case Field::Average:
+                if (sortMode == SortMode::Asc)
+                {
+                    if (itr1->average > itr2->average)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                else if (sortMode == SortMode::Desc)
+                {
+                    if (itr1->average < itr2->average)
+                    {
+                        stu = *itr1;
+                        *itr1 = *itr2;
+                        *itr2 = stu;
+                    }
+                }
+                break;
+        }
+    }
+    return this;
+}
+
+Student* Student::limit(size_t count)
+{
+    this->limitCount = count;
+    return this;
+}
+
+Student* Student::first(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (StudentItr studentItr = this->students.begin(); studentItr != this->students.end(); studentItr++)
+        {
+            if (studentItr->filtered)
+            {
+                this->studentModel = *studentItr;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.front();
+    }
+    return this;
+}
+
+Student* Student::last(bool filteredData)
+{
+    if (filteredData)
+    {
+        for (RStudentItr studentItr = this->students.rbegin(); studentItr != this->students.rend(); studentItr++)
+        {
+            if (studentItr->filtered)
+            {
+                this->studentModel = *studentItr;
+                break;
+            }
+        }
+    }
+    else
+    {
+        this->studentModel = this->students.back();
     }
     return this;
 }

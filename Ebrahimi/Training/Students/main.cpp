@@ -24,11 +24,18 @@ int main()
     student->list();
 
     cout << "----------------------------------------------" << endl;
+    student->sort(Field::Name)->list();
+    cout << "----------------------------------------------" << endl;
+    student->setAverage(20)->filter(Field::Average)->sort(Field::Name)->list(true);
+    cout << "----------------------------------------------" << endl;
+    /*
+    cout << "----------------------------------------------" << endl;
     student->setName("Alireza")->filter(Field::Name)->list(true);
     cout << "----------------------------------------------" << endl;
     student->setAverage(17)->filter(Field::Average)->list(true);
 
-    /* if ( student->setCode(2)->setName("Matin")->setAverage(18)->add()->fail() )
+    
+    if ( student->setCode(2)->setName("Matin")->setAverage(18)->add()->fail() )
     {
         cout << student->getError() << endl;
     }
@@ -86,6 +93,7 @@ int main()
     {
         cout << "Student with average \"19\" was NOT found!" << endl;
     }
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl; */
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl; 
+    */
     delete student;
 }

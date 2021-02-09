@@ -30,15 +30,13 @@ int main()
     student->setAverage(18)->filter(Field::Average)->first(true)->getName();
     
     
-    /*
-    cout << "*/*/*/*/*/*/*/*/*/*/*" << endl;
-    student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->limit(1)->list2(true);
+    //cout << "*/*/*/*/*/*/*/*/*/*/*" << endl;
+    //student->setAverage(18)->filter(Field::Average)->sort(Field::Name)->limit(1)->list2(true);
     //student->list2();
-    cout << endl << "*/*/*/*/*/*/*/*/*/*" << endl;
+    //cout << endl << "*/*/*/*/*/*/*/*/*/*" << endl;
     
-    cout << "*/*/*/**/" << endl;
-    student->sort(Field::Average)->limit(2)->list2();
-    */
+    //cout << "*/*/*/**/" << endl;
+    //student->sort(Field::Average)->limit(2)->list2();
     
     
     //student->setAverage(20)->filter(Field::Average)->list2(true);

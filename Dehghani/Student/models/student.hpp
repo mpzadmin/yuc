@@ -6,6 +6,8 @@
 using namespace std;
 
 typedef list<StudentModel>:: iterator StudentModelIterator;
+typedef list<StudentModel>::reverse_iterator  RStudentModelIterator;
+
 enum Field{Code, Name, Average};
 enum SortMode {Asc, Desc};
 
@@ -253,7 +255,7 @@ Student* Student::filter(Field filterField)
 
 Student* Student::sort(Field sortField, SortMode sortMode)
 { 
-    StudentIterator it, it2;
+    StudentModelIterator it, it2;
     StudentModel stu;
 
     it = this->students.begin();
@@ -311,7 +313,7 @@ Student* Student::sort(Field sortField, SortMode sortMode)
             }
             else if (sortField == Field::Average)
             {
-                if (sortMode == SortMode::Ase)
+                if (sortMode == SortMode::Asc)
                 {
                     if (it->average > it2->average)
                     {
@@ -379,8 +381,16 @@ Student* Student::first(bool filteredData = false)
     
     return this;
 }
-Student* Student::last(bool FiltteredData = false) 
+
+Student* Student::last(bool filteredData) 
 {
+    if (filteredData)
+    {
+        for(StudentModelIterator it=this->students.begin(); it != this->students.end(); it++)
+        {
+
+        }
+    }
     return this;
 }   
 

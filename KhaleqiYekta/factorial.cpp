@@ -8,7 +8,6 @@
 
 // External Libraries
 #include <iostream>
-#include <string>
 
 // Namespaces
 using namespace std;

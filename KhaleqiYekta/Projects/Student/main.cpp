@@ -48,14 +48,26 @@ int main()
     }
 
     c::printlnSeparator('*',40);
+    student->setAverage(20)->filter(Field::Average)->first(true)->debug();
+    c::printlnSeparator('*',40);
+    student->setAverage(20)->filter(Field::Average)->last(true)->debug();
+
+    /*
+    c::printlnSeparator('*',40);
     student->setAverage(20)->filter(Field::Average)->list(true);
     c::printlnSeparator('*',40);
     student->setName("Ali")->filter(Field::Name)->list(true);
+    */
+
+    /*
     c::printlnSeparator('*',40);
     student->sort(Field::Average,SortMode::Desc)->list(true);
+    */
+
+    /*
     c::printlnSeparator('*',40);
     student->sort(Field::Average)->limit(1)->list();
-    c::printlnSeparator('*',40);
+    */
 
     delete student;
 

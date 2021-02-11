@@ -24,7 +24,9 @@ int main ()
     cout << "---------------------------------------------------" << endl;
     //student->sort(Field::Average, SortMode::Desc)->list();
     //student->sort(Field::Name, SortMode::Desc)->list();
-    student->setAverage(19)->filter(Field::Average)->sort(Field::Name)->limit(1)->list(true);
+    //student->setAverage(19)->filter(Field::Average)->sort(Field::Name)->limit(1)->list(true);
+    //cout << student->first()->getName() << endl;
+    student->setAverage(19)->filter(Field::Average)->last(true)->debug();
     cout << "**************************************************" << endl;
 
     /*
